@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [David Dsgnr](https://up.htmlacademy.ru/react/4/user/451023).
-* Наставник: `Неизвестно`.
+* Наставник: [Виталий Яковенко](https://up.htmlacademy.ru/react/4/user/376639).
 
 ---
 
