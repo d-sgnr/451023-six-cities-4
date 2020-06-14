@@ -1,7 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export const Main = (props) => {
-  // eslint-disable-next-line react/prop-types
+const Main = (props) => {
   const {placesCount} = props;
 
   return <React.Fragment>
@@ -271,3 +271,9 @@ export const Main = (props) => {
     </div>
   </React.Fragment>;
 };
+
+Main.propTypes = {
+  placesCount: PropTypes.number.isRequired,
+};
+
+export default Main;
