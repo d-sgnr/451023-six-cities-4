@@ -1,13 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Main from "../main/main.jsx";
 
-import Main from "./main.jsx";
+const cardTitleHandler = () => {};
 
 const App = (props) => {
   const {placesCount} = props;
 
   return <Main
     placesCount = {placesCount}
+    onCardTitleClick = {cardTitleHandler}
   />;
 };
 
