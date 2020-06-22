@@ -2,19 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 
-const cardTitleHandler = () => {};
-
 const App = (props) => {
-  const {placesCount} = props;
+  const {placesCount, offers} = props;
 
   return <Main
     placesCount = {placesCount}
-    onCardTitleClick = {cardTitleHandler}
+    offers={offers}
   />;
 };
 
 App.propTypes = {
   placesCount: PropTypes.number.isRequired,
+  offers: PropTypes.array.isRequired,
 };
 
 export default App;

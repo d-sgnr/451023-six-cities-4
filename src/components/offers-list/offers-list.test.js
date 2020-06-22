@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Main from "./main.jsx";
+import OffersList from "./offers-list.jsx";
 
 const offers = [
   {
@@ -23,15 +23,11 @@ const offers = [
   },
 ];
 
-describe(`MainComponent`, () => {
-  it(`MainComponent should be rendered correctly`, () => {
-    const tree = renderer
-      .create(<Main
-        placesCount = {341}
+it(`OffersList should be rendered correctly`, () => {
+  const tree = renderer.create(
+      <OffersList
         offers={offers}
-      />)
-      .toJSON();
+      />).toJSON();
 
-    expect(tree).toMatchSnapshot();
-  });
+  expect(tree).toMatchSnapshot();
 });

@@ -7,6 +7,27 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
+const offers = [
+  {
+    picture: `room.jpg`,
+    price: 120,
+    rating: `40%`,
+    title: `Wood and stone place`,
+    type: `Private room`,
+    isBookmarked: true,
+    isPremium: false,
+  },
+  {
+    picture: `apartment-01.jpg`,
+    price: 240,
+    rating: `80%`,
+    title: `Nice quiet stay with soft bed`,
+    type: `Apartment`,
+    isBookmarked: false,
+    isPremium: true,
+  },
+];
+
 describe(`MainComponent`, () => {
   it(`Card title should be pressed`, () => {
     const onCardTitleClick = jest.fn();
@@ -14,7 +35,7 @@ describe(`MainComponent`, () => {
     const mainScreen = shallow(
         <Main
           placesCount = {341}
-          onCardTitleClick = {onCardTitleClick}
+          offers = {offers}
         />
     );
 
