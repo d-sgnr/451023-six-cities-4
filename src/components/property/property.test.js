@@ -1,11 +1,6 @@
 import React from "react";
-import Enzyme, {shallow} from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-import PlaceCard from "./place-card";
-
-Enzyme.configure({
-  adapter: new Adapter(),
-});
+import renderer from "react-test-renderer";
+import Property from "./property.jsx";
 
 const offer = {
   pictures: [
@@ -41,18 +36,11 @@ const offer = {
   }
 };
 
-it(`Offer info passed to callback is consistent on hover`, () => {
-
-  const onCardHover = jest.fn();
-
-  const placeCard = shallow(
-      <PlaceCard
-        onCardHover={onCardHover}
+it(`Property should be rendered correctly`, () => {
+  const tree = renderer.create(
+      <Property
         card={offer}
-      />
-  );
+      />).toJSON();
 
-  placeCard.simulate(`mouseEnter`);
-
-  expect(onCardHover).toHaveBeenCalledTimes(1);
+  expect(tree).toMatchSnapshot();
 });

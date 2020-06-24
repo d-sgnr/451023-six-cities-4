@@ -34,7 +34,7 @@ exports[`PlaceCard should be rendered correctly 1`] = `
           className="place-card__price-value"
         >
           €
-          120
+          140
         </b>
         <span
           className="place-card__price-text"
@@ -72,7 +72,7 @@ exports[`PlaceCard should be rendered correctly 1`] = `
         <span
           style={
             Object {
-              "width": "40%",
+              "width": "40%%",
             }
           }
         />
@@ -95,7 +95,7 @@ exports[`PlaceCard should be rendered correctly 1`] = `
     <p
       className="place-card__type"
     >
-      Private room
+      House
     </p>
   </div>
 </article>
