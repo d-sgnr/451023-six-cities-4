@@ -24,7 +24,7 @@ class PlaceCard extends PureComponent {
       </div> : ``}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={`img/${card.picture}`}width="260" height="200" alt={`${card.title} image`}/>
+          <img className="place-card__image" src={`img/${card.pictures[0]}`} width="260" height="200" alt={`${card.title} image`}/>
         </a>
       </div>
       <div className="place-card__info">
@@ -45,7 +45,7 @@ class PlaceCard extends PureComponent {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: card.rating}}></span>
+            <span style={{width: card.rating + `%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -67,13 +67,22 @@ class PlaceCard extends PureComponent {
 PlaceCard.propTypes = {
   onCardHover: PropTypes.func.isRequired,
   card: PropTypes.shape({
-    picture: PropTypes.string.isRequired,
+    pictures: PropTypes.array.isRequired,
     price: PropTypes.number.isRequired,
     rating: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     isBookmarked: PropTypes.bool.isRequired,
     isPremium: PropTypes.bool.isRequired,
+    description: PropTypes.array.isRequired,
+    bedroomsCount: PropTypes.number.isRequired,
+    guestsCount: PropTypes.number.isRequired,
+    appliances: PropTypes.array.isRequired,
+    host: PropTypes.shape({
+      picture: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      isSuper: PropTypes.bool.isRequired,
+    }),
   }).isRequired,
 };
 
