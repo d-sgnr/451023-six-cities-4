@@ -23,26 +23,29 @@ class Map extends PureComponent {
 
     const mapContainer = this._mapRef.current;
 
-    const map = leaflet.map(mapContainer.id, {
-      center: city,
-      zoom,
-      zoomControl: false,
-      marker: true,
-    });
+    if (mapContainer) {
 
-    map.setView(city, zoom);
+      const map = leaflet.map(mapContainer, {
+        center: city,
+        zoom,
+        zoomControl: false,
+        marker: true,
+      });
 
-    leaflet
-      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-        attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
-      })
-      .addTo(map);
+      map.setView(city, zoom);
 
-    coordinates.map((coordinate) => {
       leaflet
-      .marker(coordinate, {MAP_ICON})
-      .addTo(map);
-    });
+        .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
+          attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
+        })
+        .addTo(map);
+
+      coordinates.map((coordinate) => {
+        leaflet
+        .marker(coordinate, {MAP_ICON})
+        .addTo(map);
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -50,10 +53,8 @@ class Map extends PureComponent {
   }
 
   render() {
-    return <div id="map" style={{height: `100%`}}
-      ref={this._mapRef}
-    >
-    </div>;
+    return <div style={{height: `100%`}}
+      ref={this._mapRef}></div>;
   }
 }
 
@@ -62,5 +63,3 @@ Map.propTypes = {
 };
 
 export default Map;
-
-

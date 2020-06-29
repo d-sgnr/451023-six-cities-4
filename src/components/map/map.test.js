@@ -11,11 +11,7 @@ it(`Map should be rendered correctly`, () => {
   const tree = renderer.create(
       <Map
         coordinates={mock}
-      />, {
-        createNodeMock: () => {
-          return {};
-        }
-      }).toJSON();
+      />).toJSON();
 
   expect(tree).toMatchSnapshot();
 });
