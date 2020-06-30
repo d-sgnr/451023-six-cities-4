@@ -1,5 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import {PropertyType} from "../../const.js";
 
 class PlaceCard extends PureComponent {
   constructor(props) {
@@ -14,15 +15,15 @@ class PlaceCard extends PureComponent {
 
   render() {
 
-    const {onCardHover, card} = this.props;
+    const {onCardHover, card, offersType} = this.props;
 
-    return <article className="cities__place-card place-card"
+    return <article className={`${offersType === PropertyType.CITY ? `${offersType}__place-` : `${offersType}__`}card place-card`}
       onMouseEnter={onCardHover}
     >
       {card.isPremium ? <div className="place-card__mark">
         <span>Premium</span>
       </div> : ``}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${offersType}__image-wrapper place-card__image-wrapper`}>
         <a href="#">
           <img className="place-card__image" src={`img/${card.pictures[0]}`} width="260" height="200" alt={`${card.title} image`}/>
         </a>
@@ -67,6 +68,7 @@ class PlaceCard extends PureComponent {
 PlaceCard.propTypes = {
   onCardHover: PropTypes.func.isRequired,
   card: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     pictures: PropTypes.array.isRequired,
     price: PropTypes.number.isRequired,
     rating: PropTypes.string.isRequired,
@@ -84,6 +86,7 @@ PlaceCard.propTypes = {
       isSuper: PropTypes.bool.isRequired,
     }),
   }).isRequired,
+  offersType: PropTypes.oneOf([PropertyType.CITY, PropertyType.NEAR]).isRequired,
 };
 
 export default PlaceCard;

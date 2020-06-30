@@ -72,7 +72,7 @@ exports[`PlaceCard should be rendered correctly 1`] = `
         <span
           style={
             Object {
-              "width": "40%%",
+              "width": "40%",
             }
           }
         />

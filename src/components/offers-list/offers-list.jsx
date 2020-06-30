@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import PlaceCard from "../place-card/place-card.jsx";
 import PropTypes from 'prop-types';
+import {PropertyType} from "../../const.js";
 
 class OffersList extends PureComponent {
   constructor(props) {
@@ -13,10 +14,14 @@ class OffersList extends PureComponent {
 
   render() {
     const {
-      offers
+      offers,
+      offersType
     } = this.props;
 
-    return <div className="cities__places-list places__list tabs__content">
+    return <div className={
+      `${offersType === PropertyType.CITY ? `${offersType}__places-` : `${offersType}__`}list places__list
+      ${offersType === PropertyType.CITY ? `tabs__content` : ``}`}
+    >
       {offers.map((offer, i) => {
         return <PlaceCard
           onCardHover={() => {
@@ -24,6 +29,7 @@ class OffersList extends PureComponent {
               hoveredCard: offer,
             });
           }}
+          offersType={offersType}
           key={`${i}-${offer.title}`}
           card={offer}
         />;
@@ -35,6 +41,7 @@ class OffersList extends PureComponent {
 
 OffersList.propTypes = {
   offers: PropTypes.array.isRequired,
+  offersType: PropTypes.oneOf([PropertyType.CITY, PropertyType.NEAR]).isRequired
 };
 
 export default OffersList;

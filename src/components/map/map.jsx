@@ -3,6 +3,11 @@ import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 import leaflet from "leaflet";
 
+const MAP_ICON = leaflet.icon({
+  iconUrl: `img/pin.svg`,
+  iconSize: [30, 30]
+});
+
 class Map extends PureComponent {
   constructor(props) {
     super(props);
@@ -11,11 +16,6 @@ class Map extends PureComponent {
   }
 
   componentDidMount() {
-    const MAP_ICON = leaflet.icon({
-      iconUrl: `img/pin.svg`,
-      iconSize: [30, 30]
-    });
-
     const {coordinates} = this.props;
 
     const city = [52.38333, 4.9];

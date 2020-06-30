@@ -1,8 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import PlaceCard from "./place-card.jsx";
+import {PropertyType} from "../../const.js";
 
 const offer = {
+  id: Math.random(),
   pictures: [
     `room.jpg`,
     `apartment-01.jpg`,
@@ -12,7 +14,7 @@ const offer = {
     `apartment-small-04.jpg`
   ],
   price: 140,
-  rating: `40%`,
+  rating: `40`,
   title: `Wood and stone place`,
   type: `House`,
   isBookmarked: true,
@@ -41,6 +43,7 @@ it(`PlaceCard should be rendered correctly`, () => {
       <PlaceCard
         onCardHover={() => {}}
         card={offer}
+        offersType={PropertyType.CITY}
       />).toJSON();
 
   expect(tree).toMatchSnapshot();

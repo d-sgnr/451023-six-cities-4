@@ -9,6 +9,7 @@ Enzyme.configure({
 
 const offers = [
   {
+    id: Math.random(),
     pictures: [
       `room.jpg`,
       `apartment-01.jpg`,
@@ -18,7 +19,7 @@ const offers = [
       `apartment-small-04.jpg`
     ],
     price: 140,
-    rating: `40%`,
+    rating: `40`,
     title: `Wood and stone place`,
     type: `House`,
     isBookmarked: true,
@@ -42,6 +43,7 @@ const offers = [
     }
   },
   {
+    id: Math.random(),
     pictures: [
       `room.jpg`,
       `apartment-01.jpg`,
@@ -51,7 +53,7 @@ const offers = [
       `apartment-small-04.jpg`
     ],
     price: 140,
-    rating: `40%`,
+    rating: `40`,
     title: `Wood and stone place`,
     type: `House`,
     isBookmarked: true,

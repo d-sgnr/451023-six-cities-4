@@ -1,10 +1,4 @@
-const PLACE_RATING = {
-  1: `20`,
-  2: `40`,
-  3: `60`,
-  4: `80`,
-  5: `100`,
-};
+import {RATING} from "../const.js";
 
 const PLACE_TYPE = {
   apartment: `Apartment`,
@@ -15,6 +9,7 @@ const PLACE_TYPE = {
 
 export default [
   {
+    id: Math.random(),
     coordinates: [52.3909553943508, 4.85309666406198],
     pictures: [
       `room.jpg`,
@@ -25,7 +20,7 @@ export default [
       `apartment-small-04.jpg`
     ],
     price: 140,
-    rating: PLACE_RATING[4],
+    rating: RATING[4],
     title: `Wood and stone place`,
     type: PLACE_TYPE.house,
     isBookmarked: true,
@@ -49,6 +44,7 @@ export default [
     }
   },
   {
+    id: Math.random(),
     coordinates: [52.369553943508, 4.85309666406198],
     pictures: [
       `apartment-01.jpg`,
@@ -59,7 +55,7 @@ export default [
       `apartment-small-04.jpg`
     ],
     price: 88,
-    rating: PLACE_RATING[2],
+    rating: RATING[2],
     title: `Cozy seaview apartment`,
     type: PLACE_TYPE.apartment,
     isBookmarked: false,
@@ -83,6 +79,7 @@ export default [
     }
   },
   {
+    id: Math.random(),
     coordinates: [52.3909553943508, 4.929309666406198],
     pictures: [
       `apartment-02.jpg`,
@@ -93,7 +90,7 @@ export default [
       `apartment-small-04.jpg`
     ],
     price: 99,
-    rating: PLACE_RATING[5],
+    rating: RATING[5],
     title: `Beautiful place`,
     type: PLACE_TYPE.hotel,
     isBookmarked: true,
@@ -117,6 +114,7 @@ export default [
     }
   },
   {
+    id: Math.random(),
     coordinates: [52.3809553943508, 4.939309666406198],
     pictures: [
       `apartment-small-03.jpg`,
@@ -127,7 +125,7 @@ export default [
       `apartment-small-04.jpg`
     ],
     price: 220,
-    rating: PLACE_RATING[1],
+    rating: RATING[1],
     title: `Nice quiet stay with soft bed`,
     type: PLACE_TYPE.room,
     isBookmarked: false,

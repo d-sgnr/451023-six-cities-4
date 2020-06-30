@@ -1,9 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import {PropertyType} from "../../const.js";
 import OffersList from "./offers-list.jsx";
 
 const offers = [
   {
+    id: Math.random(),
     pictures: [
       `room.jpg`,
       `apartment-01.jpg`,
@@ -13,7 +15,7 @@ const offers = [
       `apartment-small-04.jpg`
     ],
     price: 140,
-    rating: `40%`,
+    rating: `40`,
     title: `Wood and stone place`,
     type: `House`,
     isBookmarked: true,
@@ -37,6 +39,7 @@ const offers = [
     }
   },
   {
+    id: Math.random(),
     pictures: [
       `room.jpg`,
       `apartment-01.jpg`,
@@ -46,7 +49,7 @@ const offers = [
       `apartment-small-04.jpg`
     ],
     price: 140,
-    rating: `40%`,
+    rating: `40`,
     title: `Wood and stone place`,
     type: `House`,
     isBookmarked: true,
@@ -75,6 +78,7 @@ it(`OffersList should be rendered correctly`, () => {
   const tree = renderer.create(
       <OffersList
         offers={offers}
+        offersType={PropertyType.CITY}
       />).toJSON();
 
   expect(tree).toMatchSnapshot();
