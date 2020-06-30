@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Review from "./Review.jsx";
 import {RATING} from "../../const.js";
+import Review from "./review.jsx";
 
 const review = {
   id: Math.random(),
