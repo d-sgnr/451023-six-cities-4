@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import OffersList from "../offers-list/offers-list.jsx";
 import Map from "../map/map.jsx";
+import {PropertyType} from "../../const.js";
 
 const Main = (props) => {
   const {placesCount, offers} = props;
@@ -100,6 +101,7 @@ const Main = (props) => {
               </form>
               <OffersList
                 offers={offers}
+                offersType={PropertyType.CITY}
               />
             </section>
             <div className="cities__right-section">

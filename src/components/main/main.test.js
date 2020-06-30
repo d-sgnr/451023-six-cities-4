@@ -4,6 +4,7 @@ import Main from "./main.jsx";
 
 const offers = [
   {
+    id: Math.random(),
     coordinates: [52.3909553943508, 4.85309666406198],
     pictures: [
       `room.jpg`,
@@ -14,7 +15,7 @@ const offers = [
       `apartment-small-04.jpg`
     ],
     price: 140,
-    rating: `40%`,
+    rating: `40`,
     title: `Wood and stone place`,
     type: `House`,
     isBookmarked: true,
@@ -38,6 +39,7 @@ const offers = [
     }
   },
   {
+    id: Math.random(),
     coordinates: [52.3909553943508, 4.85309666406198],
     pictures: [
       `room.jpg`,

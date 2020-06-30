@@ -222,7 +222,8 @@ exports[`MainComponent MainComponent should be rendered correctly 1`] = `
             </ul>
           </form>
           <div
-            className="cities__places-list places__list tabs__content"
+            className="cities__places-list places__list
+      tabs__content"
           >
             <article
               className="cities__place-card place-card"
@@ -295,7 +296,7 @@ exports[`MainComponent MainComponent should be rendered correctly 1`] = `
                     <span
                       style={
                         Object {
-                          "width": "40%%",
+                          "width": "40%",
                         }
                       }
                     />
