@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import OffersList from "./offers-list.jsx";
 import {PropertyType} from "../../const.js";
+import OffersList from "./offers-list.jsx";
 
 const offers = [
   {
