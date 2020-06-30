@@ -4,6 +4,7 @@ import Main from "./main.jsx";
 
 const offers = [
   {
+    coordinates: [52.3909553943508, 4.85309666406198],
     pictures: [
       `room.jpg`,
       `apartment-01.jpg`,
@@ -37,6 +38,7 @@ const offers = [
     }
   },
   {
+    coordinates: [52.3909553943508, 4.85309666406198],
     pictures: [
       `room.jpg`,
       `apartment-01.jpg`,

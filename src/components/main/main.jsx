@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import OffersList from "../offers-list/offers-list.jsx";
+import Map from "../map/map.jsx";
 
 const Main = (props) => {
   const {placesCount, offers} = props;
+
+  const placesCoordinates = offers.map(({coordinates}) => coordinates);
 
   return <React.Fragment>
     <div className="page page--gray page--main">
@@ -100,7 +103,11 @@ const Main = (props) => {
               />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <section className="cities__map map">
+                <Map
+                  coordinates={placesCoordinates}
+                />
+              </section>
             </div>
           </div>
         </div>

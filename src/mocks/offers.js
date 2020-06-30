@@ -15,6 +15,7 @@ const PLACE_TYPE = {
 
 export default [
   {
+    coordinates: [52.3909553943508, 4.85309666406198],
     pictures: [
       `room.jpg`,
       `apartment-01.jpg`,
@@ -48,6 +49,7 @@ export default [
     }
   },
   {
+    coordinates: [52.369553943508, 4.85309666406198],
     pictures: [
       `apartment-01.jpg`,
       `room.jpg`,
@@ -81,6 +83,7 @@ export default [
     }
   },
   {
+    coordinates: [52.3909553943508, 4.929309666406198],
     pictures: [
       `apartment-02.jpg`,
       `apartment-03.jpg`,
@@ -114,6 +117,7 @@ export default [
     }
   },
   {
+    coordinates: [52.3809553943508, 4.939309666406198],
     pictures: [
       `apartment-small-03.jpg`,
       `room.jpg`,
