@@ -1,11 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import configureStore from "redux-mock-store";
-
-import {Provider} from "react-redux";
-import {App} from "./app.jsx";
-
-const mockStore = configureStore([]);
+import CitiesList from "./cities-list.jsx";
 
 const offers = [
   {
@@ -88,70 +83,18 @@ const offers = [
   },
 ];
 
-const city = {
+const activeCity = {
   name: `Amsterdam`,
   coordinates: [52.373057, 4.892557],
 };
 
-export const PageType = {
-  INDEX: `INDEX`,
-  PROPERTY: `PROPERTY`,
-};
+it(`CitiesList should be rendered correctly when not active`, () => {
+  const tree = renderer.create(
+      <CitiesList
+        offers={offers}
+        city={activeCity}
+        onCityClick={() => {}}
+      />).toJSON();
 
-const activeOffer = offers[0];
-
-describe(`Render App`, () => {
-  it(`Render MainScreen`, () => {
-    const store = mockStore({
-      offers,
-      activeOffer,
-      page: PageType.PROPERTY,
-      city,
-    });
-
-    const tree = renderer
-      .create(
-          <Provider store={store}>
-            <App
-              offers={offers}
-              city={city}
-              onCityClick={() => {}}
-              page={PageType.INDEX}
-              activeOffer={activeOffer}
-            />
-          </Provider>
-      )
-      .toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it(`Render PropertyScreen`, () => {
-    const store = mockStore({
-      offers,
-      activeOffer,
-      page: PageType.PROPERTY,
-      city,
-    });
-
-    const tree = renderer
-      .create(
-          <Provider store={store}>
-            <App
-              offers={offers}
-              activeOffer={activeOffer}
-              page={PageType.PROPERTY}
-              city={city}
-              onCityClick={() => {}}
-            />
-          </Provider>, {
-            createNodeMock: () => {
-              return {};
-            }
-          }
-      )
-      .toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
+  expect(tree).toMatchSnapshot();
 });

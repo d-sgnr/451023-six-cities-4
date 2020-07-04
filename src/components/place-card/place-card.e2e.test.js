@@ -10,6 +10,11 @@ Enzyme.configure({
 
 const offer = {
   id: Math.random(),
+  coordinates: [52.3909553943508, 4.85309666406198],
+  city: {
+    name: `Amsterdam`,
+    coordinates: [52.3909553943508, 4.85309666406198],
+  },
   pictures: [
     `room.jpg`,
     `apartment-01.jpg`,
@@ -19,7 +24,7 @@ const offer = {
     `apartment-small-04.jpg`
   ],
   price: 140,
-  rating: `40`,
+  rating: `80`,
   title: `Wood and stone place`,
   type: `House`,
   isBookmarked: true,
@@ -46,16 +51,22 @@ const offer = {
 it(`Offer info passed to callback is consistent on hover`, () => {
 
   const onCardHover = jest.fn();
+  const onCardTitleClick = jest.fn();
 
   const placeCard = shallow(
       <PlaceCard
         onCardHover={onCardHover}
         card={offer}
         offersType={PropertyType.CITY}
+        onCardTitleClick={onCardTitleClick}
       />
   );
 
+  const cardTitle = placeCard.find(`.place-card__name a`);
+
+  cardTitle.simulate(`click`);
   placeCard.simulate(`mouseEnter`);
 
+  expect(onCardTitleClick).toHaveBeenCalledTimes(1);
   expect(onCardHover).toHaveBeenCalledTimes(1);
 });

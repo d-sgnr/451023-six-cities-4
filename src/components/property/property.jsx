@@ -25,10 +25,11 @@ class Property extends PureComponent {
   }
 
   render() {
-
-    const nearOffers = offers.slice(0, 3);
-
     const {card} = this.props;
+
+    const nearOffers = offers.filter((offer) => {
+      return offer.city === card.city;
+    });
 
     const getDigitalRating = (starredRating) => {
       return (starredRating / 20).toFixed(1);
@@ -202,6 +203,7 @@ class Property extends PureComponent {
           </div>
           <section className="property__map map">
             <Map
+              city={card.city}
               coordinates={otherPlacesCoordinates}
             />
           </section>
@@ -210,6 +212,7 @@ class Property extends PureComponent {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <OffersList
+              city={card.city}
               offers={nearOffers}
               offersType={PropertyType.NEAR}
             />
@@ -223,6 +226,11 @@ class Property extends PureComponent {
 Property.propTypes = {
   card: PropTypes.shape({
     id: PropTypes.number.isRequired,
+    coordinates: PropTypes.array.isRequired,
+    city: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      coordinates: PropTypes.array.isRequired,
+    }).isRequired,
     pictures: PropTypes.array.isRequired,
     price: PropTypes.number.isRequired,
     rating: PropTypes.string.isRequired,

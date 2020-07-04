@@ -3,6 +3,9 @@ import PlaceCard from "../place-card/place-card.jsx";
 import PropTypes from 'prop-types';
 import {PropertyType} from "../../const.js";
 
+import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer.js";
+
 class OffersList extends PureComponent {
   constructor(props) {
     super(props);
@@ -15,19 +18,28 @@ class OffersList extends PureComponent {
   render() {
     const {
       offers,
-      offersType
+      offersType,
+      onCardTitleClick
     } = this.props;
 
-    return <div className={
-      `${offersType === PropertyType.CITY ? `${offersType}__places-` : `${offersType}__`}list places__list
-      ${offersType === PropertyType.CITY ? `tabs__content` : ``}`}
-    >
+    const getOffersListClass = (type) => {
+      return `${type === PropertyType.CITY ?
+        `${type}__places-` :
+        `${type}__`}list places__list ${type === PropertyType.CITY ? `tabs__content` : ``}`;
+    };
+
+    const offersListClass = getOffersListClass(offersType);
+
+    return <div className={`${offersListClass}`}>
       {offers.map((offer, i) => {
         return <PlaceCard
           onCardHover={() => {
             this.setState({
               hoveredCard: offer,
             });
+          }}
+          onCardTitleClick={() => {
+            onCardTitleClick(offer);
           }}
           offersType={offersType}
           key={`${i}-${offer.title}`}
@@ -41,9 +53,15 @@ class OffersList extends PureComponent {
 
 OffersList.propTypes = {
   offers: PropTypes.array.isRequired,
-  offersType: PropTypes.oneOf([PropertyType.CITY, PropertyType.NEAR]).isRequired
+  offersType: PropTypes.oneOf([PropertyType.CITY, PropertyType.NEAR]).isRequired,
+  onCardTitleClick: PropTypes.func.isRequired,
 };
 
-export default OffersList;
+const mapDispatchToProps = (dispatch) => ({
+  onCardTitleClick(offer) {
+    dispatch(ActionCreator.setActiveOffer(offer));
+  },
+});
 
-
+export {OffersList};
+export default connect(null, mapDispatchToProps)(OffersList);

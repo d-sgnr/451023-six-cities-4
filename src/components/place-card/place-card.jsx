@@ -15,7 +15,7 @@ class PlaceCard extends PureComponent {
 
   render() {
 
-    const {onCardHover, card, offersType} = this.props;
+    const {onCardHover, card, offersType, onCardTitleClick} = this.props;
 
     return <article className={`${offersType === PropertyType.CITY ? `${offersType}__place-` : `${offersType}__`}card place-card`}
       onMouseEnter={onCardHover}
@@ -51,7 +51,9 @@ class PlaceCard extends PureComponent {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{card.title}</a>
+          <a href="#"
+            onClick={onCardTitleClick}
+          >{card.title}</a>
         </h2>
         <p className="place-card__type">{card.type}</p>
       </div>
@@ -69,6 +71,11 @@ PlaceCard.propTypes = {
   onCardHover: PropTypes.func.isRequired,
   card: PropTypes.shape({
     id: PropTypes.number.isRequired,
+    coordinates: PropTypes.array.isRequired,
+    city: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      coordinates: PropTypes.array.isRequired,
+    }).isRequired,
     pictures: PropTypes.array.isRequired,
     price: PropTypes.number.isRequired,
     rating: PropTypes.string.isRequired,
@@ -87,6 +94,7 @@ PlaceCard.propTypes = {
     }),
   }).isRequired,
   offersType: PropTypes.oneOf([PropertyType.CITY, PropertyType.NEAR]).isRequired,
+  onCardTitleClick: PropTypes.func.isRequired,
 };
 
 export default PlaceCard;

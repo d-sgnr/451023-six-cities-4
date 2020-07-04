@@ -4,7 +4,12 @@ import PlaceCard from "./place-card.jsx";
 import {PropertyType} from "../../const.js";
 
 const offer = {
-  id: Math.random(),
+  id: 12345,
+  coordinates: [52.3909553943508, 4.85309666406198],
+  city: {
+    name: `Amsterdam`,
+    coordinates: [52.3909553943508, 4.85309666406198],
+  },
   pictures: [
     `room.jpg`,
     `apartment-01.jpg`,
@@ -14,7 +19,7 @@ const offer = {
     `apartment-small-04.jpg`
   ],
   price: 140,
-  rating: `40`,
+  rating: `80`,
   title: `Wood and stone place`,
   type: `House`,
   isBookmarked: true,
@@ -44,6 +49,7 @@ it(`PlaceCard should be rendered correctly`, () => {
         onCardHover={() => {}}
         card={offer}
         offersType={PropertyType.CITY}
+        onCardTitleClick={() => {}}
       />).toJSON();
 
   expect(tree).toMatchSnapshot();
