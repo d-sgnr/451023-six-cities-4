@@ -6,32 +6,30 @@ class PlaceCard extends PureComponent {
   constructor(props) {
     super(props);
 
-    const {card} = this.props;
+    const {offer} = this.props;
 
     this.state = {
-      isBookmarked: card.isBookmarked,
+      isBookmarked: offer.isBookmarked,
     };
   }
 
   render() {
 
-    const {onCardHover, card, offersType, onCardTitleClick} = this.props;
+    const {offer, offersType, onCardTitleClick} = this.props;
 
-    return <article className={`${offersType === PropertyType.CITY ? `${offersType}__place-` : `${offersType}__`}card place-card`}
-      onMouseEnter={onCardHover}
-    >
-      {card.isPremium ? <div className="place-card__mark">
+    return <article className={`${offersType === PropertyType.CITY ? `${offersType}__place-` : `${offersType}__`}card place-card`}>
+      {offer.isPremium ? <div className="place-card__mark">
         <span>Premium</span>
       </div> : ``}
       <div className={`${offersType}__image-wrapper place-card__image-wrapper`}>
         <a href="#">
-          <img className="place-card__image" src={`img/${card.pictures[0]}`} width="260" height="200" alt={`${card.title} image`}/>
+          <img className="place-card__image" src={`img/${offer.pictures[0]}`} width="260" height="200" alt={`${offer.title} image`}/>
         </a>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">&euro;{card.price}</b>
+            <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <button className={`place-card__bookmark-button button` + (this.state.isBookmarked ? ` place-card__bookmark-button--active` : ``)}
@@ -46,16 +44,16 @@ class PlaceCard extends PureComponent {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: card.rating + `%`}}></span>
+            <span style={{width: offer.rating + `%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
           <a href="#"
             onClick={onCardTitleClick}
-          >{card.title}</a>
+          >{offer.title}</a>
         </h2>
-        <p className="place-card__type">{card.type}</p>
+        <p className="place-card__type">{offer.type}</p>
       </div>
     </article>;
   }
@@ -68,8 +66,7 @@ class PlaceCard extends PureComponent {
 }
 
 PlaceCard.propTypes = {
-  onCardHover: PropTypes.func.isRequired,
-  card: PropTypes.shape({
+  offer: PropTypes.shape({
     id: PropTypes.number.isRequired,
     coordinates: PropTypes.array.isRequired,
     city: PropTypes.shape({

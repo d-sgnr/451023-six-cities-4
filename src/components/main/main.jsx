@@ -2,18 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import OffersList from "../offers-list/offers-list.jsx";
 import Map from "../map/map.jsx";
-import {PropertyType} from "../../const.js";
 import CitiesList from "../cities-list/cities-list.jsx";
 import NoPlaces from "../no-places/no-places.jsx";
 
+import {PropertyType} from "../../const.js";
+import {connect} from "react-redux";
+
 const Main = (props) => {
-  const {offers, onCityClick, city} = props;
-
-  const filteredOffers = offers.filter((offer) => {
-    return offer.city.name === city.name;
-  });
-
-  const placesCoordinates = filteredOffers.map(({coordinates}) => coordinates);
+  const {offers, offersToShow, onCityClick, city, placesCoordinates} = props;
 
   return <React.Fragment>
     <div className="page page--gray page--main">
@@ -39,7 +35,7 @@ const Main = (props) => {
           </div>
         </div>
       </header>
-      <main className={`page__main page__main--index ${filteredOffers.length === 0 ? `page__main--index-empty` : ``}`}>
+      <main className={`page__main page__main--index ${offersToShow.length === 0 ? `page__main--index-empty` : ``}`}>
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
@@ -51,12 +47,12 @@ const Main = (props) => {
           </section>
         </div>
         <div className="cities">
-          {filteredOffers.length === 0 ?
+          {offersToShow.length === 0 ?
             <NoPlaces/> :
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{filteredOffers.length} places to stay in {city.name}</b>
+                <b className="places__found">{offersToShow.length} places to stay in {city.name}</b>
                 <form className="places__sorting" action="#" method="get">
                   <span className="places__sorting-caption">Sort by</span>
                   <span className="places__sorting-type" tabIndex="0">
@@ -82,7 +78,7 @@ const Main = (props) => {
                 </form>
                 <OffersList
                   city={city}
-                  offers={filteredOffers}
+                  offers={offersToShow}
                   offersType={PropertyType.CITY}
                 />
               </section>
@@ -108,7 +104,18 @@ Main.propTypes = {
     coordinates: PropTypes.array.isRequired,
   }).isRequired,
   offers: PropTypes.array.isRequired,
+  offersToShow: PropTypes.array.isRequired,
   onCityClick: PropTypes.func.isRequired,
+  placesCoordinates: PropTypes.array.isRequired
 };
 
-export default Main;
+
+const mapStateToProps = (state) => ({
+  offers: state.offers,
+  city: state.city,
+  offersToShow: state.offersToShow,
+  placesCoordinates: state.placesCoordinates,
+});
+
+export {Main};
+export default connect(mapStateToProps)(Main);

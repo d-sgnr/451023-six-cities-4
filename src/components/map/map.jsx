@@ -25,6 +25,10 @@ class Map extends PureComponent {
     this._initMap();
   }
 
+  componentWillUnmount() {
+    this.map.remove();
+  }
+
   _initMap() {
     const {coordinates, city} = this.props;
 
