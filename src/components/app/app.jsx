@@ -18,25 +18,29 @@ class App extends PureComponent {
     } = this.props;
 
     if (page === PageType.PROPERTY) {
-      return <Property/>;
-    } return <Main
-      city={city}
-      onCityClick={onCityClick}
-    />;
+      return (
+        <Property/>
+      );
+    } return (
+      <Main
+        city={city}
+        onCityClick={onCityClick}
+      />);
   }
 
   render() {
-
-    return <BrowserRouter>
-      <Switch>
-        <Route exact path="/">
-          {this._renderAppScreen()};
-        </Route>
-        <Route exact path="/dev-property">
-          <Property/>
-        </Route>
-      </Switch>
-    </BrowserRouter>;
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {this._renderAppScreen()}
+          </Route>
+          <Route exact path="/dev-property">
+            <Property/>
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
   }
 }
 

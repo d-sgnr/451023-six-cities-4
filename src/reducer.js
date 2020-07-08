@@ -64,10 +64,13 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.CHANGE_BOOKMARK:
 
+      console.log(state.offers);
+
       const newOffers = state.offers.map((offer) => {
         if (offer === action.payload) {
           return extend(offer, {
             isBookmarked: !offer.isBookmarked,
+            title: `!offer.isBookmarked`,
           });
         }
         return offer;

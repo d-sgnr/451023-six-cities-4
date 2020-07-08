@@ -3,14 +3,10 @@ import PlaceCard from "../place-card/place-card.jsx";
 import PropTypes from 'prop-types';
 import {PropertyType} from "../../const.js";
 
-import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer.js";
-
 const OffersList = (props) => {
   const {
     offers,
-    offersType,
-    onCardTitleClick
+    offersType
   } = props;
 
   const getOffersListClass = (type) => {
@@ -24,9 +20,6 @@ const OffersList = (props) => {
   return <div className={`${offersListClass}`}>
     {offers.map((offer, i) => {
       return <PlaceCard
-        onCardTitleClick={() => {
-          onCardTitleClick(offer);
-        }}
         offersType={offersType}
         key={`${i}-${offer.title}`}
         offer={offer}
@@ -39,14 +32,6 @@ const OffersList = (props) => {
 OffersList.propTypes = {
   offers: PropTypes.array.isRequired,
   offersType: PropTypes.oneOf([PropertyType.CITY, PropertyType.NEAR]).isRequired,
-  onCardTitleClick: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onCardTitleClick(offer) {
-    dispatch(ActionCreator.setActiveOffer(offer));
-  },
-});
-
-export {OffersList};
-export default connect(null, mapDispatchToProps)(OffersList);
+export default OffersList;
