@@ -2,6 +2,11 @@ import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main.jsx";
 
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
+
+const mockStore = configureStore([]);
+
 const offers = [
   {
     id: 12345,
@@ -88,15 +93,28 @@ const city = {
   coordinates: [52.373057, 4.892557],
 };
 
+const mockCoordinates = [[52.3909553943508, 4.85309666406198], [52.3909553943508, 4.85309666406198]];
+
 describe(`MainComponent`, () => {
   it(`MainComponent should be rendered correctly`, () => {
+    const store = mockStore({
+      offers,
+      city,
+      nearOffers: offers,
+      offersToShow: offers,
+      placesCoordinates: mockCoordinates,
+    });
+
     const tree = renderer
-      .create(<Main
-        city = {city}
-        offers={offers}
-        onCityClick={() => {}}
-      />)
-      .toJSON();
+      .create(
+          <Provider store={store}>
+            <Main
+              city={city}
+              offers={offers}
+              onCityClick={() => {}}
+              placesCoordinates={mockCoordinates}
+            />
+          </Provider>).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

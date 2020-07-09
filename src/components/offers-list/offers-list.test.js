@@ -3,6 +3,11 @@ import renderer from "react-test-renderer";
 import {PropertyType} from "../../const.js";
 import OffersList from "./offers-list.jsx";
 
+import configureStore from "redux-mock-store";
+import {Provider} from "react-redux";
+
+const mockStore = configureStore([]);
+
 const offers = [
   {
     id: 12345,
@@ -84,19 +89,27 @@ const offers = [
   },
 ];
 
-const city = {
-  name: `Amsterdam`,
-  coordinates: [52.373057, 4.892557],
-};
+// const city = {
+//   name: `Amsterdam`,
+//   coordinates: [52.373057, 4.892557],
+// };
 
 it(`OffersList should be rendered correctly`, () => {
+  const store = mockStore({
+    offers,
+    nearOffers: offers,
+    offersToShow: offers,
+  });
+
   const tree = renderer.create(
-      <OffersList
-        city={city}
-        offers={offers}
-        offersType={PropertyType.CITY}
-        onCardTitleClick={() => {}}
-      />).toJSON();
+      <Provider store={store}>
+        <OffersList
+          // city={city}
+          offers={offers}
+          offersType={PropertyType.CITY}
+          // onCardTitleClick={() => {}}
+        />
+      </Provider>).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

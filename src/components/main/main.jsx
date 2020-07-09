@@ -109,7 +109,6 @@ Main.propTypes = {
   placesCoordinates: PropTypes.array.isRequired
 };
 
-
 const mapStateToProps = (state) => ({
   offers: state.offers,
   city: state.city,

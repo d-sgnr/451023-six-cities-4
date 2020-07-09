@@ -1,5 +1,6 @@
 import {extend} from "./utils.js";
 import {PageType} from "./const.js";
+import {replaceItemInArray} from "./utils.js";
 import offers from "./mocks/offers.js";
 
 const getFilteredOffers = (allOffers, city) => {
@@ -64,22 +65,19 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.CHANGE_BOOKMARK:
 
-      console.log(state.offers);
+      const newOffers = replaceItemInArray(state.offers, action.payload, `isBookmarked`);
+      const newOffersToShow = replaceItemInArray(state.offersToShow, action.payload, `isBookmarked`);
+      const newNearOffers = replaceItemInArray(state.nearOffers, action.payload, `isBookmarked`);
 
-      const newOffers = state.offers.map((offer) => {
-        if (offer === action.payload) {
-          return extend(offer, {
-            isBookmarked: !offer.isBookmarked,
-            title: `!offer.isBookmarked`,
-          });
-        }
-        return offer;
+      const newActiveOffer = extend(state.activeOffer, {
+        isBookmarked: !state.activeOffer.isBookmarked,
       });
 
-      console.log(newOffers);
-
       return extend(state, {
+        activeOffer: newActiveOffer,
         offers: newOffers,
+        offersToShow: newOffersToShow,
+        nearOffers: newNearOffers,
       });
 
     case ActionType.SET_ACTIVE_OFFER:
