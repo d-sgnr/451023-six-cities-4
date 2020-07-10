@@ -48,13 +48,21 @@ const offer = {
   }
 };
 
+const city = {
+  name: `Amsterdam`,
+  coordinates: [52.373057, 4.892557],
+};
+
+
 const mockCoordinates = [[52.3909553943508, 4.85309666406198], [52.3909553943508, 4.85309666406198]];
 
 it(`Property should be rendered correctly`, () => {
   const store = mockStore({
+    offers,
     activeOffer: offer,
     nearCoordinates: mockCoordinates,
     nearOffers: offers,
+    city,
   });
 
   const tree = renderer.create(

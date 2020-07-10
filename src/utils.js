@@ -16,3 +16,13 @@ export const replaceItemInArray = (array, newItem, key) => {
     return item;
   });
 };
+
+export const getFilteredOffers = (allOffers, city) => {
+  return allOffers.filter((offer) => {
+    return offer.city.name === city.name;
+  });
+};
+
+export const getPlacesCoordinates = (shownOffers) => {
+  return shownOffers.map(({coordinates}) => coordinates);
+};

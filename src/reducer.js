@@ -3,25 +3,16 @@ import {PageType} from "./const.js";
 import {replaceItemInArray} from "./utils.js";
 import offers from "./mocks/offers.js";
 
-const getFilteredOffers = (allOffers, city) => {
-  return allOffers.filter((offer) => {
-    return offer.city.name === city.name;
-  });
-};
+import {getPlacesCoordinates} from "./utils.js";
 
-const getPlacesCoordinates = (shownOffers) => {
-  return shownOffers.map(({coordinates}) => coordinates);
-};
-
-const filteredOffersOnStart = getFilteredOffers(offers, offers[0].city);
-const placesCoordinatesOnStart = getPlacesCoordinates(filteredOffersOnStart);
+const placesCoordinatesOnStart = getPlacesCoordinates(offers);
 
 const initialState = {
   offers,
   city: offers[0].city,
   page: PageType.INDEX,
   activeOffer: offers[0],
-  offersToShow: filteredOffersOnStart,
+  offersToShow: offers,
   placesCoordinates: placesCoordinatesOnStart,
   nearOffers: offers,
 };
@@ -52,15 +43,8 @@ const ActionCreator = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_CITY:
-      const city = action.payload;
-
-      const filteredOffers = getFilteredOffers(state.offers, city);
-      const coordinatesToShow = getPlacesCoordinates(filteredOffers);
-
       return extend(state, {
         city: action.payload,
-        offersToShow: filteredOffers,
-        placesCoordinates: coordinatesToShow,
       });
 
     case ActionType.CHANGE_BOOKMARK:
@@ -81,16 +65,9 @@ const reducer = (state = initialState, action) => {
       });
 
     case ActionType.SET_ACTIVE_OFFER:
-      const offer = action.payload;
-
-      const nearOffersToShow = getFilteredOffers(state.offers, offer.city);
-      const nearCoordinatesToShow = getPlacesCoordinates(nearOffersToShow);
-
       return extend(state, {
         activeOffer: action.payload,
         page: PageType.PROPERTY,
-        nearOffers: nearOffersToShow,
-        nearCoordinates: nearCoordinatesToShow,
       });
   }
 

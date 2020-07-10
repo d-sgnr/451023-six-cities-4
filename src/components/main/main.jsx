@@ -8,6 +8,8 @@ import NoPlaces from "../no-places/no-places.jsx";
 import {PropertyType} from "../../const.js";
 import {connect} from "react-redux";
 
+import {getFilteredOffers, getPlacesCoordinates} from "../../utils.js";
+
 const Main = (props) => {
   const {offers, offersToShow, onCityClick, city, placesCoordinates} = props;
 
@@ -109,12 +111,18 @@ Main.propTypes = {
   placesCoordinates: PropTypes.array.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  offers: state.offers,
-  city: state.city,
-  offersToShow: state.offersToShow,
-  placesCoordinates: state.placesCoordinates,
-});
+const mapStateToProps = (state) => {
+
+  const filteredOffers = getFilteredOffers(state.offers, state.city);
+  const coordinatesToShow = getPlacesCoordinates(filteredOffers);
+
+  return {
+    offers: state.offers,
+    city: state.city,
+    offersToShow: filteredOffers,
+    placesCoordinates: coordinatesToShow,
+  };
+};
 
 export {Main};
 export default connect(mapStateToProps)(Main);

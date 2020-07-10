@@ -9,6 +9,8 @@ import {PropertyType} from "../../const.js";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer.js";
 
+import {getFilteredOffers, getPlacesCoordinates} from "../../utils.js";
+
 const getDigitalRating = (starredRating) => {
   return (starredRating / 20).toFixed(1);
 };
@@ -234,13 +236,19 @@ Property.propTypes = {
   onBookmarkClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  offer: state.activeOffer,
-  offers: state.offers,
-  nearOffers: state.nearOffers,
-  nearCoordinates: state.nearCoordinates,
-  onBookmarkClick: state.onBookmarkClick,
-});
+const mapStateToProps = (state) => {
+
+  const nearOffersToShow = getFilteredOffers(state.offers, state.city);
+  const nearCoordinatesToShow = getPlacesCoordinates(nearOffersToShow);
+
+  return {
+    offer: state.activeOffer,
+    offers: state.offers,
+    nearOffers: nearOffersToShow,
+    nearCoordinates: nearCoordinatesToShow,
+    onBookmarkClick: state.onBookmarkClick,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   onBookmarkClick(offer) {
