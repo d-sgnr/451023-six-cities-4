@@ -11,7 +11,7 @@ import {connect} from "react-redux";
 import {getFilteredOffers, getPlacesCoordinates} from "../../utils.js";
 
 const Main = (props) => {
-  const {offers, offersToShow, onCityClick, city, placesCoordinates} = props;
+  const {offersToShow, city, placesCoordinates} = props;
 
   return <React.Fragment>
     <div className="page page--gray page--main">
@@ -41,11 +41,7 @@ const Main = (props) => {
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <CitiesList
-              city={city}
-              offers={offers}
-              onCityClick={onCityClick}
-            />
+            <CitiesList/>
           </section>
         </div>
         <div className="cities">
@@ -107,20 +103,19 @@ Main.propTypes = {
   }).isRequired,
   offers: PropTypes.array.isRequired,
   offersToShow: PropTypes.array.isRequired,
-  onCityClick: PropTypes.func.isRequired,
   placesCoordinates: PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state) => {
 
-  const filteredOffers = getFilteredOffers(state.offers, state.city);
-  const coordinatesToShow = getPlacesCoordinates(filteredOffers);
+  const offersToShow = getFilteredOffers(state.offers, state.city);
+  const coordinatesToShow = getPlacesCoordinates(offersToShow);
 
   return {
     offers: state.offers,
     city: state.city,
-    offersToShow: filteredOffers,
     placesCoordinates: coordinatesToShow,
+    offersToShow,
   };
 };
 

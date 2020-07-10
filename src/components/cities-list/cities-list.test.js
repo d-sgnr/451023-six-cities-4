@@ -2,6 +2,11 @@ import React from "react";
 import renderer from "react-test-renderer";
 import CitiesList from "./cities-list.jsx";
 
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
+
+const mockStore = configureStore([]);
+
 const offers = [
   {
     id: 12345,
@@ -89,12 +94,19 @@ const activeCity = {
 };
 
 it(`CitiesList should be rendered correctly when not active`, () => {
+  const store = mockStore({
+    offers,
+    city: activeCity,
+  });
+
   const tree = renderer.create(
-      <CitiesList
-        offers={offers}
-        city={activeCity}
-        onCityClick={() => {}}
-      />).toJSON();
+      <Provider store={store}>
+        <CitiesList
+          offers={offers}
+          city={activeCity}
+          onCityClick={() => {}}
+        />
+      </Provider>).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

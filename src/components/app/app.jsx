@@ -6,15 +6,13 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {PageType} from "../../const.js";
 
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer.js";
 
 class App extends PureComponent {
 
   _renderAppScreen() {
     const {
       city,
-      page,
-      onCityClick
+      page
     } = this.props;
 
     if (page === PageType.PROPERTY) {
@@ -24,7 +22,6 @@ class App extends PureComponent {
     } return (
       <Main
         city={city}
-        onCityClick={onCityClick}
       />);
   }
 
@@ -54,7 +51,6 @@ App.propTypes = {
     PageType.INDEX,
     PageType.PROPERTY
   ]).isRequired,
-  onCityClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -63,11 +59,5 @@ const mapStateToProps = (state) => ({
   page: state.page,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onCityClick(city) {
-    dispatch(ActionCreator.changeCity(city));
-  },
-});
-
 export {App};
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, null)(App);

@@ -238,15 +238,15 @@ Property.propTypes = {
 
 const mapStateToProps = (state) => {
 
-  const nearOffersToShow = getFilteredOffers(state.offers, state.city);
-  const nearCoordinatesToShow = getPlacesCoordinates(nearOffersToShow);
+  const nearOffers = getFilteredOffers(state.offers, state.city);
+  const nearCoordinates = getPlacesCoordinates(nearOffers);
 
   return {
     offer: state.activeOffer,
     offers: state.offers,
-    nearOffers: nearOffersToShow,
-    nearCoordinates: nearCoordinatesToShow,
     onBookmarkClick: state.onBookmarkClick,
+    nearCoordinates,
+    nearOffers,
   };
 };
 

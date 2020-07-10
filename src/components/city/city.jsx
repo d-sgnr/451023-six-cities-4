@@ -1,12 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import {ActionCreator} from "../../reducer.js";
+import {connect} from "react-redux";
+
 const City = (props) => {
   const {city, isActive, onCityClick} = props;
 
   return <li className="locations__item">
     <a className={`locations__item-link tabs__item ${isActive ? `tabs__item--active` : ``}`} href="#"
-      onClick={onCityClick}
+      onClick={() => {
+        onCityClick(city);
+      }}
     >
       <span>{city.name}</span>
     </a>
@@ -22,4 +27,11 @@ City.propTypes = {
   onCityClick: PropTypes.func.isRequired,
 };
 
-export default City;
+const mapDispatchToProps = (dispatch) => ({
+  onCityClick(city) {
+    dispatch(ActionCreator.changeCity(city));
+  },
+});
+
+export {City};
+export default connect(null, mapDispatchToProps)(City);
