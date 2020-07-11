@@ -4,7 +4,7 @@ import {RATING} from "../../const.js";
 import Review from "./review.jsx";
 
 const review = {
-  id: Math.random(),
+  id: 12345,
   avatar: `avatar-max.jpg`,
   userName: `Max`,
   text: `Am terminated it excellence invitation projection as. She graceful shy believed distance use nay. Lively is people so basket ladies window expect.`,

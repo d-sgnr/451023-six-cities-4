@@ -16,40 +16,50 @@ class Map extends PureComponent {
   }
 
   componentDidMount() {
-    const {coordinates} = this.props;
+    this._initMap();
+  }
 
-    const city = [52.38333, 4.9];
+  componentDidUpdate() {
+    this.map.remove();
+
+    this._initMap();
+  }
+
+  componentWillUnmount() {
+    this.map.remove();
+  }
+
+  _initMap() {
+    const {coordinates, city} = this.props;
+
+    const cityCoordinates = city.coordinates;
     const zoom = 12;
 
     const mapContainer = this._mapRef.current;
 
     if (mapContainer) {
 
-      const map = leaflet.map(mapContainer, {
-        center: city,
+      this.map = leaflet.map(mapContainer, {
+        center: cityCoordinates,
         zoom,
         zoomControl: false,
         marker: true,
       });
 
-      map.setView(city, zoom);
+      this.map.setView(cityCoordinates, zoom);
 
       leaflet
         .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
           attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
         })
-        .addTo(map);
+        .addTo(this.map);
 
       coordinates.map((coordinate) => {
         leaflet
         .marker(coordinate, {MAP_ICON})
-        .addTo(map);
+        .addTo(this.map);
       });
     }
-  }
-
-  componentWillUnmount() {
-    // const mapContainer = this._mapRef.current;
   }
 
   render() {
@@ -59,6 +69,10 @@ class Map extends PureComponent {
 }
 
 Map.propTypes = {
+  city: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    coordinates: PropTypes.array.isRequired,
+  }).isRequired,
   coordinates: PropTypes.array.isRequired
 };
 

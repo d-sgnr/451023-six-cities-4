@@ -2,8 +2,19 @@ import React from "react";
 import renderer from "react-test-renderer";
 import Property from "./property.jsx";
 
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
+import offers from "../../mocks/offers.js";
+
+const mockStore = configureStore([]);
+
 const offer = {
-  id: Math.random(),
+  id: 12345,
+  coordinates: [52.3909553943508, 4.85309666406198],
+  city: {
+    name: `Amsterdam`,
+    coordinates: [52.3909553943508, 4.85309666406198],
+  },
   pictures: [
     `room.jpg`,
     `apartment-01.jpg`,
@@ -13,7 +24,7 @@ const offer = {
     `apartment-small-04.jpg`
   ],
   price: 140,
-  rating: `40`,
+  rating: `80`,
   title: `Wood and stone place`,
   type: `House`,
   isBookmarked: true,
@@ -37,11 +48,31 @@ const offer = {
   }
 };
 
+const city = {
+  name: `Amsterdam`,
+  coordinates: [52.373057, 4.892557],
+};
+
+
+const mockCoordinates = [[52.3909553943508, 4.85309666406198], [52.3909553943508, 4.85309666406198]];
+
 it(`Property should be rendered correctly`, () => {
+  const store = mockStore({
+    offers,
+    activeOffer: offer,
+    nearCoordinates: mockCoordinates,
+    nearOffers: offers,
+    city,
+  });
+
   const tree = renderer.create(
-      <Property
-        card={offer}
-      />).toJSON();
+      <Provider store={store}>
+        <Property
+          offer={store.activeOffer}
+          nearCoordinates={store.nearCoordinates}
+          nearOffers={store.nearOffers}
+        />
+      </Provider>).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

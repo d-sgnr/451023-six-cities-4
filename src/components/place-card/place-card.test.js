@@ -3,8 +3,18 @@ import renderer from "react-test-renderer";
 import PlaceCard from "./place-card.jsx";
 import {PropertyType} from "../../const.js";
 
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
+
+const mockStore = configureStore([]);
+
 const offer = {
-  id: Math.random(),
+  id: 12345,
+  coordinates: [52.3909553943508, 4.85309666406198],
+  city: {
+    name: `Amsterdam`,
+    coordinates: [52.3909553943508, 4.85309666406198],
+  },
   pictures: [
     `room.jpg`,
     `apartment-01.jpg`,
@@ -14,7 +24,7 @@ const offer = {
     `apartment-small-04.jpg`
   ],
   price: 140,
-  rating: `40`,
+  rating: `80`,
   title: `Wood and stone place`,
   type: `House`,
   isBookmarked: true,
@@ -39,12 +49,19 @@ const offer = {
 };
 
 it(`PlaceCard should be rendered correctly`, () => {
+  const store = mockStore({
+    activeOffer: offer,
+  });
+
   const tree = renderer.create(
-      <PlaceCard
-        onCardHover={() => {}}
-        card={offer}
-        offersType={PropertyType.CITY}
-      />).toJSON();
+      <Provider store={store}>
+        <PlaceCard
+          onCardHover={() => {}}
+          offer={offer}
+          offersType={PropertyType.CITY}
+          onCardTitleClick={() => {}}
+        />
+      </Provider>).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

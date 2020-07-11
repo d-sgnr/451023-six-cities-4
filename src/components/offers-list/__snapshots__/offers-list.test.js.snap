@@ -2,12 +2,10 @@
 
 exports[`OffersList should be rendered correctly 1`] = `
 <div
-  className="cities__places-list places__list
-      tabs__content"
+  className="cities__places-list places__list tabs__content"
 >
   <article
     className="cities__place-card place-card"
-    onMouseEnter={[Function]}
   >
     
     <div
@@ -76,7 +74,7 @@ exports[`OffersList should be rendered correctly 1`] = `
           <span
             style={
               Object {
-                "width": "40%",
+                "width": "80%",
               }
             }
           />
@@ -92,6 +90,7 @@ exports[`OffersList should be rendered correctly 1`] = `
       >
         <a
           href="#"
+          onClick={[Function]}
         >
           Wood and stone place
         </a>
@@ -105,9 +104,14 @@ exports[`OffersList should be rendered correctly 1`] = `
   </article>
   <article
     className="cities__place-card place-card"
-    onMouseEnter={[Function]}
   >
-    
+    <div
+      className="place-card__mark"
+    >
+      <span>
+        Premium
+      </span>
+    </div>
     <div
       className="cities__image-wrapper place-card__image-wrapper"
     >
@@ -115,10 +119,10 @@ exports[`OffersList should be rendered correctly 1`] = `
         href="#"
       >
         <img
-          alt="Wood and stone place image"
+          alt="Cozy seaview apartment image"
           className="place-card__image"
           height="200"
-          src="img/room.jpg"
+          src="img/apartment-01.jpg"
           width="260"
         />
       </a>
@@ -136,7 +140,7 @@ exports[`OffersList should be rendered correctly 1`] = `
             className="place-card__price-value"
           >
             €
-            140
+            88
           </b>
           <span
             className="place-card__price-text"
@@ -145,7 +149,7 @@ exports[`OffersList should be rendered correctly 1`] = `
           </span>
         </div>
         <button
-          className="place-card__bookmark-button button place-card__bookmark-button--active"
+          className="place-card__bookmark-button button"
           onClick={[Function]}
           type="button"
         >
@@ -174,7 +178,7 @@ exports[`OffersList should be rendered correctly 1`] = `
           <span
             style={
               Object {
-                "width": "40%",
+                "width": "20%",
               }
             }
           />
@@ -190,14 +194,15 @@ exports[`OffersList should be rendered correctly 1`] = `
       >
         <a
           href="#"
+          onClick={[Function]}
         >
-          Wood and stone place
+          Cozy seaview apartment
         </a>
       </h2>
       <p
         className="place-card__type"
       >
-        House
+        Apartment
       </p>
     </div>
   </article>

@@ -3,36 +3,61 @@ import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 import Property from "../property/property.jsx";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {PageType} from "../../const.js";
+
+import {connect} from "react-redux";
 
 class App extends PureComponent {
-  constructor(props) {
-    super(props);
+
+  _renderAppScreen() {
+    const {
+      city,
+      page
+    } = this.props;
+
+    if (page === PageType.PROPERTY) {
+      return (
+        <Property/>
+      );
+    } return (
+      <Main
+        city={city}
+      />);
   }
 
   render() {
-    const {placesCount, offers} = this.props;
-
-    return <BrowserRouter>
-      <Switch>
-        <Route exact path="/">
-          <Main
-            placesCount = {placesCount}
-            offers={offers}
-          />;
-        </Route>
-        <Route exact path="/dev-property">
-          <Property
-            card={offers[1]}
-          />;
-        </Route>
-      </Switch>
-    </BrowserRouter>;
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {this._renderAppScreen()}
+          </Route>
+          <Route exact path="/dev-property">
+            <Property/>
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
   }
 }
 
 App.propTypes = {
-  placesCount: PropTypes.number.isRequired,
   offers: PropTypes.array.isRequired,
+  city: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    coordinates: PropTypes.array.isRequired,
+  }).isRequired,
+  page: PropTypes.oneOf([
+    PageType.INDEX,
+    PageType.PROPERTY
+  ]).isRequired,
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  offers: state.offers,
+  city: state.city,
+  page: state.page,
+});
+
+export {App};
+export default connect(mapStateToProps, null)(App);
