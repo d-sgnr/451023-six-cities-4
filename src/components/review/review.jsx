@@ -40,7 +40,7 @@ Review.propTypes = {
     avatar: PropTypes.string.isRequired,
     userName: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
     date: PropTypes.string.isRequired,
   }).isRequired,
 };

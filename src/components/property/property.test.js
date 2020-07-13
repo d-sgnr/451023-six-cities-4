@@ -24,7 +24,7 @@ const offer = {
     `apartment-small-04.jpg`
   ],
   price: 140,
-  rating: `80`,
+  rating: 80,
   title: `Wood and stone place`,
   type: `House`,
   isBookmarked: true,

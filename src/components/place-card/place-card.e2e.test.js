@@ -16,7 +16,7 @@ it(``, function () {});
 // });
 
 // const offer = {
-//   id: Math.random(),
+//   id: 12345,
 //   coordinates: [52.3909553943508, 4.85309666406198],
 //   city: {
 //     name: `Amsterdam`,
@@ -31,7 +31,7 @@ it(``, function () {});
 //     `apartment-small-04.jpg`
 //   ],
 //   price: 140,
-//   rating: `80`,
+//   rating: 80,
 //   title: `Wood and stone place`,
 //   type: `House`,
 //   isBookmarked: true,
@@ -55,7 +55,7 @@ it(``, function () {});
 //   }
 // };
 
-// it(`Offer info passed to callback is consistent on hover`, () => {
+// it(`Place Card title and bookmark button should be pressed`, () => {
 
 //   const store = mockStore({
 //     activeOffer: offer,

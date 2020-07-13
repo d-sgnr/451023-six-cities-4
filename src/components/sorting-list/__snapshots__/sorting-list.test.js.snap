@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SortingList should be rendered correctly 1`] = `
+Array [
+  <ul
+    className="places__options places__options--custom places__options--opened"
+  >
+    <li
+      className="places__option"
+      onClick={[Function]}
+      tabIndex="0"
+    >
+      Popular
+    </li>
+    <li
+      className="places__option"
+      onClick={[Function]}
+      tabIndex="0"
+    >
+      Price: low to high
+    </li>
+    <li
+      className="places__option"
+      onClick={[Function]}
+      tabIndex="0"
+    >
+      Price: high to low
+    </li>
+    <li
+      className="places__option"
+      onClick={[Function]}
+      tabIndex="0"
+    >
+      Top rated first
+    </li>
+  </ul>,
+  <select
+    className="places__sorting-type visually-hidden"
+    id="places-sorting"
+    onChange={[Function]}
+    value=""
+  >
+    <option
+      className="places__option"
+      value="popular"
+    >
+      Popular
+    </option>
+    <option
+      className="places__option"
+      value="to-high"
+    >
+      Price: low to high
+    </option>
+    <option
+      className="places__option"
+      value="to-low"
+    >
+      Price: high to low
+    </option>
+    <option
+      className="places__option"
+      value="top-rated"
+    >
+      Top rated first
+    </option>
+  </select>,
+]
+`;

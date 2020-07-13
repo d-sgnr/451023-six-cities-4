@@ -216,7 +216,7 @@ Property.propTypes = {
     }).isRequired,
     pictures: PropTypes.array.isRequired,
     price: PropTypes.number.isRequired,
-    rating: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     isBookmarked: PropTypes.bool.isRequired,
