@@ -4,11 +4,7 @@ import PropTypes from "prop-types";
 const SortingItem = (props) => {
   const {title, activeSortType, onSortingChange} = props;
 
-  let isActive = false;
-
-  if (activeSortType === title) {
-    isActive = true;
-  }
+  const isActive = activeSortType === title ? true : false;
 
   return <li
     className={`places__option` + (isActive ? ` places__option--active` : ``)}

@@ -130,6 +130,11 @@ exports[`Render App Render MainScreen 1`] = `
           >
             <span
               className="places__sorting-caption"
+              style={
+                Object {
+                  "marginRight": "16px",
+                }
+              }
             >
               Sort by
             </span>
@@ -911,108 +916,7 @@ exports[`Render App Render PropertyScreen 1`] = `
         </h2>
         <div
           className="near-places__list places__list "
-        >
-          <article
-            className="near-places__card place-card"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-          >
-            
-            <div
-              className="near-places__image-wrapper place-card__image-wrapper"
-            >
-              <a
-                href="#"
-              >
-                <img
-                  alt="Wood and stone place image"
-                  className="place-card__image"
-                  height="200"
-                  src="img/room.jpg"
-                  width="260"
-                />
-              </a>
-            </div>
-            <div
-              className="place-card__info"
-            >
-              <div
-                className="place-card__price-wrapper"
-              >
-                <div
-                  className="place-card__price"
-                >
-                  <b
-                    className="place-card__price-value"
-                  >
-                    €
-                    140
-                  </b>
-                  <span
-                    className="place-card__price-text"
-                  >
-                    / night
-                  </span>
-                </div>
-                <button
-                  className="place-card__bookmark-button button place-card__bookmark-button--active"
-                  onClick={[Function]}
-                  type="button"
-                >
-                  <svg
-                    className="place-card__bookmark-icon"
-                    height="19"
-                    width="18"
-                  >
-                    <use
-                      xlinkHref="#icon-bookmark"
-                    />
-                  </svg>
-                  <span
-                    className="visually-hidden"
-                  >
-                    To bookmarks
-                  </span>
-                </button>
-              </div>
-              <div
-                className="place-card__rating rating"
-              >
-                <div
-                  className="place-card__stars rating__stars"
-                >
-                  <span
-                    style={
-                      Object {
-                        "width": "80%",
-                      }
-                    }
-                  />
-                  <span
-                    className="visually-hidden"
-                  >
-                    Rating
-                  </span>
-                </div>
-              </div>
-              <h2
-                className="place-card__name"
-              >
-                <a
-                  href="#"
-                  onClick={[Function]}
-                >
-                  Wood and stone place
-                </a>
-              </h2>
-              <p
-                className="place-card__type"
-              >
-                House
-              </p>
-            </div>
-          </article>
-        </div>
+        />
       </section>
     </div>
   </main>

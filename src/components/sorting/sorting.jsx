@@ -19,7 +19,7 @@ class Sorting extends PureComponent {
     const {activeSortType, onSortingChange} = this.props;
 
     return <form className="places__sorting" action="#" method="get">
-      <span className="places__sorting-caption">Sort by</span>
+      <span className="places__sorting-caption" style={{marginRight: `16px`}}>Sort by</span>
       <span
         className="places__sorting-type"
         tabIndex="0"

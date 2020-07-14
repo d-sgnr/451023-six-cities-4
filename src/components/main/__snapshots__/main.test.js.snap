@@ -130,6 +130,11 @@ exports[`MainComponent MainComponent should be rendered correctly 1`] = `
           >
             <span
               className="places__sorting-caption"
+              style={
+                Object {
+                  "marginRight": "16px",
+                }
+              }
             >
               Sort by
             </span>

@@ -98,6 +98,7 @@ const mapDispatchToProps = (dispatch) => ({
 
   onCardTitleClick(offer) {
     dispatch(ActionCreator.setActiveOffer(offer));
+    dispatch(ActionCreator.resetHoveredOffer());
   },
 
   onCardHover(offer) {

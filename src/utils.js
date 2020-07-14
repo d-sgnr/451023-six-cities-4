@@ -20,25 +20,20 @@ export const replaceItemInArray = (array, newItem, key) => {
 };
 
 export const getSortedOffers = (offers, sortType) => {
-  let sortedOffers = [];
   const showingOffers = offers.slice();
 
   switch (sortType) {
     case SortType.TO_HIGH:
-      sortedOffers = showingOffers.sort(sortArray(`price`, true));
-      break;
+      return showingOffers.sort(sortArray(`price`, true));
     case SortType.TO_LOW:
-      sortedOffers = showingOffers.sort(sortArray(`price`));
-      break;
+      return showingOffers.sort(sortArray(`price`));
     case SortType.TOP_RATED:
-      sortedOffers = showingOffers.sort(sortArray(`rating`));
-      break;
+      return showingOffers.sort(sortArray(`rating`));
     case SortType.POPULAR:
-      sortedOffers = showingOffers;
-      break;
+      return showingOffers;
   }
 
-  return sortedOffers;
+  return showingOffers;
 };
 
 export const getFilteredOffers = (allOffers, city) => {
@@ -61,25 +56,13 @@ export const sortArray = (property, asc = false, length = false) => {
 
   if (length) {
     return (a, b) => {
-      let result = 0;
-
       if (a[property].length < b[property].length) {
-        result = -1;
-      } else if (a[property].length > b[property].length) {
-        result = 1;
-      }
-
-      return result * sortOrder;
+        return -sortOrder;
+      } return sortOrder;
     };
   } return (a, b) => {
-    let result = 0;
-
     if (a[property] < b[property]) {
-      result = -1;
-    } else if (a[property] > b[property]) {
-      result = 1;
-    }
-
-    return result * sortOrder;
+      return -sortOrder;
+    } return sortOrder;
   };
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Sorting from "./Sorting.jsx";
+import Sorting from "./sorting.jsx";
 
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";

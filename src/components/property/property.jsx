@@ -239,6 +239,8 @@ Property.propTypes = {
 const mapStateToProps = (state) => {
 
   const nearOffers = getFilteredOffers(state.offers, state.city);
+  const activeOfferIndex = nearOffers.indexOf(state.activeOffer);
+  nearOffers.splice(activeOfferIndex, 1);
   const nearCoordinates = getPlacesCoordinates(nearOffers);
 
   return {

@@ -9,7 +9,7 @@ const initialState = {
   page: PageType.INDEX,
   activeOffer: offers[0],
   activeSortType: SortType.POPULAR,
-  hoveredOffer: void 0,
+  hoveredOffer: null,
 };
 
 const ActionType = {
@@ -49,7 +49,7 @@ const ActionCreator = {
 
   resetHoveredOffer: () => ({
     type: ActionType.RESET_HOVERED_OFFER,
-    payload: void 0,
+    payload: null,
   }),
 };
 

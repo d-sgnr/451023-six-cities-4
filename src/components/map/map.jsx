@@ -10,8 +10,16 @@ const MAP_ICONS_IMG = {
   ACTIVE: `../../img/pin-active.svg`,
 };
 
+const MAP_ICON_SIZE = [30, 44.4];
+
 const MAP_ICON = {
-  iconSize: [30, 44.4],
+  iconUrl: MAP_ICONS_IMG.DEFAULT,
+  iconSize: MAP_ICON_SIZE,
+};
+
+const MAP_ICON_ACTIVE = {
+  iconUrl: MAP_ICONS_IMG.ACTIVE,
+  iconSize: MAP_ICON_SIZE,
 };
 
 class Map extends PureComponent {
@@ -46,16 +54,16 @@ class Map extends PureComponent {
   _placeMapIcons() {
     const {coordinates, hoveredOffer} = this.props;
     coordinates.map((coordinate) => {
-      MAP_ICON.iconUrl = MAP_ICONS_IMG.DEFAULT;
+      let mapIcon = MAP_ICON;
 
       if (hoveredOffer) {
         if (hoveredOffer.coordinates === coordinate) {
-          MAP_ICON.iconUrl = MAP_ICONS_IMG.ACTIVE;
+          mapIcon = MAP_ICON_ACTIVE;
         }
       }
 
       leaflet
-      .marker(coordinate, {icon: leaflet.icon(MAP_ICON)})
+      .marker(coordinate, {icon: leaflet.icon(mapIcon)})
       .addTo(this.map);
     });
   }

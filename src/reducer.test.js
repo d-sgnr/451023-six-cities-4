@@ -651,20 +651,9 @@ const sortType = `Popular`;
 //   });
 // });
 
-it(`Reducer without additional parameters should return initial state`, () => {
-  expect(reducer(void 0, {})).toEqual({
-    offers,
-    city: offers[0].city,
-    page: `INDEX`,
-    activeOffer: offers[0],
-    activeSortType: sortType,
-    hoveredOffer: void 0,
-  });
-});
-
 it(`Reducer should set hovered offer on hover`, () => {
   expect(reducer({
-    hoveredOffer: void 0,
+    hoveredOffer: null,
   }, {
     type: ActionType.SET_HOVERED_OFFER,
     payload: offer,
@@ -702,9 +691,9 @@ it(`Reducer should reset hovered offer on mouse leave`, () => {
     hoveredOffer: offers[0],
   }, {
     type: ActionType.RESET_HOVERED_OFFER,
-    payload: void 0,
+    payload: null,
   })).toEqual({
-    hoveredOffer: void 0,
+    hoveredOffer: null,
   });
 });
 
@@ -747,7 +736,7 @@ describe(`Action creators work correctly`, () => {
   it(`Action creator for resetting hovered offer returns correct action`, () => {
     expect(ActionCreator.resetHoveredOffer()).toEqual({
       type: ActionType.RESET_HOVERED_OFFER,
-      payload: void 0,
+      payload: null,
     });
   });
 });

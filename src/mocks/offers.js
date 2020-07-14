@@ -2,7 +2,7 @@ import {RATING, Cities, PLACE_TYPE} from "../const.js";
 
 export default [
   {
-    id: 12345,
+    id: Math.random(),
     coordinates: [52.3909553943508, 4.85309666406198],
     city: {
       name: Cities.AMSTERDAM.name,
@@ -41,7 +41,7 @@ export default [
     }
   },
   {
-    id: 12345,
+    id: Math.random(),
     coordinates: [48.854408, 2.338527],
     city: {
       name: Cities.PARIS.name,
@@ -80,7 +80,7 @@ export default [
     }
   },
   {
-    id: 12345,
+    id: Math.random(),
     coordinates: [48.877861, 2.315283],
     city: {
       name: Cities.PARIS.name,
@@ -119,7 +119,7 @@ export default [
     }
   },
   {
-    id: 12345,
+    id: Math.random(),
     coordinates: [52.371845, 4.886230],
     city: {
       name: Cities.AMSTERDAM.name,
@@ -158,7 +158,7 @@ export default [
     }
   },
   {
-    id: 12345,
+    id: Math.random(),
     coordinates: [50.851037, 4.353081],
     city: {
       name: Cities.BRUSSELS.name,
@@ -197,7 +197,7 @@ export default [
     }
   },
   {
-    id: 12345,
+    id: Math.random(),
     coordinates: [53.550823, 9.967285],
     city: {
       name: Cities.HAMBURG.name,
@@ -236,7 +236,7 @@ export default [
     }
   },
   {
-    id: 12345,
+    id: Math.random(),
     coordinates: [51.230569, 6.787428],
     city: {
       name: Cities.DUSSELDORF.name,
@@ -275,7 +275,7 @@ export default [
     }
   },
   {
-    id: 12345,
+    id: Math.random(),
     coordinates: [50.932252, 6.951648],
     city: {
       name: Cities.COLOGNE.name,
