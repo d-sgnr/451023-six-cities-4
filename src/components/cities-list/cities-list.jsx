@@ -24,7 +24,6 @@ CitiesList.propTypes = {
     name: PropTypes.string.isRequired,
     coordinates: PropTypes.array.isRequired,
   }).isRequired,
-  offers: PropTypes.array.isRequired,
   citiesToShow: PropTypes.array.isRequired,
 };
 

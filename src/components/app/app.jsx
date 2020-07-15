@@ -42,7 +42,6 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  offers: PropTypes.array.isRequired,
   city: PropTypes.shape({
     name: PropTypes.string.isRequired,
     coordinates: PropTypes.array.isRequired,
@@ -54,7 +53,6 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  offers: state.offers,
   city: state.city,
   page: state.page,
 });

@@ -24,7 +24,7 @@ const offers = [
       `apartment-small-04.jpg`
     ],
     price: 140,
-    rating: `80`,
+    rating: 80,
     title: `Wood and stone place`,
     type: `House`,
     isBookmarked: true,
@@ -63,7 +63,7 @@ const offers = [
       `apartment-small-04.jpg`
     ],
     price: 88,
-    rating: `20`,
+    rating: 20,
     title: `Cozy seaview apartment`,
     type: `Apartment`,
     isBookmarked: false,

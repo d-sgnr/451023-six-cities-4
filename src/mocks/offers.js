@@ -1,11 +1,4 @@
-import {RATING, Cities} from "../const.js";
-
-const PLACE_TYPE = {
-  apartment: `Apartment`,
-  room: `Private Room`,
-  house: `House`,
-  hotel: `Hotel`,
-};
+import {RATING, Cities, PLACE_TYPE} from "../const.js";
 
 export default [
   {
@@ -88,7 +81,7 @@ export default [
   },
   {
     id: Math.random(),
-    coordinates: [48.854408, 2.338527],
+    coordinates: [48.877861, 2.315283],
     city: {
       name: Cities.PARIS.name,
       coordinates: Cities.PARIS.coordinates,

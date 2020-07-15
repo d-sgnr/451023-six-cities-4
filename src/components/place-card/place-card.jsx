@@ -7,9 +7,15 @@ import {ActionCreator} from "../../reducer.js";
 
 const PlaceCard = (props) => {
 
-  const {offer, offersType, onCardTitleClick, onBookmarkClick} = props;
+  const {offer, offersType, onCardTitleClick, onBookmarkClick, onCardHover, onCardMouseLeave} = props;
 
-  return (<article className={`${offersType === PropertyType.CITY ? `${offersType}__place-` : `${offersType}__`}card place-card`}>
+  return (<article
+    className={`${offersType === PropertyType.CITY ? `${offersType}__place-` : `${offersType}__`}card place-card`}
+    onMouseEnter={() => {
+      onCardHover(offer);
+    }}
+    onMouseLeave={onCardMouseLeave}
+  >
     {offer.isPremium ? <div className="place-card__mark">
       <span>Premium</span>
     </div> : ``}
@@ -63,7 +69,7 @@ PlaceCard.propTypes = {
     }).isRequired,
     pictures: PropTypes.array.isRequired,
     price: PropTypes.number.isRequired,
-    rating: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     isBookmarked: PropTypes.bool.isRequired,
@@ -81,6 +87,8 @@ PlaceCard.propTypes = {
   offersType: PropTypes.oneOf([PropertyType.CITY, PropertyType.NEAR]).isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
   onBookmarkClick: PropTypes.func.isRequired,
+  onCardHover: PropTypes.func.isRequired,
+  onCardMouseLeave: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -90,6 +98,15 @@ const mapDispatchToProps = (dispatch) => ({
 
   onCardTitleClick(offer) {
     dispatch(ActionCreator.setActiveOffer(offer));
+    dispatch(ActionCreator.resetHoveredOffer());
+  },
+
+  onCardHover(offer) {
+    dispatch(ActionCreator.setHoveredOffer(offer));
+  },
+
+  onCardMouseLeave() {
+    dispatch(ActionCreator.resetHoveredOffer());
   },
 });
 
