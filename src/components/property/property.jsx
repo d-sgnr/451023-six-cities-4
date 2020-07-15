@@ -186,6 +186,7 @@ const Property = (props) => {
           </div>
           <section className="property__map map">
             <Map
+              activeOffer={offer}
               city={offer.city}
               coordinates={nearCoordinates}
             />
@@ -240,7 +241,7 @@ const mapStateToProps = (state) => {
 
   const nearOffers = getFilteredOffers(state.offers, state.city);
   const activeOfferIndex = nearOffers.indexOf(state.activeOffer);
-  nearOffers.splice(activeOfferIndex, 1);
+  nearOffers.splice(activeOfferIndex, 1).slice(0, 2);
   const nearCoordinates = getPlacesCoordinates(nearOffers);
 
   return {

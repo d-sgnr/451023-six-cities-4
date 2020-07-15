@@ -60,11 +60,13 @@ const mockStore = configureStore([]);
 it(`Map should be rendered correctly`, () => {
   const store = mockStore({
     hoveredOffer: mockHoverOffer,
+    activeOffer: mockHoverOffer,
   });
 
   const tree = renderer.create(
       <Provider store={store}>
         <Map
+          activeOffer={store.hoveredOffer}
           hoveredOffer={store.hoveredOffer}
           coordinates={coordinates}
           city={city}

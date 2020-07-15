@@ -5,7 +5,7 @@ import leaflet from "leaflet";
 
 import {connect} from "react-redux";
 
-const MAP_ICONS_IMG = {
+const MapIconType = {
   DEFAULT: `../../img/pin.svg`,
   ACTIVE: `../../img/pin-active.svg`,
 };
@@ -13,12 +13,12 @@ const MAP_ICONS_IMG = {
 const MAP_ICON_SIZE = [30, 44.4];
 
 const MAP_ICON = {
-  iconUrl: MAP_ICONS_IMG.DEFAULT,
+  iconUrl: MapIconType.DEFAULT,
   iconSize: MAP_ICON_SIZE,
 };
 
 const MAP_ICON_ACTIVE = {
-  iconUrl: MAP_ICONS_IMG.ACTIVE,
+  iconUrl: MapIconType.ACTIVE,
   iconSize: MAP_ICON_SIZE,
 };
 
@@ -52,20 +52,23 @@ class Map extends PureComponent {
   }
 
   _placeMapIcons() {
-    const {coordinates, hoveredOffer} = this.props;
-    coordinates.map((coordinate) => {
-      let mapIcon = MAP_ICON;
+    const {activeOffer, coordinates, hoveredOffer} = this.props;
 
-      if (hoveredOffer) {
-        if (hoveredOffer.coordinates === coordinate) {
-          mapIcon = MAP_ICON_ACTIVE;
-        }
-      }
+    coordinates.map((coordinate) => {
+      const mapIcon = hoveredOffer && hoveredOffer.coordinates === coordinate ? MAP_ICON_ACTIVE : MAP_ICON;
 
       leaflet
       .marker(coordinate, {icon: leaflet.icon(mapIcon)})
       .addTo(this.map);
     });
+
+    if (activeOffer) {
+      const mapIcon = MAP_ICON_ACTIVE;
+
+      leaflet
+      .marker(activeOffer.city.coordinates, {icon: leaflet.icon(mapIcon)})
+      .addTo(this.map);
+    }
   }
 
   _initMap() {
@@ -116,6 +119,30 @@ Map.propTypes = {
   }).isRequired,
   coordinates: PropTypes.array.isRequired,
   hoveredOffer: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    coordinates: PropTypes.array.isRequired,
+    city: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      coordinates: PropTypes.array.isRequired,
+    }).isRequired,
+    pictures: PropTypes.array.isRequired,
+    price: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    isBookmarked: PropTypes.bool.isRequired,
+    isPremium: PropTypes.bool.isRequired,
+    description: PropTypes.array.isRequired,
+    bedroomsCount: PropTypes.number.isRequired,
+    guestsCount: PropTypes.number.isRequired,
+    appliances: PropTypes.array.isRequired,
+    host: PropTypes.shape({
+      picture: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      isSuper: PropTypes.bool.isRequired,
+    }),
+  }),
+  activeOffer: PropTypes.shape({
     id: PropTypes.number.isRequired,
     coordinates: PropTypes.array.isRequired,
     city: PropTypes.shape({
