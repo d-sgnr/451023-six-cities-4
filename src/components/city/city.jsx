@@ -34,4 +34,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {City};
-export default connect(null, mapDispatchToProps)(City);
+export default connect(null, mapDispatchToProps)(React.memo(City));

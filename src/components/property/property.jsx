@@ -11,40 +11,31 @@ import {ActionCreator} from "../../reducer.js";
 
 import {getFilteredOffers, getPlacesCoordinates} from "../../utils.js";
 
+import Header from "../header/header.jsx";
+import MainNav from "../main-nav/main-nav.jsx";
+import HeaderLogoWrap from "../header-logo-wrap/header-logo-wrap.jsx";
+import Logo from "../logo/logo.jsx";
+
 const getDigitalRating = (starredRating) => {
   return (starredRating / 20).toFixed(1);
 };
 
 const Property = (props) => {
 
-  const {offer, nearOffers, nearCoordinates, onBookmarkClick} = props;
+  const {offer, nearOffers, nearCoordinates, onBookmarkClick, userName} = props;
 
   const digitalRating = getDigitalRating(offer.rating);
 
   return (
     <div className="page">
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <div className="header__left">
-              <a className="header__logo-link" href="main.html">
-                <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
-              </a>
-            </div>
-            <nav className="header__nav">
-              <ul className="header__nav-list">
-                <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header>
+        <HeaderLogoWrap>
+          <Logo/>
+        </HeaderLogoWrap>
+        <MainNav
+          userName={userName}
+        />
+      </Header>
 
       <main className="page__main page__main--property">
         <section className="property">
@@ -192,16 +183,18 @@ const Property = (props) => {
             />
           </section>
         </section>
-        <div className="container">
-          <section className="near-places places">
-            <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <OffersList
-              city={offer.city}
-              offers={nearOffers}
-              offersType={PropertyType.NEAR}
-            />
-          </section>
-        </div>
+        {nearOffers.length > 0 ?
+          <div className="container">
+            <section className="near-places places">
+              <h2 className="near-places__title">Other places in the neighbourhood</h2>
+              <OffersList
+                city={offer.city}
+                offers={nearOffers}
+                offersType={PropertyType.NEAR}
+              />
+            </section>
+          </div> : ``
+        }
       </main>
     </div>
   );
@@ -235,6 +228,7 @@ Property.propTypes = {
   nearOffers: PropTypes.array.isRequired,
   nearCoordinates: PropTypes.array.isRequired,
   onBookmarkClick: PropTypes.func.isRequired,
+  userName: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -250,6 +244,7 @@ const mapStateToProps = (state) => {
     onBookmarkClick: state.onBookmarkClick,
     nearCoordinates,
     nearOffers,
+    userName: state.userName,
   };
 };
 
@@ -260,4 +255,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {Property};
-export default connect(mapStateToProps, mapDispatchToProps)(Property);
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Property));

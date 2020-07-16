@@ -34,4 +34,4 @@ OffersList.propTypes = {
   offersType: PropTypes.oneOf([PropertyType.CITY, PropertyType.NEAR]).isRequired,
 };
 
-export default OffersList;
+export default React.memo(React.memo(OffersList));

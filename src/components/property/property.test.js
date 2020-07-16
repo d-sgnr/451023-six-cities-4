@@ -53,6 +53,8 @@ const city = {
   coordinates: [52.373057, 4.892557],
 };
 
+const userName = `Max`;
+
 
 const mockCoordinates = [[52.3909553943508, 4.85309666406198], [52.3909553943508, 4.85309666406198]];
 
@@ -63,6 +65,7 @@ it(`Property should be rendered correctly`, () => {
     nearCoordinates: mockCoordinates,
     nearOffers: offers,
     city,
+    userName,
   });
 
   const tree = renderer.create(
@@ -71,6 +74,7 @@ it(`Property should be rendered correctly`, () => {
           offer={store.activeOffer}
           nearCoordinates={store.nearCoordinates}
           nearOffers={store.nearOffers}
+          userName={userName}
         />
       </Provider>).toJSON();
 

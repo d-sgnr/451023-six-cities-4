@@ -41,4 +41,4 @@ const mapStateToProps = (state) => {
 };
 
 export {CitiesList};
-export default connect(mapStateToProps, null)(CitiesList);
+export default connect(mapStateToProps, null)(React.memo(CitiesList));

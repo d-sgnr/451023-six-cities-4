@@ -98,7 +98,6 @@ const mapDispatchToProps = (dispatch) => ({
 
   onCardTitleClick(offer) {
     dispatch(ActionCreator.setActiveOffer(offer));
-    dispatch(ActionCreator.resetHoveredOffer());
   },
 
   onCardHover(offer) {
@@ -111,4 +110,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {PlaceCard};
-export default connect(null, mapDispatchToProps)(PlaceCard);
+export default connect(null, mapDispatchToProps)(React.memo(PlaceCard));
