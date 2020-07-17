@@ -10,6 +10,7 @@ const initialState = {
   activeOffer: offers[0],
   activeSortType: SortType.POPULAR,
   hoveredOffer: null,
+  userName: `oliver.conner@gmail.com`,
 };
 
 const ActionType = {

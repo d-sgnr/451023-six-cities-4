@@ -5,6 +5,9 @@ import {SortType} from "../../const.js";
 import SortingItem from "../sorting-item/sorting-item.jsx";
 const sortTypes = Object.values(SortType);
 
+import {ActionCreator} from "../../reducer.js";
+import {connect} from "react-redux";
+
 const getSelectValue = (sortType) => {
   switch (sortType) {
     case SortType.POPULAR :
@@ -51,4 +54,11 @@ SortingList.propTypes = {
   onSortingChange: PropTypes.func.isRequired,
 };
 
-export default SortingList;
+const mapDispatchToProps = (dispatch) => ({
+  onSortingChange(sortType) {
+    dispatch(ActionCreator.changeSorting(sortType));
+  },
+});
+
+export {SortingList};
+export default connect(null, mapDispatchToProps)(SortingList);

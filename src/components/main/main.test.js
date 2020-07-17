@@ -93,6 +93,8 @@ const city = {
   coordinates: [52.373057, 4.892557],
 };
 
+const userName = `Max`;
+
 const mockCoordinates = [[52.3909553943508, 4.85309666406198], [52.3909553943508, 4.85309666406198]];
 
 describe(`MainComponent`, () => {
@@ -103,6 +105,7 @@ describe(`MainComponent`, () => {
       placesCoordinates: mockCoordinates,
       activeSortType: `Popular`,
       sortedOffers: offers,
+      userName,
     });
 
     const tree = renderer
@@ -113,6 +116,7 @@ describe(`MainComponent`, () => {
               offers={offers}
               onCityClick={() => {}}
               placesCoordinates={mockCoordinates}
+              userName={userName}
             />
           </Provider>).toJSON();
 

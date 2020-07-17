@@ -5,6 +5,10 @@ import Map from "../map/map.jsx";
 import CitiesList from "../cities-list/cities-list.jsx";
 import NoPlaces from "../no-places/no-places.jsx";
 import Sorting from "../sorting/sorting.jsx";
+import Header from "../header/header.jsx";
+import MainNav from "../main-nav/main-nav.jsx";
+import HeaderLogoWrap from "../header-logo-wrap/header-logo-wrap.jsx";
+import Logo from "../logo/logo.jsx";
 
 import {PropertyType} from "../../const.js";
 import {connect} from "react-redux";
@@ -12,32 +16,18 @@ import {connect} from "react-redux";
 import {getSortedOffers, getFilteredOffers, getPlacesCoordinates} from "../../utils.js";
 
 const Main = (props) => {
-  const {sortedOffers, city, placesCoordinates} = props;
+  const {sortedOffers, city, placesCoordinates, userName} = props;
 
   return <React.Fragment>
+    <Header>
+      <HeaderLogoWrap>
+        <Logo/>
+      </HeaderLogoWrap>
+      <MainNav
+        userName={userName}
+      />
+    </Header>
     <div className="page page--gray page--main">
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <div className="header__left">
-              <a className="header__logo-link header__logo-link--active">
-                <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
-              </a>
-            </div>
-            <nav className="header__nav">
-              <ul className="header__nav-list">
-                <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </header>
       <main className={`page__main page__main--index ${sortedOffers.length === 0 ? `page__main--index-empty` : ``}`}>
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
@@ -82,7 +72,8 @@ Main.propTypes = {
   }).isRequired,
   offers: PropTypes.array.isRequired,
   sortedOffers: PropTypes.array.isRequired,
-  placesCoordinates: PropTypes.array.isRequired
+  placesCoordinates: PropTypes.array.isRequired,
+  userName: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -97,7 +88,8 @@ const mapStateToProps = (state) => {
     city: state.city,
     placesCoordinates: coordinatesToShow,
     activeSortType: state.activeSortType,
-    sortedOffers
+    sortedOffers,
+    userName: state.userName,
   };
 };
 

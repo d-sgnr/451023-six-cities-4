@@ -638,18 +638,20 @@ const sortType = `Popular`;
 
 // Пока не знаю, почему не меняется offers, при этом activeOffer меняется.
 
-// it(`Reducer should change bookmark status and update offers when clicked on bookmark`, () => {
-//   expect(reducer({
-//     offers,
-//     activeOffer: offers[0],
-//   }, {
-//     type: ActionType.CHANGE_BOOKMARK,
-//     payload: updatedOffers[0],
-//   })).toEqual({
-//     offers: updatedOffers,
-//     activeOffer: updatedOffers[0],
-//   });
-// });
+it(`Reducer should change bookmark status and update offers when clicked on bookmark`, () => {
+  const state = {
+    offers,
+    activeOffer: offers[0],
+  };
+
+  const nextState = reducer(
+      state,
+      ActionCreator.changeBookmark(offers[0])
+  );
+
+  expect(nextState.offers[0].isBookmarked).toBeFalsy();
+  expect(nextState.offers).toEqual(updatedOffers);
+});
 
 it(`Reducer should set hovered offer on hover`, () => {
   expect(reducer({

@@ -101,6 +101,8 @@ export const PageType = {
 
 const mockCoordinates = [[52.3909553943508, 4.85309666406198], [52.3909553943508, 4.85309666406198]];
 
+const userName = `Max`;
+
 describe(`Render App`, () => {
   it(`Render MainScreen`, () => {
     const store = mockStore({
@@ -112,6 +114,7 @@ describe(`Render App`, () => {
       hoveredOffer: void 0,
       placesCoordinates: mockCoordinates,
       sortedOffers: offers,
+      userName,
     });
 
     const tree = renderer
@@ -120,6 +123,7 @@ describe(`Render App`, () => {
             <App
               city={city}
               page={PageType.INDEX}
+              userName={userName}
             />
           </Provider>).toJSON();
 
@@ -136,6 +140,7 @@ describe(`Render App`, () => {
       hoveredOffer: void 0,
       placesCoordinates: mockCoordinates,
       sortedOffers: offers,
+      userName,
     });
 
     const tree = renderer
@@ -144,6 +149,7 @@ describe(`Render App`, () => {
             <App
               page={PageType.PROPERTY}
               city={city}
+              userName={userName}
             />
           </Provider>).toJSON();
 
