@@ -37,7 +37,9 @@ const Main = (props) => {
         </div>
         <div className="cities">
           {sortedOffers.length === 0 ?
-            <NoPlaces/> :
+            <NoPlaces
+              city={city}
+            /> :
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
