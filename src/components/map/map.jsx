@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import leaflet from "leaflet";
 
 import {connect} from "react-redux";
+import {getHoveredOffer} from "../../reducer/app/selectors.js";
 
 const MapIconType = {
   DEFAULT: `../../img/pin.svg`,
@@ -41,6 +42,7 @@ class Map extends PureComponent {
     const {coordinates} = this.props;
 
     if (coordinates.toString() !== this.state.coordinates.toString()) {
+
       this.map.remove();
       this._initMap();
     }
@@ -54,8 +56,18 @@ class Map extends PureComponent {
   _placeMapIcons() {
     const {activeOffer, coordinates, hoveredOffer} = this.props;
 
+    const getCoordinatesArray = (offer, string = false) => {
+      if (offer) {
+        if (string) {
+          return Array.of(offer.location.latitude, offer.location.longitude).toString();
+        } return Array.of(offer.location.latitude, offer.location.longitude);
+      } return null;
+    };
+
+    const hoveredOfferCoordinates = getCoordinatesArray(hoveredOffer, true);
+
     coordinates.map((coordinate) => {
-      const mapIcon = hoveredOffer && hoveredOffer.coordinates === coordinate ? MAP_ICON_ACTIVE : MAP_ICON;
+      const mapIcon = hoveredOfferCoordinates === coordinate.toString() ? MAP_ICON_ACTIVE : MAP_ICON;
 
       leaflet
       .marker(coordinate, {icon: leaflet.icon(mapIcon)})
@@ -63,10 +75,11 @@ class Map extends PureComponent {
     });
 
     if (activeOffer) {
+      const activeOfferCoordinates = getCoordinatesArray(activeOffer);
       const mapIcon = MAP_ICON_ACTIVE;
 
       leaflet
-      .marker(activeOffer.city.coordinates, {icon: leaflet.icon(mapIcon)})
+      .marker(activeOfferCoordinates, {icon: leaflet.icon(mapIcon)})
       .addTo(this.map);
     }
   }
@@ -79,7 +92,7 @@ class Map extends PureComponent {
       coordinates,
     });
 
-    const cityCoordinates = city.coordinates;
+    const cityCoordinates = Array.of(city.location.latitude, city.location.longitude);
 
     const zoom = 12;
 
@@ -115,61 +128,85 @@ class Map extends PureComponent {
 Map.propTypes = {
   city: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    coordinates: PropTypes.array.isRequired,
+    location: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+      zoom: PropTypes.number.isRequired,
+    }).isRequired,
   }).isRequired,
   coordinates: PropTypes.array.isRequired,
   hoveredOffer: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    coordinates: PropTypes.array.isRequired,
+    bedrooms: PropTypes.number.isRequired,
     city: PropTypes.shape({
       name: PropTypes.string.isRequired,
-      coordinates: PropTypes.array.isRequired,
+      location: PropTypes.shape({
+        latitude: PropTypes.number.isRequired,
+        longitude: PropTypes.number.isRequired,
+        zoom: PropTypes.number.isRequired,
+      }).isRequired,
     }).isRequired,
-    pictures: PropTypes.array.isRequired,
+    description: PropTypes.string.isRequired,
+    goods: PropTypes.array.isRequired,
+    host: PropTypes.shape({
+      avatarUrl: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      isPro: PropTypes.bool.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+    id: PropTypes.number.isRequired,
+    images: PropTypes.array.isRequired,
+    isFavorite: PropTypes.bool.isRequired,
+    isPremium: PropTypes.bool.isRequired,
+    location: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+      zoom: PropTypes.number.isRequired,
+    }).isRequired,
+    maxAdults: PropTypes.number.isRequired,
+    previewImage: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    isBookmarked: PropTypes.bool.isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    description: PropTypes.array.isRequired,
-    bedroomsCount: PropTypes.number.isRequired,
-    guestsCount: PropTypes.number.isRequired,
-    appliances: PropTypes.array.isRequired,
-    host: PropTypes.shape({
-      picture: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      isSuper: PropTypes.bool.isRequired,
-    }),
   }),
   activeOffer: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    coordinates: PropTypes.array.isRequired,
+    bedrooms: PropTypes.number.isRequired,
     city: PropTypes.shape({
       name: PropTypes.string.isRequired,
-      coordinates: PropTypes.array.isRequired,
+      location: PropTypes.shape({
+        latitude: PropTypes.number.isRequired,
+        longitude: PropTypes.number.isRequired,
+        zoom: PropTypes.number.isRequired,
+      }).isRequired,
     }).isRequired,
-    pictures: PropTypes.array.isRequired,
+    description: PropTypes.string.isRequired,
+    goods: PropTypes.array.isRequired,
+    host: PropTypes.shape({
+      avatarUrl: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      isPro: PropTypes.bool.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+    id: PropTypes.number.isRequired,
+    images: PropTypes.array.isRequired,
+    isFavorite: PropTypes.bool.isRequired,
+    isPremium: PropTypes.bool.isRequired,
+    location: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+      zoom: PropTypes.number.isRequired,
+    }).isRequired,
+    maxAdults: PropTypes.number.isRequired,
+    previewImage: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    isBookmarked: PropTypes.bool.isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    description: PropTypes.array.isRequired,
-    bedroomsCount: PropTypes.number.isRequired,
-    guestsCount: PropTypes.number.isRequired,
-    appliances: PropTypes.array.isRequired,
-    host: PropTypes.shape({
-      picture: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      isSuper: PropTypes.bool.isRequired,
-    }),
   }),
 };
 
 const mapStateToProps = (state) => ({
-  hoveredOffer: state.hoveredOffer,
+  hoveredOffer: getHoveredOffer(state),
 });
 
 export {Map};

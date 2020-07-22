@@ -5,7 +5,7 @@ import {SortType} from "../../const.js";
 import SortingItem from "../sorting-item/sorting-item.jsx";
 const sortTypes = Object.values(SortType);
 
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/app/app.js";
 import {connect} from "react-redux";
 
 const getSelectValue = (sortType) => {

@@ -14,10 +14,10 @@ exports[`PlaceCard should be rendered correctly 1`] = `
       href="#"
     >
       <img
-        alt="Wood and stone place image"
+        alt="Beautiful & luxurious studio at great location image"
         className="place-card__image"
         height="200"
-        src="img/room.jpg"
+        src="img/apartment-01.jpg"
         width="260"
       />
     </a>
@@ -35,7 +35,7 @@ exports[`PlaceCard should be rendered correctly 1`] = `
           className="place-card__price-value"
         >
           €
-          140
+          120
         </b>
         <span
           className="place-card__price-text"
@@ -44,7 +44,7 @@ exports[`PlaceCard should be rendered correctly 1`] = `
         </span>
       </div>
       <button
-        className="place-card__bookmark-button button place-card__bookmark-button--active"
+        className="place-card__bookmark-button button"
         onClick={[Function]}
         type="button"
       >
@@ -73,7 +73,7 @@ exports[`PlaceCard should be rendered correctly 1`] = `
         <span
           style={
             Object {
-              "width": "80%",
+              "width": "48%",
             }
           }
         />
@@ -91,13 +91,13 @@ exports[`PlaceCard should be rendered correctly 1`] = `
         href="#"
         onClick={[Function]}
       >
-        Wood and stone place
+        Beautiful & luxurious studio at great location
       </a>
     </h2>
     <p
       className="place-card__type"
     >
-      House
+      Apartment
     </p>
   </div>
 </article>

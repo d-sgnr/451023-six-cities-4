@@ -14,7 +14,7 @@ exports[`Review should be rendered correctly 1`] = `
         alt="Reviews avatar"
         className="reviews__avatar user__avatar"
         height="54"
-        src="img/avatar-max.jpg"
+        src="avatar-max.jpg"
         width="54"
       />
     </div>
@@ -36,7 +36,7 @@ exports[`Review should be rendered correctly 1`] = `
         <span
           style={
             Object {
-              "width": "80%",
+              "width": "40%",
             }
           }
         />
@@ -54,7 +54,7 @@ exports[`Review should be rendered correctly 1`] = `
     </p>
     <time
       className="reviews__time"
-      dateTime="2019-04-24"
+      dateTime="2019-05-08T14:13:56.569Z"
     >
       April 2019
     </time>

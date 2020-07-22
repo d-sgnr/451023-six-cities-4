@@ -19,6 +19,16 @@ export const replaceItemInArray = (array, newItem, key) => {
   });
 };
 
+export const getArrayWithoutElement = (array, index) => {
+  const ret = array.slice();
+  ret.splice(index, 1);
+  return ret;
+};
+
+export const capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
 export const getSortedOffers = (offers, sortType) => {
   const showingOffers = offers.slice();
 
@@ -43,7 +53,7 @@ export const getFilteredOffers = (allOffers, city) => {
 };
 
 export const getPlacesCoordinates = (shownOffers) => {
-  return shownOffers.map(({coordinates}) => coordinates);
+  return shownOffers.map((offer) => Array.of(offer.location.latitude, offer.location.longitude));
 };
 
 export const sortArray = (property, asc = false, length = false) => {

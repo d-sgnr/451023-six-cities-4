@@ -34,7 +34,7 @@ it(``, function () {});
 //   rating: 80,
 //   title: `Wood and stone place`,
 //   type: `House`,
-//   isBookmarked: true,
+//   isFavorite: true,
 //   isPremium: false,
 //   description: [
 //     `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,

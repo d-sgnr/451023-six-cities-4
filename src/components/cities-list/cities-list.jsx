@@ -5,6 +5,9 @@ import {getUniqueObjectsArray} from "../../utils.js";
 
 import {connect} from "react-redux";
 
+import {getCity} from "../../reducer/app/selectors.js";
+import {getOffers} from "../../reducer/data/selectors.js";
+
 const CitiesList = (props) => {
   const {city, citiesToShow} = props;
 
@@ -22,7 +25,11 @@ const CitiesList = (props) => {
 CitiesList.propTypes = {
   city: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    coordinates: PropTypes.array.isRequired,
+    location: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+      zoom: PropTypes.number.isRequired,
+    }).isRequired,
   }).isRequired,
   citiesToShow: PropTypes.array.isRequired,
 };
@@ -30,13 +37,15 @@ CitiesList.propTypes = {
 
 const mapStateToProps = (state) => {
 
-  const allCities = state.offers.map((offer) => offer.city);
+  const offers = getOffers(state);
+
+  const allCities = offers.map((offer) => offer.city);
   const citiesToShow = getUniqueObjectsArray(allCities, `name`).slice(0, 6);
 
   return {
     allCities,
     citiesToShow,
-    city: state.city
+    city: getCity(state)
   };
 };
 

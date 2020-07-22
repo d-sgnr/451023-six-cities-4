@@ -15,6 +15,9 @@ import {connect} from "react-redux";
 
 import {getSortedOffers, getFilteredOffers, getPlacesCoordinates} from "../../utils.js";
 
+import {getCity, getActiveSortType, getUserName} from "../../reducer/app/selectors.js";
+import {getOffers} from "../../reducer/data/selectors.js";
+
 const Main = (props) => {
   const {sortedOffers, city, placesCoordinates, userName} = props;
 
@@ -38,7 +41,7 @@ const Main = (props) => {
         <div className="cities">
           {sortedOffers.length === 0 ?
             <NoPlaces
-              city={city}
+              cityName={city.name}
             /> :
             <div className="cities__places-container container">
               <section className="cities__places places">
@@ -70,7 +73,11 @@ const Main = (props) => {
 Main.propTypes = {
   city: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    coordinates: PropTypes.array.isRequired,
+    location: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+      zoom: PropTypes.number.isRequired,
+    }).isRequired,
   }).isRequired,
   offers: PropTypes.array.isRequired,
   sortedOffers: PropTypes.array.isRequired,
@@ -80,20 +87,24 @@ Main.propTypes = {
 
 const mapStateToProps = (state) => {
 
-  const offersToShow = getFilteredOffers(state.offers, state.city);
-  const coordinatesToShow = getPlacesCoordinates(offersToShow);
+  const offers = getOffers(state);
+  const city = getCity(state);
+  const activeSortType = getActiveSortType(state);
+  const userName = getUserName(state);
 
-  const sortedOffers = getSortedOffers(offersToShow, state.activeSortType);
+  const offersToShow = getFilteredOffers(offers, city);
+  const placesCoordinates = getPlacesCoordinates(offersToShow);
+  const sortedOffers = getSortedOffers(offersToShow, activeSortType);
 
   return {
-    offers: state.offers,
-    city: state.city,
-    placesCoordinates: coordinatesToShow,
-    activeSortType: state.activeSortType,
+    offers,
+    city,
+    activeSortType,
     sortedOffers,
-    userName: state.userName,
+    userName,
+    placesCoordinates,
   };
 };
 
 export {Main};
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps, null)(Main);
