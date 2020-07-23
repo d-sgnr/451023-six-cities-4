@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import City from "../city/city.jsx";
 import {getUniqueObjectsArray} from "../../utils.js";
-
+import {cityType} from "../../proptypes/proptypes.jsx";
 import {connect} from "react-redux";
 
 import {getCity} from "../../reducer/app/selectors.js";
@@ -23,14 +23,7 @@ const CitiesList = (props) => {
 };
 
 CitiesList.propTypes = {
-  city: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    location: PropTypes.shape({
-      latitude: PropTypes.number.isRequired,
-      longitude: PropTypes.number.isRequired,
-      zoom: PropTypes.number.isRequired,
-    }).isRequired,
-  }).isRequired,
+  city: cityType,
   citiesToShow: PropTypes.array.isRequired,
 };
 
@@ -50,4 +43,4 @@ const mapStateToProps = (state) => {
 };
 
 export {CitiesList};
-export default connect(mapStateToProps, null)(React.memo(CitiesList));
+export default connect(mapStateToProps)(React.memo(CitiesList));

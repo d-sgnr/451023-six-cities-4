@@ -41,4 +41,4 @@ const mapStateToProps = (state) => ({
 
 export {Sorting};
 
-export default withActiveState(connect(mapStateToProps, null)(Sorting));
+export default withActiveState(connect(mapStateToProps)(Sorting));

@@ -1,6 +1,6 @@
 import {extend, replaceItemInArray} from "../../utils.js";
-import {createOffer} from "../../adapters/offers.js";
-import {createComment} from "../../adapters/comments.js";
+import {parseOffer} from "../../adapters/offers.jsx";
+import {parseComment} from "../../adapters/comments.jsx";
 
 const initialState = {
   offers: [],
@@ -64,21 +64,21 @@ const Operation = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.LOAD_OFFERS:
-      const adaptedOffers = action.payload.map((offer) => createOffer(offer));
+      const adaptedOffers = action.payload.map((offer) => parseOffer(offer));
 
       return extend(state, {
         offers: adaptedOffers,
       });
 
     case ActionType.LOAD_COMMENTS:
-      const adaptedComments = action.payload.map((comment) => createComment(comment));
+      const adaptedComments = action.payload.map((comment) => parseComment(comment));
 
       return extend(state, {
         comments: adaptedComments,
       });
 
     case ActionType.LOAD_NEAR_OFFERS:
-      const adaptedNearOffers = action.payload.map((offer) => createOffer(offer));
+      const adaptedNearOffers = action.payload.map((offer) => parseOffer(offer));
 
       return extend(state, {
         nearOffers: adaptedNearOffers,

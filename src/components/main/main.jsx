@@ -9,7 +9,7 @@ import Header from "../header/header.jsx";
 import MainNav from "../main-nav/main-nav.jsx";
 import HeaderLogoWrap from "../header-logo-wrap/header-logo-wrap.jsx";
 import Logo from "../logo/logo.jsx";
-
+import {cityType} from "../../proptypes/proptypes.jsx";
 import {PropertyType} from "../../const.js";
 import {connect} from "react-redux";
 
@@ -71,14 +71,7 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  city: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    location: PropTypes.shape({
-      latitude: PropTypes.number.isRequired,
-      longitude: PropTypes.number.isRequired,
-      zoom: PropTypes.number.isRequired,
-    }).isRequired,
-  }).isRequired,
+  city: cityType,
   offers: PropTypes.array.isRequired,
   sortedOffers: PropTypes.array.isRequired,
   placesCoordinates: PropTypes.array.isRequired,
@@ -107,4 +100,4 @@ const mapStateToProps = (state) => {
 };
 
 export {Main};
-export default connect(mapStateToProps, null)(Main);
+export default connect(mapStateToProps)(Main);
