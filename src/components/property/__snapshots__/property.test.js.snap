@@ -47,7 +47,7 @@ exports[`Property should be rendered correctly 1`] = `
                 <span
                   className="header__user-name user__name"
                 >
-                  Max
+                  Mike
                 </span>
               </a>
             </li>
@@ -143,7 +143,7 @@ exports[`Property should be rendered correctly 1`] = `
             <h1
               className="property__name"
             >
-              Wood and stone place
+              Beautiful & luxurious studio at great location
             </h1>
             <button
               className="property__bookmark-button button"
@@ -155,8 +155,8 @@ exports[`Property should be rendered correctly 1`] = `
                 height="33"
                 style={
                   Object {
-                    "fill": "#4481c3",
-                    "stroke": "#4481c3",
+                    "fill": "",
+                    "stroke": "",
                   }
                 }
                 width="31"
@@ -181,7 +181,7 @@ exports[`Property should be rendered correctly 1`] = `
               <span
                 style={
                   Object {
-                    "width": "80%",
+                    "width": "48%",
                   }
                 }
               />
@@ -194,7 +194,7 @@ exports[`Property should be rendered correctly 1`] = `
             <span
               className="property__rating-value rating__value"
             >
-              4.0
+              2.4
             </span>
           </div>
           <ul
@@ -203,7 +203,7 @@ exports[`Property should be rendered correctly 1`] = `
             <li
               className="property__feature property__feature--entire"
             >
-              House
+              Apartment
             </li>
             <li
               className="property__feature property__feature--bedrooms"
@@ -226,7 +226,7 @@ exports[`Property should be rendered correctly 1`] = `
               className="property__price-value"
             >
               €
-              140
+              120
             </b>
             <span
               className="property__price-text"
@@ -248,11 +248,6 @@ exports[`Property should be rendered correctly 1`] = `
               <li
                 className="property__inside-item"
               >
-                Wifi
-              </li>
-              <li
-                className="property__inside-item"
-              >
                 Heating
               </li>
               <li
@@ -264,6 +259,21 @@ exports[`Property should be rendered correctly 1`] = `
                 className="property__inside-item"
               >
                 Cable TV
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Washing machine
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Coffee machine
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Dishwasher
               </li>
             </ul>
           </div>
@@ -301,12 +311,12 @@ exports[`Property should be rendered correctly 1`] = `
               <p
                 className="property__text"
               >
-                A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
+                A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
               </p>
               <p
                 className="property__text"
               >
-                An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.
+                A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
               </p>
             </div>
           </div>
@@ -339,7 +349,7 @@ exports[`Property should be rendered correctly 1`] = `
                       alt="Reviews avatar"
                       className="reviews__avatar user__avatar"
                       height="54"
-                      src="img/avatar-max.jpg"
+                      src="avatar-max.jpg"
                       width="54"
                     />
                   </div>
@@ -347,65 +357,6 @@ exports[`Property should be rendered correctly 1`] = `
                     className="reviews__user-name"
                   >
                     Max
-                  </span>
-                </div>
-                <div
-                  className="reviews__info"
-                >
-                  <div
-                    className="reviews__rating rating"
-                  >
-                    <div
-                      className="reviews__stars rating__stars"
-                    >
-                      <span
-                        style={
-                          Object {
-                            "width": "80%",
-                          }
-                        }
-                      />
-                      <span
-                        className="visually-hidden"
-                      >
-                        Rating
-                      </span>
-                    </div>
-                  </div>
-                  <p
-                    className="reviews__text"
-                  >
-                    Am terminated it excellence invitation projection as. She graceful shy believed distance use nay. Lively is people so basket ladies window expect.
-                  </p>
-                  <time
-                    className="reviews__time"
-                    dateTime="2019-04-24"
-                  >
-                    April 2019
-                  </time>
-                </div>
-              </li>
-              <li
-                className="reviews__item"
-              >
-                <div
-                  className="reviews__user user"
-                >
-                  <div
-                    className="reviews__avatar-wrapper user__avatar-wrapper"
-                  >
-                    <img
-                      alt="Reviews avatar"
-                      className="reviews__avatar user__avatar"
-                      height="54"
-                      src="img/avatar-angelina.jpg"
-                      width="54"
-                    />
-                  </div>
-                  <span
-                    className="reviews__user-name"
-                  >
-                    Angelina
                   </span>
                 </div>
                 <div
@@ -434,11 +385,70 @@ exports[`Property should be rendered correctly 1`] = `
                   <p
                     className="reviews__text"
                   >
-                    Though wished merits or be. Alone visit use these smart rooms ham. No waiting in on enjoyed placing it inquiry.
+                    Am terminated it excellence invitation projection as. She graceful shy believed distance use nay. Lively is people so basket ladies window expect.
                   </p>
                   <time
                     className="reviews__time"
-                    dateTime="2019-04-24"
+                    dateTime="2019-05-08T14:13:56.569Z"
+                  >
+                    April 2019
+                  </time>
+                </div>
+              </li>
+              <li
+                className="reviews__item"
+              >
+                <div
+                  className="reviews__user user"
+                >
+                  <div
+                    className="reviews__avatar-wrapper user__avatar-wrapper"
+                  >
+                    <img
+                      alt="Reviews avatar"
+                      className="reviews__avatar user__avatar"
+                      height="54"
+                      src="avatar-anna.jpg"
+                      width="54"
+                    />
+                  </div>
+                  <span
+                    className="reviews__user-name"
+                  >
+                    Anna
+                  </span>
+                </div>
+                <div
+                  className="reviews__info"
+                >
+                  <div
+                    className="reviews__rating rating"
+                  >
+                    <div
+                      className="reviews__stars rating__stars"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "width": "30%",
+                          }
+                        }
+                      />
+                      <span
+                        className="visually-hidden"
+                      >
+                        Rating
+                      </span>
+                    </div>
+                  </div>
+                  <p
+                    className="reviews__text"
+                  >
+                    Am terminated it excellence invitation projection as. She graceful shy believed distance use nay. Lively is people so basket ladies window expect.
+                  </p>
+                  <time
+                    className="reviews__time"
+                    dateTime="2019-05-08T14:13:56.569Z"
                   >
                     April 2019
                   </time>
@@ -647,10 +657,10 @@ exports[`Property should be rendered correctly 1`] = `
                 href="#"
               >
                 <img
-                  alt="Wood and stone place image"
+                  alt="Beautiful & luxurious studio at great location image"
                   className="place-card__image"
                   height="200"
-                  src="img/room.jpg"
+                  src="img/apartment-01.jpg"
                   width="260"
                 />
               </a>
@@ -668,7 +678,7 @@ exports[`Property should be rendered correctly 1`] = `
                     className="place-card__price-value"
                   >
                     €
-                    140
+                    120
                   </b>
                   <span
                     className="place-card__price-text"
@@ -677,7 +687,7 @@ exports[`Property should be rendered correctly 1`] = `
                   </span>
                 </div>
                 <button
-                  className="place-card__bookmark-button button place-card__bookmark-button--active"
+                  className="place-card__bookmark-button button"
                   onClick={[Function]}
                   type="button"
                 >
@@ -706,7 +716,7 @@ exports[`Property should be rendered correctly 1`] = `
                   <span
                     style={
                       Object {
-                        "width": "80%",
+                        "width": "48%",
                       }
                     }
                   />
@@ -724,13 +734,213 @@ exports[`Property should be rendered correctly 1`] = `
                   href="#"
                   onClick={[Function]}
                 >
-                  Wood and stone place
+                  Beautiful & luxurious studio at great location
                 </a>
               </h2>
               <p
                 className="place-card__type"
               >
-                House
+                Apartment
+              </p>
+            </div>
+          </article>
+          <article
+            className="near-places__card place-card"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            
+            <div
+              className="near-places__image-wrapper place-card__image-wrapper"
+            >
+              <a
+                href="#"
+              >
+                <img
+                  alt="Beautiful & luxurious studio at great location image"
+                  className="place-card__image"
+                  height="200"
+                  src="img/apartment-01.jpg"
+                  width="260"
+                />
+              </a>
+            </div>
+            <div
+              className="place-card__info"
+            >
+              <div
+                className="place-card__price-wrapper"
+              >
+                <div
+                  className="place-card__price"
+                >
+                  <b
+                    className="place-card__price-value"
+                  >
+                    €
+                    120
+                  </b>
+                  <span
+                    className="place-card__price-text"
+                  >
+                    / night
+                  </span>
+                </div>
+                <button
+                  className="place-card__bookmark-button button"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <svg
+                    className="place-card__bookmark-icon"
+                    height="19"
+                    width="18"
+                  >
+                    <use
+                      xlinkHref="#icon-bookmark"
+                    />
+                  </svg>
+                  <span
+                    className="visually-hidden"
+                  >
+                    To bookmarks
+                  </span>
+                </button>
+              </div>
+              <div
+                className="place-card__rating rating"
+              >
+                <div
+                  className="place-card__stars rating__stars"
+                >
+                  <span
+                    style={
+                      Object {
+                        "width": "48%",
+                      }
+                    }
+                  />
+                  <span
+                    className="visually-hidden"
+                  >
+                    Rating
+                  </span>
+                </div>
+              </div>
+              <h2
+                className="place-card__name"
+              >
+                <a
+                  href="#"
+                  onClick={[Function]}
+                >
+                  Beautiful & luxurious studio at great location
+                </a>
+              </h2>
+              <p
+                className="place-card__type"
+              >
+                Apartment
+              </p>
+            </div>
+          </article>
+          <article
+            className="near-places__card place-card"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            
+            <div
+              className="near-places__image-wrapper place-card__image-wrapper"
+            >
+              <a
+                href="#"
+              >
+                <img
+                  alt="Beautiful & luxurious studio at great location image"
+                  className="place-card__image"
+                  height="200"
+                  src="img/apartment-01.jpg"
+                  width="260"
+                />
+              </a>
+            </div>
+            <div
+              className="place-card__info"
+            >
+              <div
+                className="place-card__price-wrapper"
+              >
+                <div
+                  className="place-card__price"
+                >
+                  <b
+                    className="place-card__price-value"
+                  >
+                    €
+                    120
+                  </b>
+                  <span
+                    className="place-card__price-text"
+                  >
+                    / night
+                  </span>
+                </div>
+                <button
+                  className="place-card__bookmark-button button"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <svg
+                    className="place-card__bookmark-icon"
+                    height="19"
+                    width="18"
+                  >
+                    <use
+                      xlinkHref="#icon-bookmark"
+                    />
+                  </svg>
+                  <span
+                    className="visually-hidden"
+                  >
+                    To bookmarks
+                  </span>
+                </button>
+              </div>
+              <div
+                className="place-card__rating rating"
+              >
+                <div
+                  className="place-card__stars rating__stars"
+                >
+                  <span
+                    style={
+                      Object {
+                        "width": "48%",
+                      }
+                    }
+                  />
+                  <span
+                    className="visually-hidden"
+                  >
+                    Rating
+                  </span>
+                </div>
+              </div>
+              <h2
+                className="place-card__name"
+              >
+                <a
+                  href="#"
+                  onClick={[Function]}
+                >
+                  Beautiful & luxurious studio at great location
+                </a>
+              </h2>
+              <p
+                className="place-card__type"
+              >
+                Apartment
               </p>
             </div>
           </article>

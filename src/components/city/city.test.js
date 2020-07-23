@@ -9,7 +9,11 @@ const mockStore = configureStore([]);
 
 const city = {
   name: `Amsterdam`,
-  coordinates: [52.373057, 4.892557],
+  location: {
+    latitude: 52.373057,
+    longitude: 4.892557,
+    zoom: 10,
+  },
 };
 
 it(`City should be rendered correctly when not active`, () => {

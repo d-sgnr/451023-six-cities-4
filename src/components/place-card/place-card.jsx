@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {PropertyType} from "../../const.js";
-
+import {capitalizeFirstLetter} from "../../utils.js";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator as AppActionCreator} from "../../reducer/app/app.js";
+import {ActionCreator as DataActionCreator} from "../../reducer/data/data.js";
+import {offerType} from "../../proptypes/proptypes.jsx";
 
 const PlaceCard = (props) => {
 
@@ -21,7 +23,7 @@ const PlaceCard = (props) => {
     </div> : ``}
     <div className={`${offersType}__image-wrapper place-card__image-wrapper`}>
       <a href="#">
-        <img className="place-card__image" src={`img/${offer.pictures[0]}`} width="260" height="200" alt={`${offer.title} image`}/>
+        <img className="place-card__image" src={offer.previewImage} width="260" height="200" alt={`${offer.title} image`}/>
       </a>
     </div>
     <div className="place-card__info">
@@ -30,7 +32,7 @@ const PlaceCard = (props) => {
           <b className="place-card__price-value">&euro;{offer.price}</b>
           <span className="place-card__price-text">&#47;&nbsp;night</span>
         </div>
-        <button className={`place-card__bookmark-button button` + (offer.isBookmarked ? ` place-card__bookmark-button--active` : ``)}
+        <button className={`place-card__bookmark-button button` + (offer.isFavorite ? ` place-card__bookmark-button--active` : ``)}
           type="button"
           onClick={() => {
             onBookmarkClick(offer);
@@ -44,7 +46,7 @@ const PlaceCard = (props) => {
       </div>
       <div className="place-card__rating rating">
         <div className="place-card__stars rating__stars">
-          <span style={{width: offer.rating + `%`}}></span>
+          <span style={{width: offer.rating * 10 + `%`}}></span>
           <span className="visually-hidden">Rating</span>
         </div>
       </div>
@@ -53,37 +55,14 @@ const PlaceCard = (props) => {
           onClick={() => onCardTitleClick(offer)}
         >{offer.title}</a>
       </h2>
-      <p className="place-card__type">{offer.type}</p>
+      <p className="place-card__type">{capitalizeFirstLetter(offer.type)}</p>
     </div>
   </article>
   );
 };
 
 PlaceCard.propTypes = {
-  offer: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    coordinates: PropTypes.array.isRequired,
-    city: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      coordinates: PropTypes.array.isRequired,
-    }).isRequired,
-    pictures: PropTypes.array.isRequired,
-    price: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    isBookmarked: PropTypes.bool.isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    description: PropTypes.array.isRequired,
-    bedroomsCount: PropTypes.number.isRequired,
-    guestsCount: PropTypes.number.isRequired,
-    appliances: PropTypes.array.isRequired,
-    host: PropTypes.shape({
-      picture: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      isSuper: PropTypes.bool.isRequired,
-    }),
-  }).isRequired,
+  offer: offerType.isRequired,
   offersType: PropTypes.oneOf([PropertyType.CITY, PropertyType.NEAR]).isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
   onBookmarkClick: PropTypes.func.isRequired,
@@ -93,19 +72,19 @@ PlaceCard.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   onBookmarkClick(offer) {
-    dispatch(ActionCreator.changeBookmark(offer));
+    dispatch(DataActionCreator.changeFavorite(offer));
   },
 
   onCardTitleClick(offer) {
-    dispatch(ActionCreator.setActiveOffer(offer));
+    dispatch(AppActionCreator.setActiveOffer(offer));
   },
 
   onCardHover(offer) {
-    dispatch(ActionCreator.setHoveredOffer(offer));
+    dispatch(AppActionCreator.setHoveredOffer(offer));
   },
 
   onCardMouseLeave() {
-    dispatch(ActionCreator.resetHoveredOffer());
+    dispatch(AppActionCreator.resetHoveredOffer());
   },
 });
 

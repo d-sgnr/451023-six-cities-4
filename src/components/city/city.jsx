@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {cityType} from "../../proptypes/proptypes.jsx";
 
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/app/app.js";
 import {connect} from "react-redux";
 
 const City = (props) => {
@@ -19,10 +20,7 @@ const City = (props) => {
 };
 
 City.propTypes = {
-  city: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    coordinates: PropTypes.array.isRequired,
-  }).isRequired,
+  city: cityType,
   isActive: PropTypes.bool.isRequired,
   onCityClick: PropTypes.func.isRequired,
 };

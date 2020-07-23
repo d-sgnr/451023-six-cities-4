@@ -7,15 +7,18 @@ import {Provider} from "react-redux";
 
 const mockStore = configureStore([]);
 
+import NameSpace from "../../reducer/name-space.js";
+
 it(`Sorting should be rendered correctly`, () => {
   const store = mockStore({
-    activeSortType: `Popular`,
+    [NameSpace.APP]: {
+      activeSortType: `Popular`,
+    },
   });
 
   const tree = renderer.create(
       <Provider store={store}>
         <Sorting
-          activeSortType={store.activeSortType}
           onSortingChange={() => {}}
         />
       </Provider>).toJSON();

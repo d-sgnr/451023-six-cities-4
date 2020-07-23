@@ -1,103 +1,181 @@
-// it(``, function () {});
-
 import React from "react";
 import renderer from "react-test-renderer";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
-import {App} from "./app.jsx";
+import App from "./app.jsx";
+import NameSpace from "../../reducer/name-space.js";
+import thunk from 'redux-thunk';
 
-const mockStore = configureStore([]);
+const mockStore = configureStore([thunk]);
 
 const offers = [
   {
-    id: 12345,
-    coordinates: [52.3909553943508, 4.85309666406198],
+    bedrooms: 3,
     city: {
-      name: `Amsterdam`,
-      coordinates: [52.3909553943508, 4.85309666406198],
+      location: {
+        latitude: 52.373057,
+        longitude: 4.892557,
+        zoom: 10
+      },
+      name: `Amsterdam`
     },
-    pictures: [
-      `room.jpg`,
-      `apartment-01.jpg`,
-      `apartment-02.jpg`,
-      `apartment-03.jpg`,
-      `apartment-small-03.jpg`,
-      `apartment-small-04.jpg`
-    ],
-    price: 140,
-    rating: 80,
-    title: `Wood and stone place`,
-    type: `House`,
-    isBookmarked: true,
-    isPremium: false,
-    description: [
-      `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-      `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`
-    ],
-    bedroomsCount: 3,
-    guestsCount: 4,
-    appliances: [
-      `Wifi`,
-      `Heating`,
-      `Kitchen`,
-      `Cable TV`
-    ],
+    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
+    goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     host: {
-      picture: `avatar-angelina.jpg`,
-      name: `Adam Smith`,
-      isSuper: true,
+      avatarUrl: `img/1.png`,
+      id: 1,
+      isPro: true,
+      name: `Angelina`
+    },
+    id: Math.random(),
+    images: [
+      `img/room.jpg`,
+      `img/apartment-01.jpg`,
+      `img/apartment-02.jpg`,
+      `img/apartment-03.jpg`,
+      `img/apartment-small-03.jpg`,
+      `img/apartment-small-04.jpg`
+    ],
+    isFavorite: false,
+    isPremium: false,
+    location: {
+      latitude: 52.3909553943508,
+      longitude: 4.85309666406198,
+      zoom: 8
+    },
+    maxAdults: 4,
+    previewImage: `img/apartment-01.jpg`,
+    price: 120,
+    rating: 4.8,
+    title: `Beautiful & luxurious studio at great location`,
+    type: `apartment`
+  },
+  {
+    bedrooms: 3,
+    city: {
+      location: {
+        latitude: 52.373057,
+        longitude: 4.892557,
+        zoom: 10
+      },
+      name: `Amsterdam`
+    },
+    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
+    goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
+    host: {
+      avatarUrl: `img/1.png`,
+      id: 1,
+      isPro: true,
+      name: `Angelina`
+    },
+    id: Math.random(),
+    images: [
+      `img/room.jpg`,
+      `img/apartment-01.jpg`,
+      `img/apartment-02.jpg`,
+      `img/apartment-03.jpg`,
+      `img/apartment-small-03.jpg`,
+      `img/apartment-small-04.jpg`
+    ],
+    isFavorite: false,
+    isPremium: false,
+    location: {
+      latitude: 52.3909553943508,
+      longitude: 4.85309666406198,
+      zoom: 8
+    },
+    maxAdults: 4,
+    previewImage: `img/apartment-01.jpg`,
+    price: 120,
+    rating: 4.8,
+    title: `Beautiful & luxurious studio at great location`,
+    type: `apartment`
+  },
+  {
+    bedrooms: 3,
+    city: {
+      location: {
+        latitude: 52.373057,
+        longitude: 4.892557,
+        zoom: 10
+      },
+      name: `Amsterdam`
+    },
+    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
+    goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
+    host: {
+      avatarUrl: `img/1.png`,
+      id: 1,
+      isPro: true,
+      name: `Angelina`
+    },
+    id: Math.random(),
+    images: [
+      `img/room.jpg`,
+      `img/apartment-01.jpg`,
+      `img/apartment-02.jpg`,
+      `img/apartment-03.jpg`,
+      `img/apartment-small-03.jpg`,
+      `img/apartment-small-04.jpg`
+    ],
+    isFavorite: false,
+    isPremium: false,
+    location: {
+      latitude: 52.3909553943508,
+      longitude: 4.85309666406198,
+      zoom: 8
+    },
+    maxAdults: 4,
+    previewImage: `img/apartment-01.jpg`,
+    price: 120,
+    rating: 4.8,
+    title: `Beautiful & luxurious studio at great location`,
+    type: `apartment`
+  },
+];
+
+const reviews = [
+  {
+    comment: `Am terminated it excellence invitation projection as. She graceful shy believed distance use nay. Lively is people so basket ladies window expect.`,
+    date: `2019-05-08T14:13:56.569Z`,
+    id: 52,
+    rating: 4,
+    user: {
+      avatar: `avatar-max.jpg`,
+      id: 2,
+      isPro: true,
+      name: `Max`
     }
   },
   {
-    id: 12345,
-    coordinates: [48.854408, 2.338527],
-    city: {
-      name: `Dusseldorf`,
-      coordinates: [52.3909553943508, 4.85309666406198],
-    },
-    pictures: [
-      `apartment-01.jpg`,
-      `room.jpg`,
-      `apartment-02.jpg`,
-      `apartment-03.jpg`,
-      `apartment-small-03.jpg`,
-      `apartment-small-04.jpg`
-    ],
-    price: 88,
-    rating: 20,
-    title: `Cozy seaview apartment`,
-    type: `Apartment`,
-    isBookmarked: false,
-    isPremium: true,
-    description: [
-      `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-      `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`
-    ],
-    bedroomsCount: 3,
-    guestsCount: 4,
-    appliances: [
-      `Wifi`,
-      `Heating`,
-      `Kitchen`,
-      `Cable TV`
-    ],
-    host: {
-      picture: `avatar-angelina.jpg`,
-      name: `Adam Smith`,
-      isSuper: true,
+    comment: `Am terminated it excellence invitation projection as. She graceful shy believed distance use nay. Lively is people so basket ladies window expect.`,
+    date: `2019-05-08T14:13:56.569Z`,
+    id: 48,
+    rating: 3,
+    user: {
+      avatar: `avatar-anna.jpg`,
+      id: 4,
+      isPro: false,
+      name: `Anna`
     }
   },
 ];
 
 const city = {
   name: `Amsterdam`,
-  coordinates: [52.373057, 4.892557],
+  location: {
+    latitude: 52.373057,
+    longitude: 4.892557,
+    zoom: 10,
+  },
 };
 
 export const PageType = {
   INDEX: `INDEX`,
   PROPERTY: `PROPERTY`,
 };
+
+const offer = offers[0];
 
 const mockCoordinates = [[52.3909553943508, 4.85309666406198], [52.3909553943508, 4.85309666406198]];
 
@@ -106,15 +184,19 @@ const userName = `Max`;
 describe(`Render App`, () => {
   it(`Render MainScreen`, () => {
     const store = mockStore({
-      offers,
-      city: offers[0].city,
-      page: PageType.INDEX,
-      activeOffer: offers[0],
-      activeSortType: `Popular`,
-      hoveredOffer: void 0,
-      placesCoordinates: mockCoordinates,
-      sortedOffers: offers,
-      userName,
+      [NameSpace.DATA]: {
+        offers,
+        comments: [],
+        nearOffers: offers,
+      },
+      [NameSpace.APP]: {
+        city,
+        page: PageType.INDEX,
+        activeSortType: `Popular`,
+        hoveredOffer: null,
+        userName: `oliver.conner@gmail.com`,
+        activeOffer: null,
+      },
     });
 
     const tree = renderer
@@ -131,16 +213,21 @@ describe(`Render App`, () => {
   });
 
   it(`Render PropertyScreen`, () => {
+
     const store = mockStore({
-      offers,
-      city: offers[0].city,
-      page: PageType.INDEX,
-      activeOffer: offers[0],
-      activeSortType: `Popular`,
-      hoveredOffer: void 0,
-      placesCoordinates: mockCoordinates,
-      sortedOffers: offers,
-      userName,
+      [NameSpace.DATA]: {
+        offers,
+        comments: [],
+        nearOffers: offers,
+      },
+      [NameSpace.APP]: {
+        city,
+        page: PageType.INDEX,
+        activeSortType: `Popular`,
+        hoveredOffer: null,
+        userName: `oliver.conner@gmail.com`,
+        activeOffer: offer,
+      },
     });
 
     const tree = renderer
@@ -150,6 +237,14 @@ describe(`Render App`, () => {
               page={PageType.PROPERTY}
               city={city}
               userName={userName}
+              mockCoordinates={mockCoordinates}
+              nearCoordinates={mockCoordinates}
+              offer={offer}
+              nearOffers={offers}
+              reviews={reviews}
+              loadComments={() => {}}
+              loadNearOffers={() => {}}
+              onBookmarkClick={() => {}}
             />
           </Provider>).toJSON();
 

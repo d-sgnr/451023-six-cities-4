@@ -4,6 +4,7 @@ import SortingList from "../sorting-list/sorting-list.jsx";
 import {connect} from "react-redux";
 
 import withActiveState from "../../hocs/with-active-state/with-active-state.jsx";
+import {getActiveSortType} from "../../reducer/app/selectors.js";
 
 const Sorting = (props) => {
   const {activeSortType, onActiveChange} = props;
@@ -35,9 +36,9 @@ Sorting.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  activeSortType: state.activeSortType,
+  activeSortType: getActiveSortType(state),
 });
 
 export {Sorting};
 
-export default withActiveState(connect(mapStateToProps, null)(Sorting));
+export default withActiveState(connect(mapStateToProps)(Sorting));

@@ -6,12 +6,14 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {PageType} from "../../const.js";
 
 import {connect} from "react-redux";
+import {getPage} from "../../reducer/app/selectors.js";
+
+import {getOffers} from "../../reducer/data/selectors.js";
 
 class App extends PureComponent {
 
   _renderAppScreen() {
     const {
-      city,
       page
     } = this.props;
 
@@ -20,9 +22,7 @@ class App extends PureComponent {
         <Property/>
       );
     } return (
-      <Main
-        city={city}
-      />);
+      <Main/>);
   }
 
   render() {
@@ -42,10 +42,6 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  city: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    coordinates: PropTypes.array.isRequired,
-  }).isRequired,
   page: PropTypes.oneOf([
     PageType.INDEX,
     PageType.PROPERTY
@@ -53,9 +49,9 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  city: state.city,
-  page: state.page,
+  offers: getOffers(state),
+  page: getPage(state),
 });
 
 export {App};
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps)(App);
