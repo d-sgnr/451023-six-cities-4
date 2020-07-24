@@ -26,6 +26,7 @@ const ActionType = {
   RESET_HOVERED_OFFER: `RESET_HOVERED_OFFER`,
   SET_ACTIVE_OFFER: `SET_ACTIVE_OFFER`,
   CHANGE_FAVORITE_ACTIVE: `CHANGE_FAVORITE_ACTIVE`,
+  GO_TO_INDEX: `GO_TO_INDEX`
 };
 
 const ActionCreator = {
@@ -52,6 +53,11 @@ const ActionCreator = {
   setActiveOffer: (offer) => ({
     type: ActionType.SET_ACTIVE_OFFER,
     payload: offer,
+  }),
+
+  goToIndex: () => ({
+    type: ActionType.GO_TO_INDEX,
+    payload: null,
   }),
 
   changeFavoriteActive: (offer) => ({
@@ -88,6 +94,13 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         activeOffer: action.payload,
         page: PageType.PROPERTY,
+      });
+
+    case ActionType.GO_TO_INDEX:
+
+      return extend(state, {
+        activeOffer: action.payload,
+        page: PageType.INDEX,
       });
 
     case ActionType.CHANGE_FAVORITE_ACTIVE:

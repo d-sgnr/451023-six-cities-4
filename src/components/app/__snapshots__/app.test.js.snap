@@ -45,7 +45,7 @@ Array [
                 <span
                   className="header__user-name user__name"
                 >
-                  oliver.conner@gmail.com
+                  email@email.ru
                 </span>
               </a>
             </li>
@@ -516,7 +516,7 @@ Array [
                 <span
                   className="header__user-name user__name"
                 >
-                  oliver.conner@gmail.com
+                  email@email.ru
                 </span>
               </a>
             </li>

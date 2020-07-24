@@ -15,20 +15,18 @@ import {connect} from "react-redux";
 
 import {getSortedOffers, getFilteredOffers, getPlacesCoordinates} from "../../utils.js";
 
-import {getCity, getActiveSortType, getUserName} from "../../reducer/app/selectors.js";
+import {getCity, getActiveSortType} from "../../reducer/app/selectors.js";
 import {getOffers} from "../../reducer/data/selectors.js";
 
 const Main = (props) => {
-  const {sortedOffers, city, placesCoordinates, userName} = props;
+  const {sortedOffers, city, placesCoordinates} = props;
 
   return <React.Fragment>
     <Header>
       <HeaderLogoWrap>
         <Logo/>
       </HeaderLogoWrap>
-      <MainNav
-        userName={userName}
-      />
+      <MainNav/>
     </Header>
     <div className="page page--gray page--main">
       <main className={`page__main page__main--index ${sortedOffers.length === 0 ? `page__main--index-empty` : ``}`}>
@@ -83,7 +81,6 @@ const mapStateToProps = (state) => {
   const offers = getOffers(state);
   const city = getCity(state);
   const activeSortType = getActiveSortType(state);
-  const userName = getUserName(state);
 
   const offersToShow = getFilteredOffers(offers, city);
   const placesCoordinates = getPlacesCoordinates(offersToShow);
@@ -94,7 +91,6 @@ const mapStateToProps = (state) => {
     city,
     activeSortType,
     sortedOffers,
-    userName,
     placesCoordinates,
   };
 };
