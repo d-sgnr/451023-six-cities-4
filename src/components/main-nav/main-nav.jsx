@@ -1,7 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {getAuthorizationStatus, getUserEmail} from "../../reducer/user/selectors.js";
+import {connect} from "react-redux";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 
 const MainNav = (props) => {
+  const {authorizationStatus, userEmail} = props;
+
   return <nav className="header__nav">
     <ul className="header__nav-list">
       <li className="header__nav-item user">
@@ -9,7 +14,7 @@ const MainNav = (props) => {
           <div className="header__avatar-wrapper user__avatar-wrapper">
           </div>
           <span className="header__user-name user__name">
-            {props.userName}
+            {authorizationStatus === AuthorizationStatus.AUTH ? userEmail : `Sign In`}
           </span>
         </a>
       </li>
@@ -18,7 +23,14 @@ const MainNav = (props) => {
 };
 
 MainNav.propTypes = {
-  userName: PropTypes.string.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
+  userEmail: PropTypes.string,
 };
 
-export default React.memo(MainNav);
+const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state),
+  userEmail: getUserEmail(state),
+});
+
+export {MainNav};
+export default connect(mapStateToProps)(React.memo(MainNav));

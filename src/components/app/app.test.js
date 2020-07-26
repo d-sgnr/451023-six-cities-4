@@ -5,7 +5,7 @@ import {Provider} from "react-redux";
 import App from "./app.jsx";
 import NameSpace from "../../reducer/name-space.js";
 import thunk from 'redux-thunk';
-
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 const mockStore = configureStore([thunk]);
 
 const offers = [
@@ -197,6 +197,16 @@ describe(`Render App`, () => {
         userName: `oliver.conner@gmail.com`,
         activeOffer: null,
       },
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.AUTH,
+        userProfile: {
+          avatar: `avatar`,
+          email: `email@email.ru`,
+          id: 4,
+          isPro: true,
+          name: `name`,
+        },
+      },
     });
 
     const tree = renderer
@@ -227,6 +237,16 @@ describe(`Render App`, () => {
         hoveredOffer: null,
         userName: `oliver.conner@gmail.com`,
         activeOffer: offer,
+      },
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.AUTH,
+        userProfile: {
+          avatar: `avatar`,
+          email: `email@email.ru`,
+          id: 4,
+          isPro: true,
+          name: `name`,
+        },
       },
     });
 

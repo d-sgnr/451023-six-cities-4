@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main.jsx";
-
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import NameSpace from "../../reducer/name-space.js";
@@ -167,6 +167,16 @@ describe(`MainComponent`, () => {
         hoveredOffer: null,
         userName: `oliver.conner@gmail.com`,
         activeOffer: null,
+      },
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.AUTH,
+        userProfile: {
+          avatar: `avatar`,
+          email: `email@email.ru`,
+          id: 4,
+          isPro: true,
+          name: `name`,
+        },
       },
     });
 

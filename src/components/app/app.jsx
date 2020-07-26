@@ -4,17 +4,16 @@ import Main from "../main/main.jsx";
 import Property from "../property/property.jsx";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {PageType} from "../../const.js";
-
+import SignIn from "../sign-in/sign-in.jsx";
 import {connect} from "react-redux";
 import {getPage} from "../../reducer/app/selectors.js";
-
 import {getOffers} from "../../reducer/data/selectors.js";
 
 class App extends PureComponent {
 
   _renderAppScreen() {
     const {
-      page
+      page,
     } = this.props;
 
     if (page === PageType.PROPERTY) {
@@ -26,6 +25,7 @@ class App extends PureComponent {
   }
 
   render() {
+
     return (
       <BrowserRouter>
         <Switch>
@@ -34,6 +34,9 @@ class App extends PureComponent {
           </Route>
           <Route exact path="/dev-property">
             <Property/>
+          </Route>
+          <Route exact path="/dev-signin">
+            <SignIn/>
           </Route>
         </Switch>
       </BrowserRouter>
