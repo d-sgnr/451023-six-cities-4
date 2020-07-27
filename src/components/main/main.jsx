@@ -73,7 +73,6 @@ Main.propTypes = {
   offers: PropTypes.array.isRequired,
   sortedOffers: PropTypes.array.isRequired,
   placesCoordinates: PropTypes.array.isRequired,
-  userName: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => {

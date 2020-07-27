@@ -12,3 +12,11 @@ export const parseComment = (data) => {
     },
   };
 };
+
+export const parseCommentToPost = (data) => {
+  return {
+    comment: data.comment,
+    rating: data.rating,
+  };
+};
+
