@@ -1,6 +1,6 @@
 import {extend, replaceItemInArray} from "../../utils.js";
 import {parseOffer} from "../../adapters/offers.jsx";
-import {parseComment} from "../../adapters/comments.jsx";
+import {parseComment, parseCommentToPost} from "../../adapters/comments.jsx";
 
 const initialState = {
   offers: [],
@@ -22,18 +22,21 @@ const ActionCreator = {
       payload: rawOffers,
     };
   },
+
   loadComments: (rawComments) => {
     return {
       type: ActionType.LOAD_COMMENTS,
       payload: rawComments,
     };
   },
+
   loadNearOffers: (rawNearOffers) => {
     return {
       type: ActionType.LOAD_NEAR_OFFERS,
       payload: rawNearOffers,
     };
   },
+
   changeFavorite: (offer) => ({
     type: ActionType.CHANGE_FAVORITE,
     payload: offer,
@@ -47,12 +50,25 @@ const Operation = {
         dispatch(ActionCreator.loadOffers(response.data));
       });
   },
+
   loadComments: (id) => (dispatch, getState, api) => {
     return api.get(`/comments/${id}`)
       .then((response) => {
         dispatch(ActionCreator.loadComments(response.data));
       });
   },
+
+  postComment: (id, comment, onSuccess, onError) => (dispatch, getState, api) => {
+    return api.post(`/comments/${id}`, parseCommentToPost(comment))
+      .then((response) => {
+        dispatch(ActionCreator.loadComments(response.data));
+        onSuccess();
+      })
+      .catch((error) => {
+        onError(error);
+      });
+  },
+
   loadNearOffers: (id) => (dispatch, getState, api) => {
     return api.get(`/hotels/${id}/nearby`)
       .then((response) => {
