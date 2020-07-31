@@ -12,7 +12,8 @@ exports[`MainNav should be rendered correctly when user is authorized 1`] = `
     >
       <a
         className="header__nav-link header__nav-link--profile"
-        href="#"
+        href="/favorites"
+        onClick={[Function]}
       >
         <div
           className="header__avatar-wrapper user__avatar-wrapper"
@@ -40,7 +41,8 @@ exports[`MainNav should be rendered correctly when user is not authorized 1`] = 
     >
       <a
         className="header__nav-link header__nav-link--profile"
-        href="#"
+        href="/login"
+        onClick={[Function]}
       >
         <div
           className="header__avatar-wrapper user__avatar-wrapper"

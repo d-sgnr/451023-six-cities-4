@@ -1,11 +1,12 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Main from "./main.jsx";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {Favorites} from "./favorites.jsx";
+
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import NameSpace from "../../reducer/name-space.js";
 import {Router} from "react-router-dom";
+import NameSpace from "../../reducer/name-space.js";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 import history from "../../history.js";
 
 const mockStore = configureStore([]);
@@ -145,59 +146,41 @@ const city = {
   },
 };
 
-const userName = `Max`;
-
-const mockCoordinates = [[52.3909553943508, 4.85309666406198], [52.3909553943508, 4.85309666406198]];
-
-export const PageType = {
-  INDEX: `INDEX`,
-  PROPERTY: `PROPERTY`,
+const userProfile = {
+  avatar: `avatar.img`,
+  email: `max@mail.ru`,
+  id: 123,
+  isPro: true,
+  name: `Max`,
 };
 
-describe(`MainComponent`, () => {
-  it(`MainComponent should be rendered correctly`, () => {
-    const store = mockStore({
-      [NameSpace.DATA]: {
-        offers,
-        comments: [],
-        nearOffers: offers,
-        favoriteOffers: offers,
-      },
-      [NameSpace.APP]: {
-        city,
-        page: PageType.INDEX,
-        activeSortType: `Popular`,
-        hoveredOffer: null,
-        userName: `oliver.conner@gmail.com`,
-        activeOffer: null,
-      },
-      [NameSpace.USER]: {
-        authorizationStatus: AuthorizationStatus.AUTH,
-        userProfile: {
-          avatar: `avatar`,
-          email: `email@email.ru`,
-          id: 4,
-          isPro: true,
-          name: `name`,
-        },
-      },
-    });
-
-    const tree = renderer
-      .create(
-          <Provider store={store}>
-            <Router history={history}>
-              <Main
-                city={city}
-                offers={offers}
-                onCityClick={() => {}}
-                placesCoordinates={mockCoordinates}
-                userName={userName}
-                favoriteOffers={offers}
-              />
-            </Router>
-          </Provider>).toJSON();
-
-    expect(tree).toMatchSnapshot();
+it(`Favorites should be rendered correctly`, () => {
+  const store = mockStore({
+    [NameSpace.DATA]: {
+      offers,
+      favoriteOffers: offers,
+      nearOffers: offers,
+    },
+    [NameSpace.APP]: {
+      city,
+    },
+    [NameSpace.USER]: {
+      authorizationStatus: AuthorizationStatus.AUTH,
+      userProfile,
+    },
   });
+
+  const tree = renderer.create(
+      <Provider store={store}>
+        <Router history={history}>
+          <Favorites
+            offers={offers}
+            favoriteOffers={offers}
+            userName={`max@mail.ru`}
+            loadFavoriteOffers={() => {}}
+          />
+        </Router>
+      </Provider>).toJSON();
+
+  expect(tree).toMatchSnapshot();
 });

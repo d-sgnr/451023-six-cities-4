@@ -1,45 +1,43 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
+import Favorites from "../favorites/favorites.jsx";
 import Property from "../property/property.jsx";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import history from "../../history.js";
+
+import {Route, Switch, Router, withRouter} from "react-router-dom";
 import {PageType} from "../../const.js";
 import SignIn from "../sign-in/sign-in.jsx";
 import {connect} from "react-redux";
 import {getPage} from "../../reducer/app/selectors.js";
 import {getOffers} from "../../reducer/data/selectors.js";
+import {AppRoute} from "../../const.js";
+import withPrivateRoute from "../../hocs/with-private-route/with-private-route.jsx";
 
 class App extends PureComponent {
 
-  _renderAppScreen() {
-    const {
-      page,
-    } = this.props;
-
-    if (page === PageType.PROPERTY) {
-      return (
-        <Property/>
-      );
-    } return (
-      <Main/>);
-  }
-
   render() {
-
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
-          <Route exact path="/">
-            {this._renderAppScreen()}
-          </Route>
-          <Route exact path="/dev-property">
-            <Property/>
-          </Route>
-          <Route exact path="/dev-signin">
-            <SignIn/>
-          </Route>
+          <Route
+            exact path={AppRoute.ROOT}
+            component={withRouter(Main)}
+          />
+          <Route
+            exact path={`${AppRoute.PROPERTY}/:id`}
+            component={withRouter(Property)}
+          />
+          <Route
+            exact path={AppRoute.LOGIN}
+            component={SignIn}
+          />
+          <Route
+            exact path={AppRoute.FAVORITES}
+            component={withPrivateRoute(Favorites)}
+          />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }

@@ -18,12 +18,14 @@ exports[`Property should be rendered correctly 1`] = `
         >
           <a
             className="header__logo-link header__logo-link--active"
+            href="/"
+            onClick={[Function]}
           >
             <img
               alt="6 cities logo"
               className="header__logo"
               height="41"
-              src="img/logo.svg"
+              src="/img/logo.svg"
               width="81"
             />
           </a>
@@ -39,7 +41,8 @@ exports[`Property should be rendered correctly 1`] = `
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/favorites"
+                onClick={[Function]}
               >
                 <div
                   className="header__avatar-wrapper user__avatar-wrapper"
@@ -295,7 +298,7 @@ exports[`Property should be rendered correctly 1`] = `
                   alt="Host avatar"
                   className="property__avatar user__avatar"
                   height="74"
-                  src="img/avatar-angelina.jpg"
+                  src="/img/1.png"
                   width="74"
                 />
               </div>
@@ -572,7 +575,7 @@ exports[`Property should be rendered correctly 1`] = `
                 className="place-card__name"
               >
                 <a
-                  href="#"
+                  href="/offer/0.5370333545660935"
                   onClick={[Function]}
                 >
                   Beautiful & luxurious studio at great location
@@ -672,7 +675,7 @@ exports[`Property should be rendered correctly 1`] = `
                 className="place-card__name"
               >
                 <a
-                  href="#"
+                  href="/offer/0.5253437912943446"
                   onClick={[Function]}
                 >
                   Beautiful & luxurious studio at great location
@@ -772,7 +775,7 @@ exports[`Property should be rendered correctly 1`] = `
                 className="place-card__name"
               >
                 <a
-                  href="#"
+                  href="/offer/0.38919585042046134"
                   onClick={[Function]}
                 >
                   Beautiful & luxurious studio at great location

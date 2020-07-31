@@ -10,7 +10,7 @@ export const getUniqueObjectsArray = (array, key) => {
 
 export const replaceItemInArray = (array, newItem, key) => {
   return array.map((item) => {
-    if (item === newItem) {
+    if (item.id === newItem.id) {
       return extend(item, {
         [key]: !item[key],
       });

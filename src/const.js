@@ -9,6 +9,7 @@ export const RATING = {
 export const PropertyType = {
   CITY: `cities`,
   NEAR: `near-places`,
+  FAVORITE: `favorites`,
 };
 
 export const PLACE_TYPE = {
@@ -56,4 +57,11 @@ export const Cities = {
     name: `Dusseldorf`,
     coordinates: [51.230569, 6.787428],
   },
+};
+
+export const AppRoute = {
+  LOGIN: `/login`,
+  FAVORITES: `/favorites`,
+  PROPERTY: `/offer`,
+  ROOT: `/`,
 };

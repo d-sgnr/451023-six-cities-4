@@ -6,8 +6,10 @@ import App from "./app.jsx";
 import NameSpace from "../../reducer/name-space.js";
 import thunk from 'redux-thunk';
 import {AuthorizationStatus} from "../../reducer/user/user.js";
-const mockStore = configureStore([thunk]);
+import {Router} from "react-router-dom";
+import history from "../../history.js";
 
+const mockStore = configureStore([thunk]);
 const offers = [
   {
     bedrooms: 3,
@@ -212,11 +214,13 @@ describe(`Render App`, () => {
     const tree = renderer
       .create(
           <Provider store={store}>
-            <App
-              city={city}
-              page={PageType.INDEX}
-              userName={userName}
-            />
+            <Router history={history}>
+              <App
+                city={city}
+                page={PageType.INDEX}
+                userName={userName}
+              />
+            </Router>
           </Provider>).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -253,19 +257,21 @@ describe(`Render App`, () => {
     const tree = renderer
       .create(
           <Provider store={store}>
-            <App
-              page={PageType.PROPERTY}
-              city={city}
-              userName={userName}
-              mockCoordinates={mockCoordinates}
-              nearCoordinates={mockCoordinates}
-              offer={offer}
-              nearOffers={offers}
-              reviews={reviews}
-              loadComments={() => {}}
-              loadNearOffers={() => {}}
-              onBookmarkClick={() => {}}
-            />
+            <Router history={history}>
+              <App
+                page={PageType.PROPERTY}
+                city={city}
+                userName={userName}
+                mockCoordinates={mockCoordinates}
+                nearCoordinates={mockCoordinates}
+                offer={offer}
+                nearOffers={offers}
+                reviews={reviews}
+                loadComments={() => {}}
+                loadNearOffers={() => {}}
+                onBookmarkClick={() => {}}
+              />
+            </Router>
           </Provider>).toJSON();
 
     expect(tree).toMatchSnapshot();

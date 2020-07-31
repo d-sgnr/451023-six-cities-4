@@ -5,7 +5,7 @@ import ReviewFormRating from "./review-form-rating.jsx";
 it(`ReviewFormRating should be rendered correctly`, () => {
   const tree = renderer.create(
       <ReviewFormRating
-        ratingNumber={`1`}
+        ratingNumber={1}
         onRatingChange={() => {}}
         isChecked={false}
       />).toJSON();
@@ -16,7 +16,7 @@ it(`ReviewFormRating should be rendered correctly`, () => {
 it(`ReviewFormRating should be rendered correctly when checked`, () => {
   const tree = renderer.create(
       <ReviewFormRating
-        ratingNumber={`2`}
+        ratingNumber={2}
         onRatingChange={() => {}}
         isChecked={true}
       />).toJSON();

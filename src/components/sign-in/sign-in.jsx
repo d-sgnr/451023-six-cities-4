@@ -9,22 +9,21 @@ import {Redirect} from "react-router-dom";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {connect} from "react-redux";
 import SignInForm from "../sign-in-form/sign-in-form.jsx";
+import {AppRoute} from "../../const.js";
 
 const SignIn = (props) => {
   const {authorizationStatus} = props;
 
   switch (authorizationStatus) {
     case AuthorizationStatus.AUTH:
-      return <Redirect from="/dev-signin" to="/" />;
+      return <Redirect from={AppRoute.LOGIN} to={AppRoute.ROOT} />;
     case AuthorizationStatus.NO_AUTH:
       return (<div className="page page--gray page--login">
         <Header>
           <HeaderLogoWrap>
             <Logo/>
           </HeaderLogoWrap>
-          <MainNav
-            userName={`Max`}
-          />
+          <MainNav/>
         </Header>
 
         <main className="page__main page__main--login">

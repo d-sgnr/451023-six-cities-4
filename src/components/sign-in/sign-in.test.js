@@ -6,6 +6,8 @@ import {AuthorizationStatus} from "../../reducer/user/user.js";
 import configureStore from "redux-mock-store";
 import NameSpace from "../../reducer/name-space.js";
 import {Provider} from "react-redux";
+import {Router} from "react-router-dom";
+import history from "../../history.js";
 
 const mockStore = configureStore([]);
 
@@ -25,9 +27,11 @@ it(`SignIn Page should be rendered correctly`, () => {
 
   const tree = renderer.create(
       <Provider store={store}>
-        <SignIn
-          authorizationStatus={AuthorizationStatus.NO_AUTH}
-        />
+        <Router history={history}>
+          <SignIn
+            authorizationStatus={AuthorizationStatus.NO_AUTH}
+          />
+        </Router>
       </Provider>).toJSON();
 
   expect(tree).toMatchSnapshot();

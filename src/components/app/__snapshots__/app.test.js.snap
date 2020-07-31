@@ -16,12 +16,14 @@ Array [
         >
           <a
             className="header__logo-link header__logo-link--active"
+            href="/"
+            onClick={[Function]}
           >
             <img
               alt="6 cities logo"
               className="header__logo"
               height="41"
-              src="img/logo.svg"
+              src="/img/logo.svg"
               width="81"
             />
           </a>
@@ -37,7 +39,8 @@ Array [
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/favorites"
+                onClick={[Function]}
               >
                 <div
                   className="header__avatar-wrapper user__avatar-wrapper"
@@ -234,7 +237,7 @@ Array [
                     className="place-card__name"
                   >
                     <a
-                      href="#"
+                      href="/offer/0.6702846961709525"
                       onClick={[Function]}
                     >
                       Beautiful & luxurious studio at great location
@@ -334,7 +337,7 @@ Array [
                     className="place-card__name"
                   >
                     <a
-                      href="#"
+                      href="/offer/0.8586592638407946"
                       onClick={[Function]}
                     >
                       Beautiful & luxurious studio at great location
@@ -434,7 +437,7 @@ Array [
                     className="place-card__name"
                   >
                     <a
-                      href="#"
+                      href="/offer/0.7610071537050489"
                       onClick={[Function]}
                     >
                       Beautiful & luxurious studio at great location
@@ -487,12 +490,14 @@ Array [
         >
           <a
             className="header__logo-link header__logo-link--active"
+            href="/"
+            onClick={[Function]}
           >
             <img
               alt="6 cities logo"
               className="header__logo"
               height="41"
-              src="img/logo.svg"
+              src="/img/logo.svg"
               width="81"
             />
           </a>
@@ -508,7 +513,8 @@ Array [
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/favorites"
+                onClick={[Function]}
               >
                 <div
                   className="header__avatar-wrapper user__avatar-wrapper"
@@ -705,7 +711,7 @@ Array [
                     className="place-card__name"
                   >
                     <a
-                      href="#"
+                      href="/offer/0.6702846961709525"
                       onClick={[Function]}
                     >
                       Beautiful & luxurious studio at great location
@@ -805,7 +811,7 @@ Array [
                     className="place-card__name"
                   >
                     <a
-                      href="#"
+                      href="/offer/0.8586592638407946"
                       onClick={[Function]}
                     >
                       Beautiful & luxurious studio at great location
@@ -905,7 +911,7 @@ Array [
                     className="place-card__name"
                   >
                     <a
-                      href="#"
+                      href="/offer/0.7610071537050489"
                       onClick={[Function]}
                     >
                       Beautiful & luxurious studio at great location
