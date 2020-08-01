@@ -5,8 +5,7 @@ import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import NameSpace from "../../reducer/name-space.js";
-import {Router} from "react-router-dom";
-import history from "../../history.js";
+import {BrowserRouter as Router} from "react-router-dom";
 
 const mockStore = configureStore([]);
 
@@ -186,7 +185,7 @@ describe(`MainComponent`, () => {
     const tree = renderer
       .create(
           <Provider store={store}>
-            <Router history={history}>
+            <Router>
               <Main
                 city={city}
                 offers={offers}

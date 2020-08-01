@@ -12,7 +12,7 @@ import {connect} from "react-redux";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
 
 import {getUserName} from "../../reducer/app/selectors.js";
-import {getFavoriteOffers} from "../../reducer/data/selectors.js";
+import {getFavoriteOffers, getFavoriteCities} from "../../reducer/data/selectors.js";
 import {PropertyType} from "../../const.js";
 
 class Favorites extends React.PureComponent {
@@ -26,7 +26,7 @@ class Favorites extends React.PureComponent {
   }
 
   render() {
-    const {favoriteOffers, userName} = this.props;
+    const {favoriteOffers, favoriteCities, userName} = this.props;
 
     return <div className={`page` + favoriteOffers.length === 0 ? ` page--favorites-empty` : ``}>
       <Header>
@@ -47,6 +47,7 @@ class Favorites extends React.PureComponent {
               <FavoritesList
                 offers={favoriteOffers}
                 offersType={PropertyType.FAVORITE}
+                cities={favoriteCities}
               />
             </section>}
         </div>
@@ -62,6 +63,7 @@ class Favorites extends React.PureComponent {
 }
 
 Favorites.propTypes = {
+  favoriteCities: PropTypes.array.isRequired,
   loadFavoriteOffers: PropTypes.func.isRequired,
   favoriteOffers: PropTypes.array.isRequired,
   userName: PropTypes.string.isRequired,
@@ -70,6 +72,7 @@ Favorites.propTypes = {
 const mapStateToProps = (state) => ({
   favoriteOffers: getFavoriteOffers(state),
   userName: getUserName(state),
+  favoriteCities: getFavoriteCities(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

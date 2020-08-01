@@ -5,8 +5,7 @@ import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import NameSpace from "../../reducer/name-space.js";
-import {Router} from "react-router-dom";
-import history from "../../history.js";
+import {BrowserRouter as Router} from "react-router-dom";
 
 const PageType = {
   INDEX: `INDEX`,
@@ -210,7 +209,7 @@ it(`Property should be rendered correctly`, () => {
 
   const tree = renderer.create(
       <Provider store={store}>
-        <Router history={history}>
+        <Router>
           <Property
             nearCoordinates={mockCoordinates}
             offer={offer}

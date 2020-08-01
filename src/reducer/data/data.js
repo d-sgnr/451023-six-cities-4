@@ -87,7 +87,7 @@ const Operation = {
   postComment: (id, comment, onSuccess, onError) => (dispatch, getState, api) => {
     return api.post(`/comments/${id}`, parseCommentToPost(comment))
       .then((response) => {
-        dispatch(ActionCreator.loadComments(response.data));
+        dispatch(ActionCreator.setComments(response.data));
         onSuccess();
       })
       .catch((error) => {

@@ -7,8 +7,7 @@ import NameSpace from "../../reducer/name-space.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {Router} from "react-router-dom";
-import history from "../../history.js";
+import {BrowserRouter as Router} from "react-router-dom";
 
 const mockStore = configureStore([]);
 
@@ -138,6 +137,25 @@ const offers = [
   },
 ];
 
+const cities = [
+  {
+    name: `Amsterdam`,
+    location: {
+      latitude: 52.373057,
+      longitude: 4.892557,
+      zoom: 10,
+    },
+  },
+  {
+    name: `Amsterdam`,
+    location: {
+      latitude: 52.373057,
+      longitude: 4.892557,
+      zoom: 10,
+    },
+  }
+];
+
 it(`FavoritesList should be rendered correctly`, () => {
   const store = mockStore({
     [NameSpace.DATA]: {
@@ -150,10 +168,11 @@ it(`FavoritesList should be rendered correctly`, () => {
 
   const tree = renderer.create(
       <Provider store={store}>
-        <Router history={history}>
+        <Router>
           <FavoritesList
             offers={offers}
             offersType={PropertyType.FAVORITE}
+            cities={cities}
           />
         </Router>
       </Provider>

@@ -9,7 +9,7 @@ import ReviewForm from "../review-form/review-form.jsx";
 import {PropertyType} from "../../const.js";
 import {connect} from "react-redux";
 import {getUserName} from "../../reducer/app/selectors.js";
-import history from "../../history.js";
+
 import {getComments, getNearOffers, getOfferById} from "../../reducer/data/selectors.js";
 import {AppRoute} from "../../const.js";
 import {getPlacesCoordinates} from "../../utils.js";
@@ -57,7 +57,7 @@ class Property extends PureComponent {
   }
 
   render() {
-    const {offer, nearOffers, nearCoordinates, onBookmarkClick, userName, reviews, authorizationStatus} = this.props;
+    const {offer, nearOffers, nearCoordinates, onBookmarkClick, userName, reviews, authorizationStatus, history} = this.props;
 
     const digitalRating = getDigitalRating(offer.rating * 10);
 
@@ -192,6 +192,7 @@ class Property extends PureComponent {
                   city={offer.city}
                   offers={nearOffers}
                   offersType={PropertyType.NEAR}
+                  history={history}
                 />
               </section>
             </div> : ``
@@ -203,6 +204,7 @@ class Property extends PureComponent {
 }
 
 Property.propTypes = {
+  history: PropTypes.object,
   offer: offerType,
   nearOffers: PropTypes.array.isRequired,
   nearCoordinates: PropTypes.array.isRequired,

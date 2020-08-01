@@ -4,7 +4,6 @@ import {PropertyType} from "../../const.js";
 import {capitalizeFirstLetter} from "../../utils.js";
 import {connect} from "react-redux";
 import {ActionCreator as AppActionCreator} from "../../reducer/app/app.js";
-import history from "../../history.js";
 
 import {Operation as DataOperation} from "../../reducer/data/data.js";
 import {offerType} from "../../proptypes/proptypes.jsx";
@@ -15,7 +14,7 @@ import {AuthorizationStatus} from "../../reducer/user/user.js";
 
 const PlaceCard = (props) => {
 
-  const {offer, offersType, onBookmarkClick, onCardHover, onCardMouseLeave, authorizationStatus} = props;
+  const {offer, offersType, onBookmarkClick, onCardHover, onCardMouseLeave, authorizationStatus, history} = props;
 
   return (<article
     className={`${offersType === PropertyType.CITY ? `${offersType}__place-` : `${offersType}__`}card place-card`}
@@ -72,6 +71,7 @@ const PlaceCard = (props) => {
 };
 
 PlaceCard.propTypes = {
+  history: PropTypes.object,
   authorizationStatus: PropTypes.string.isRequired,
   offer: offerType.isRequired,
   offersType: PropTypes.oneOf([PropertyType.CITY, PropertyType.NEAR, PropertyType.FAVORITE]).isRequired,

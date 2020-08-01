@@ -6,8 +6,7 @@ import App from "./app.jsx";
 import NameSpace from "../../reducer/name-space.js";
 import thunk from 'redux-thunk';
 import {AuthorizationStatus} from "../../reducer/user/user.js";
-import {Router} from "react-router-dom";
-import history from "../../history.js";
+import {BrowserRouter as Router} from "react-router-dom";
 
 const mockStore = configureStore([thunk]);
 const offers = [
@@ -214,7 +213,7 @@ describe(`Render App`, () => {
     const tree = renderer
       .create(
           <Provider store={store}>
-            <Router history={history}>
+            <Router>
               <App
                 city={city}
                 page={PageType.INDEX}
@@ -257,7 +256,7 @@ describe(`Render App`, () => {
     const tree = renderer
       .create(
           <Provider store={store}>
-            <Router history={history}>
+            <Router>
               <App
                 page={PageType.PROPERTY}
                 city={city}

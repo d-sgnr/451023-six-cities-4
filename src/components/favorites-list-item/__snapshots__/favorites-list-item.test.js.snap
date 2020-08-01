@@ -110,7 +110,7 @@ exports[`FavoritesListItem should be rendered correctly 1`] = `
           className="place-card__name"
         >
           <a
-            href="/offer/0.6011209847469174"
+            href="/offer/0.15865851289412225"
             onClick={[Function]}
           >
             Beautiful & luxurious studio at great location
@@ -210,7 +210,7 @@ exports[`FavoritesListItem should be rendered correctly 1`] = `
           className="place-card__name"
         >
           <a
-            href="/offer/0.6618898352415403"
+            href="/offer/0.21300942287846802"
             onClick={[Function]}
           >
             Beautiful & luxurious studio at great location
@@ -310,7 +310,7 @@ exports[`FavoritesListItem should be rendered correctly 1`] = `
           className="place-card__name"
         >
           <a
-            href="/offer/0.8910053766057466"
+            href="/offer/0.9791514746388397"
             onClick={[Function]}
           >
             Beautiful & luxurious studio at great location

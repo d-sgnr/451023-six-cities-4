@@ -3,8 +3,7 @@ import renderer from "react-test-renderer";
 import FavoritesListItem from "./favorites-list-item.jsx";
 import {PropertyType} from "../../const.js";
 import {Provider} from "react-redux";
-import {Router} from "react-router-dom";
-import history from "../../history.js";
+import {BrowserRouter as Router} from "react-router-dom";
 import configureStore from "redux-mock-store";
 
 import NameSpace from "../../reducer/name-space.js";
@@ -161,7 +160,7 @@ it(`FavoritesListItem should be rendered correctly`, () => {
 
   const tree = renderer.create(
       <Provider store={store}>
-        <Router history={history}>
+        <Router>
           <FavoritesListItem
             offers={offers}
             offersType={PropertyType.FAVORITE}

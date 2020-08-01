@@ -8,8 +8,8 @@ import {Provider} from "react-redux";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
 import NameSpace from "../../reducer/name-space.js";
 const mockStore = configureStore([]);
-import {Router} from "react-router-dom";
-import history from "../../history.js";
+import {BrowserRouter as Router} from "react-router-dom";
+
 const offers = [
   {
     bedrooms: 3,
@@ -149,7 +149,7 @@ it(`OffersList should be rendered correctly`, () => {
 
   const tree = renderer.create(
       <Provider store={store}>
-        <Router history={history}>
+        <Router>
           <OffersList
             offers={offers}
             offersType={PropertyType.CITY}

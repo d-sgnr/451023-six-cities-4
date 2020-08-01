@@ -19,7 +19,7 @@ import {getCity, getActiveSortType} from "../../reducer/app/selectors.js";
 import {getOffers} from "../../reducer/data/selectors.js";
 
 const Main = (props) => {
-  const {sortedOffers, city, placesCoordinates} = props;
+  const {sortedOffers, city, placesCoordinates, history} = props;
 
   return <React.Fragment>
     <Header>
@@ -50,6 +50,7 @@ const Main = (props) => {
                   city={city}
                   offers={sortedOffers}
                   offersType={PropertyType.CITY}
+                  history={history}
                 />
               </section>
               <div className="cities__right-section">
@@ -69,6 +70,7 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
+  history: PropTypes.object.isRequired,
   city: cityType,
   offers: PropTypes.array.isRequired,
   sortedOffers: PropTypes.array.isRequired,

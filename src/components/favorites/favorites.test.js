@@ -4,10 +4,9 @@ import {Favorites} from "./favorites.jsx";
 
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {Router} from "react-router-dom";
+import {BrowserRouter as Router} from "react-router-dom";
 import NameSpace from "../../reducer/name-space.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
-import history from "../../history.js";
 
 const mockStore = configureStore([]);
 
@@ -146,6 +145,25 @@ const city = {
   },
 };
 
+const cities = [
+  {
+    name: `Amsterdam`,
+    location: {
+      latitude: 52.373057,
+      longitude: 4.892557,
+      zoom: 10,
+    },
+  },
+  {
+    name: `Amsterdam`,
+    location: {
+      latitude: 52.373057,
+      longitude: 4.892557,
+      zoom: 10,
+    },
+  }
+];
+
 const userProfile = {
   avatar: `avatar.img`,
   email: `max@mail.ru`,
@@ -172,12 +190,13 @@ it(`Favorites should be rendered correctly`, () => {
 
   const tree = renderer.create(
       <Provider store={store}>
-        <Router history={history}>
+        <Router>
           <Favorites
             offers={offers}
             favoriteOffers={offers}
             userName={`max@mail.ru`}
             loadFavoriteOffers={() => {}}
+            favoriteCities={cities}
           />
         </Router>
       </Provider>).toJSON();

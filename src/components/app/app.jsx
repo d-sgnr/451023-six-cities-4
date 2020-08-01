@@ -3,9 +3,8 @@ import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 import Favorites from "../favorites/favorites.jsx";
 import Property from "../property/property.jsx";
-import history from "../../history.js";
 
-import {Route, Switch, Router, withRouter} from "react-router-dom";
+import {Route, Switch, BrowserRouter as Router} from "react-router-dom";
 import {PageType} from "../../const.js";
 import SignIn from "../sign-in/sign-in.jsx";
 import {connect} from "react-redux";
@@ -18,15 +17,15 @@ class App extends PureComponent {
 
   render() {
     return (
-      <Router history={history}>
+      <Router>
         <Switch>
           <Route
             exact path={AppRoute.ROOT}
-            component={withRouter(Main)}
+            component={Main}
           />
           <Route
             exact path={`${AppRoute.PROPERTY}/:id`}
-            component={withRouter(Property)}
+            component={Property}
           />
           <Route
             exact path={AppRoute.LOGIN}

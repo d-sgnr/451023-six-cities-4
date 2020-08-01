@@ -91,7 +91,7 @@ exports[`OffersList should be rendered correctly 1`] = `
         className="place-card__name"
       >
         <a
-          href="/offer/0.5297359206424943"
+          href="/offer/0.7395219687053891"
           onClick={[Function]}
         >
           Beautiful & luxurious studio at great location
@@ -191,7 +191,7 @@ exports[`OffersList should be rendered correctly 1`] = `
         className="place-card__name"
       >
         <a
-          href="/offer/0.19195756622388682"
+          href="/offer/0.8761805845108934"
           onClick={[Function]}
         >
           Beautiful & luxurious studio at great location
@@ -291,7 +291,7 @@ exports[`OffersList should be rendered correctly 1`] = `
         className="place-card__name"
       >
         <a
-          href="/offer/0.9751801859198941"
+          href="/offer/0.8677364006867276"
           onClick={[Function]}
         >
           Beautiful & luxurious studio at great location

@@ -1,5 +1,6 @@
 import {createSelector} from "reselect";
 import NameSpace from "../name-space.js";
+import {getUniqueObjectsArray} from "../../utils.js";
 
 const NAME_SPACE = NameSpace.DATA;
 
@@ -17,6 +18,16 @@ export const getNearOffers = (state) => {
 
 export const getFavoriteOffers = (state) => {
   return state[NAME_SPACE].favoriteOffers;
+};
+
+export const getFavoriteCities = (state) => {
+  const favoriteOffers = getFavoriteOffers(state);
+
+  const allCities = favoriteOffers.map((offer) => {
+    return offer.city;
+  });
+
+  return getUniqueObjectsArray(allCities, `name`);
 };
 
 export const getOfferById = (state, id) => {

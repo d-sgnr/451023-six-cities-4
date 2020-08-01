@@ -5,9 +5,8 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import NameSpace from "../../reducer/name-space.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
-import {Router} from "react-router-dom";
+import {BrowserRouter as Router} from "react-router-dom";
 import thunk from 'redux-thunk';
-import history from "../../history.js";
 
 const mockStore = configureStore([thunk]);
 
@@ -156,7 +155,7 @@ it(`MainNav should be rendered correctly when user is authorized`, () => {
 
   const tree = renderer.create(
       <Provider store={store}>
-        <Router history={history}>
+        <Router>
           <MainNav
             authorizationStatus={AuthorizationStatus.AUTH}
             userEmail={`email@email.ru`}
@@ -180,7 +179,7 @@ it(`MainNav should be rendered correctly when user is not authorized`, () => {
 
   const tree = renderer.create(
       <Provider store={store}>
-        <Router history={history}>
+        <Router>
           <MainNav
             authorizationStatus={AuthorizationStatus.NO_AUTH}
           />
