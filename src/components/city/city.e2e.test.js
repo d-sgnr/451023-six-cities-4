@@ -1,35 +1,28 @@
-it(``, function () {});
+import React from "react";
+import Enzyme, {shallow} from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+import {City} from "./city.jsx";
+import {city} from "../../test-state.js";
 
-// import React from "react";
-// import Enzyme, {shallow} from "enzyme";
-// import Adapter from "enzyme-adapter-react-16";
-// import City from "./city.jsx";
+Enzyme.configure({
+  adapter: new Adapter(),
+});
 
-// Enzyme.configure({
-//   adapter: new Adapter(),
-// });
+it(`City button should be pressed`, () => {
+  const onCityClick = jest.fn();
 
-// const city = {
-//   name: `Paris`,
-//   coordinates: [48.856663, 2.351556],
-// };
+  const cityElement = shallow(
+      <City
+        city={city}
+        onCityClick={onCityClick}
+        isActive={true}
+      />
+  );
 
-// it(`City button should be pressed`, () => {
-//   const onCityClick = jest.fn();
+  const cityButton = cityElement.find(`.locations__item-link`);
 
-//   const cityElement = shallow(
-//       <City
-//         city={city}
-//         onCityClick={onCityClick}
-//         isActive={true}
-//       />
-//   );
+  cityButton.simulate(`click`);
 
-//   const cityButton = cityElement.find(`.locations__item-link`);
-
-//   cityButton.simulate(`click`);
-
-//   expect(onCityClick).toHaveBeenCalledTimes(1);
-
-// });
+  expect(onCityClick).toHaveBeenCalledTimes(1);
+});
 

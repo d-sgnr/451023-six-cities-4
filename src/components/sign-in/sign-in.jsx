@@ -6,7 +6,7 @@ import MainNav from "../main-nav/main-nav.jsx";
 import HeaderLogoWrap from "../header-logo-wrap/header-logo-wrap.jsx";
 import Logo from "../logo/logo.jsx";
 import {Redirect} from "react-router-dom";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {AuthorizationStatus} from "../../const.js";
 import {connect} from "react-redux";
 import SignInForm from "../sign-in-form/sign-in-form.jsx";
 import {AppRoute} from "../../const.js";

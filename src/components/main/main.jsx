@@ -70,7 +70,7 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  history: PropTypes.object.isRequired,
+  history: PropTypes.object,
   city: cityType,
   offers: PropTypes.array.isRequired,
   sortedOffers: PropTypes.array.isRequired,

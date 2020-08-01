@@ -22,7 +22,7 @@ import {ActionCreator as AppActionCreator} from "../../reducer/app/app.js";
 
 import {Operation as DataOperation} from "../../reducer/data/data.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {AuthorizationStatus} from "../../const.js";
 import {offerType} from "../../proptypes/proptypes.jsx";
 
 const WrappedReviewForm = withReviewForm(ReviewForm);

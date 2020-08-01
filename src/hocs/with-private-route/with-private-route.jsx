@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 import {AppRoute} from "../../const.js";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {AuthorizationStatus} from "../../const.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 
 export default function withPrivateRoute(Component) {

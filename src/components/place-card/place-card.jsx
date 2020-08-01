@@ -10,7 +10,7 @@ import {offerType} from "../../proptypes/proptypes.jsx";
 import {AppRoute} from "../../const.js";
 import {Link} from "react-router-dom";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {AuthorizationStatus} from "../../const.js";
 
 const PlaceCard = (props) => {
 

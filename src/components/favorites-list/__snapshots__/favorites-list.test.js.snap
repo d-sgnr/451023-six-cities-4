@@ -113,7 +113,7 @@ exports[`FavoritesList should be rendered correctly 1`] = `
             className="place-card__name"
           >
             <a
-              href="/offer/0.829171167754472"
+              href="/offer/1"
               onClick={[Function]}
             >
               Beautiful & luxurious studio at great location
@@ -213,107 +213,7 @@ exports[`FavoritesList should be rendered correctly 1`] = `
             className="place-card__name"
           >
             <a
-              href="/offer/0.2618892840510352"
-              onClick={[Function]}
-            >
-              Beautiful & luxurious studio at great location
-            </a>
-          </h2>
-          <p
-            className="place-card__type"
-          >
-            Apartment
-          </p>
-        </div>
-      </article>
-      <article
-        className="favorites__card place-card"
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-      >
-        
-        <div
-          className="favorites__image-wrapper place-card__image-wrapper"
-        >
-          <a
-            href="#"
-          >
-            <img
-              alt="Beautiful & luxurious studio at great location image"
-              className="place-card__image"
-              height="200"
-              src="img/apartment-01.jpg"
-              width="260"
-            />
-          </a>
-        </div>
-        <div
-          className="place-card__info"
-        >
-          <div
-            className="place-card__price-wrapper"
-          >
-            <div
-              className="place-card__price"
-            >
-              <b
-                className="place-card__price-value"
-              >
-                €
-                120
-              </b>
-              <span
-                className="place-card__price-text"
-              >
-                / night
-              </span>
-            </div>
-            <button
-              className="place-card__bookmark-button button"
-              onClick={[Function]}
-              type="button"
-            >
-              <svg
-                className="place-card__bookmark-icon"
-                height="19"
-                width="18"
-              >
-                <use
-                  xlinkHref="#icon-bookmark"
-                />
-              </svg>
-              <span
-                className="visually-hidden"
-              >
-                To bookmarks
-              </span>
-            </button>
-          </div>
-          <div
-            className="place-card__rating rating"
-          >
-            <div
-              className="place-card__stars rating__stars"
-            >
-              <span
-                style={
-                  Object {
-                    "width": "48%",
-                  }
-                }
-              />
-              <span
-                className="visually-hidden"
-              >
-                Rating
-              </span>
-            </div>
-          </div>
-          <h2
-            className="place-card__name"
-          >
-            <a
-              href="/offer/0.39970790646595256"
+              href="/offer/2"
               onClick={[Function]}
             >
               Beautiful & luxurious studio at great location
@@ -437,7 +337,7 @@ exports[`FavoritesList should be rendered correctly 1`] = `
             className="place-card__name"
           >
             <a
-              href="/offer/0.829171167754472"
+              href="/offer/1"
               onClick={[Function]}
             >
               Beautiful & luxurious studio at great location
@@ -537,107 +437,7 @@ exports[`FavoritesList should be rendered correctly 1`] = `
             className="place-card__name"
           >
             <a
-              href="/offer/0.2618892840510352"
-              onClick={[Function]}
-            >
-              Beautiful & luxurious studio at great location
-            </a>
-          </h2>
-          <p
-            className="place-card__type"
-          >
-            Apartment
-          </p>
-        </div>
-      </article>
-      <article
-        className="favorites__card place-card"
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-      >
-        
-        <div
-          className="favorites__image-wrapper place-card__image-wrapper"
-        >
-          <a
-            href="#"
-          >
-            <img
-              alt="Beautiful & luxurious studio at great location image"
-              className="place-card__image"
-              height="200"
-              src="img/apartment-01.jpg"
-              width="260"
-            />
-          </a>
-        </div>
-        <div
-          className="place-card__info"
-        >
-          <div
-            className="place-card__price-wrapper"
-          >
-            <div
-              className="place-card__price"
-            >
-              <b
-                className="place-card__price-value"
-              >
-                €
-                120
-              </b>
-              <span
-                className="place-card__price-text"
-              >
-                / night
-              </span>
-            </div>
-            <button
-              className="place-card__bookmark-button button"
-              onClick={[Function]}
-              type="button"
-            >
-              <svg
-                className="place-card__bookmark-icon"
-                height="19"
-                width="18"
-              >
-                <use
-                  xlinkHref="#icon-bookmark"
-                />
-              </svg>
-              <span
-                className="visually-hidden"
-              >
-                To bookmarks
-              </span>
-            </button>
-          </div>
-          <div
-            className="place-card__rating rating"
-          >
-            <div
-              className="place-card__stars rating__stars"
-            >
-              <span
-                style={
-                  Object {
-                    "width": "48%",
-                  }
-                }
-              />
-              <span
-                className="visually-hidden"
-              >
-                Rating
-              </span>
-            </div>
-          </div>
-          <h2
-            className="place-card__name"
-          >
-            <a
-              href="/offer/0.39970790646595256"
+              href="/offer/2"
               onClick={[Function]}
             >
               Beautiful & luxurious studio at great location

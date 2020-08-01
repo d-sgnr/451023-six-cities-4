@@ -1,9 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-
 import {Operation as DataOperation} from "../../reducer/data/data.js";
-
 
 export default function withLoader(Component) {
   class WithLoader extends PureComponent {

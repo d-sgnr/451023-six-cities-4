@@ -21,7 +21,7 @@ exports[`MainNav should be rendered correctly when user is authorized 1`] = `
         <span
           className="header__user-name user__name"
         >
-          email@email.ru
+          max@mail.ru
         </span>
       </a>
     </li>

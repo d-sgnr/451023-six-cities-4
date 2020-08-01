@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {getAuthorizationStatus, getUserEmail} from "../../reducer/user/selectors.js";
 import {connect} from "react-redux";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {AuthorizationStatus} from "../../const.js";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../const.js";
 

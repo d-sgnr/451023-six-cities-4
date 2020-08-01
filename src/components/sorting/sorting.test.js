@@ -4,17 +4,11 @@ import Sorting from "./sorting.jsx";
 
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
-
-const mockStore = configureStore([]);
-
-import NameSpace from "../../reducer/name-space.js";
+import {mockStore} from "../../test-state.js";
 
 it(`Sorting should be rendered correctly`, () => {
-  const store = mockStore({
-    [NameSpace.APP]: {
-      activeSortType: `Popular`,
-    },
-  });
+  const testStore = configureStore();
+  const store = testStore(mockStore);
 
   const tree = renderer.create(
       <Provider store={store}>

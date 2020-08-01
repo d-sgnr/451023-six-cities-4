@@ -7,5 +7,7 @@ export const getAuthorizationStatus = (state) => {
 };
 
 export const getUserEmail = (state) => {
-  return state[NAME_SPACE].userProfile.email;
+  if (state[NAME_SPACE].userProfile) {
+    return state[NAME_SPACE].userProfile.email;
+  } return ``;
 };

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderLogoWrap should be rendered correctly 1`] = `
+<div
+  className="header__left"
+>
+  <div
+    className="children-component"
+  />
+</div>
+`;

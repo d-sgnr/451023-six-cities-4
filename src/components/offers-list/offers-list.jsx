@@ -32,7 +32,7 @@ const OffersList = (props) => {
 };
 
 OffersList.propTypes = {
-  history: PropTypes.object.isRequired,
+  history: PropTypes.object,
   offers: PropTypes.array.isRequired,
   offersType: PropTypes.oneOf([PropertyType.CITY, PropertyType.NEAR]).isRequired,
 };

@@ -1,12 +1,6 @@
-import {reducer, ActionCreator, ActionType, AuthorizationStatus} from "./user.js";
-
-const mockedUserProfile = {
-  avatar: `avatar`,
-  email: `email@email.ru`,
-  id: 4,
-  isPro: true,
-  name: `name`,
-};
+import {reducer, ActionCreator, ActionType} from "./user.js";
+import {AuthorizationStatus} from "../../const.js";
+import {userProfile} from "../../test-state.js";
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
@@ -21,10 +15,10 @@ it(`Reducer should change user profile by a given value`, () => {
     userProfile: {},
   }, {
     type: ActionType.SET_USER_PROFILE,
-    payload: mockedUserProfile,
+    payload: userProfile,
   })).toEqual({
     authorizationStatus: AuthorizationStatus.AUTH,
-    userProfile: mockedUserProfile,
+    userProfile,
   });
 });
 
