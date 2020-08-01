@@ -113,7 +113,7 @@ exports[`FavoritesList should be rendered correctly 1`] = `
             className="place-card__name"
           >
             <a
-              href="/offer/0.6176987903484237"
+              href="/offer/0.829171167754472"
               onClick={[Function]}
             >
               Beautiful & luxurious studio at great location
@@ -213,7 +213,7 @@ exports[`FavoritesList should be rendered correctly 1`] = `
             className="place-card__name"
           >
             <a
-              href="/offer/0.44617272085148096"
+              href="/offer/0.2618892840510352"
               onClick={[Function]}
             >
               Beautiful & luxurious studio at great location
@@ -313,7 +313,7 @@ exports[`FavoritesList should be rendered correctly 1`] = `
             className="place-card__name"
           >
             <a
-              href="/offer/0.06792354466412531"
+              href="/offer/0.39970790646595256"
               onClick={[Function]}
             >
               Beautiful & luxurious studio at great location
@@ -437,7 +437,7 @@ exports[`FavoritesList should be rendered correctly 1`] = `
             className="place-card__name"
           >
             <a
-              href="/offer/0.6176987903484237"
+              href="/offer/0.829171167754472"
               onClick={[Function]}
             >
               Beautiful & luxurious studio at great location
@@ -537,7 +537,7 @@ exports[`FavoritesList should be rendered correctly 1`] = `
             className="place-card__name"
           >
             <a
-              href="/offer/0.44617272085148096"
+              href="/offer/0.2618892840510352"
               onClick={[Function]}
             >
               Beautiful & luxurious studio at great location
@@ -637,7 +637,7 @@ exports[`FavoritesList should be rendered correctly 1`] = `
             className="place-card__name"
           >
             <a
-              href="/offer/0.06792354466412531"
+              href="/offer/0.39970790646595256"
               onClick={[Function]}
             >
               Beautiful & luxurious studio at great location

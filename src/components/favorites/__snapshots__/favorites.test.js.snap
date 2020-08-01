@@ -185,7 +185,7 @@ exports[`Favorites should be rendered correctly 1`] = `
                     className="place-card__name"
                   >
                     <a
-                      href="/offer/0.34047934869823493"
+                      href="/offer/0.41548712895968665"
                       onClick={[Function]}
                     >
                       Beautiful & luxurious studio at great location
@@ -285,7 +285,7 @@ exports[`Favorites should be rendered correctly 1`] = `
                     className="place-card__name"
                   >
                     <a
-                      href="/offer/0.13301709847107213"
+                      href="/offer/0.9020257793294928"
                       onClick={[Function]}
                     >
                       Beautiful & luxurious studio at great location
@@ -385,7 +385,7 @@ exports[`Favorites should be rendered correctly 1`] = `
                     className="place-card__name"
                   >
                     <a
-                      href="/offer/0.18207005957231925"
+                      href="/offer/0.23782058821232321"
                       onClick={[Function]}
                     >
                       Beautiful & luxurious studio at great location
@@ -509,7 +509,7 @@ exports[`Favorites should be rendered correctly 1`] = `
                     className="place-card__name"
                   >
                     <a
-                      href="/offer/0.34047934869823493"
+                      href="/offer/0.41548712895968665"
                       onClick={[Function]}
                     >
                       Beautiful & luxurious studio at great location
@@ -609,7 +609,7 @@ exports[`Favorites should be rendered correctly 1`] = `
                     className="place-card__name"
                   >
                     <a
-                      href="/offer/0.13301709847107213"
+                      href="/offer/0.9020257793294928"
                       onClick={[Function]}
                     >
                       Beautiful & luxurious studio at great location
@@ -709,7 +709,7 @@ exports[`Favorites should be rendered correctly 1`] = `
                     className="place-card__name"
                   >
                     <a
-                      href="/offer/0.18207005957231925"
+                      href="/offer/0.23782058821232321"
                       onClick={[Function]}
                     >
                       Beautiful & luxurious studio at great location
