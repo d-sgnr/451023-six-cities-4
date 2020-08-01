@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import FavoritesListItem from "./favorites-list-item.jsx";
 import {PropertyType} from "../../const.js";
 import {Provider} from "react-redux";
-import {BrowserRouter as Router} from "react-router-dom";
+import {StaticRouter as Router} from "react-router-dom";
 import configureStore from "redux-mock-store";
 
 import NameSpace from "../../reducer/name-space.js";

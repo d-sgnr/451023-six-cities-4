@@ -8,7 +8,7 @@ import {Provider} from "react-redux";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
 import NameSpace from "../../reducer/name-space.js";
 const mockStore = configureStore([]);
-import {BrowserRouter as Router} from "react-router-dom";
+import {StaticRouter as Router} from "react-router-dom";
 
 const offers = [
   {

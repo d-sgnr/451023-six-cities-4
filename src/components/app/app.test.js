@@ -6,7 +6,7 @@ import App from "./app.jsx";
 import NameSpace from "../../reducer/name-space.js";
 import thunk from 'redux-thunk';
 import {AuthorizationStatus} from "../../reducer/user/user.js";
-import {BrowserRouter as Router} from "react-router-dom";
+import {StaticRouter as Router} from "react-router-dom";
 
 const mockStore = configureStore([thunk]);
 const offers = [
