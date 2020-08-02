@@ -1,5 +1,6 @@
 import React, {PureComponent} from "react";
 import {reviewType} from "../../proptypes/proptypes.jsx";
+import {formatCommentDate} from "../../utils.js";
 
 class Review extends PureComponent {
   constructor(props) {
@@ -28,7 +29,7 @@ class Review extends PureComponent {
         <p className="reviews__text">
           {review.comment}
         </p>
-        <time className="reviews__time" dateTime={review.date}>April 2019</time>
+        <time className="reviews__time" dateTime={review.date}>{formatCommentDate(review.date)}</time>
       </div>
     </li>;
   }

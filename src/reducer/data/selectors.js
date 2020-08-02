@@ -1,6 +1,6 @@
-import {createSelector} from "reselect";
 import NameSpace from "../name-space.js";
 import {getUniqueObjectsArray} from "../../utils.js";
+import {MAX_COMMENTS_COUNT} from "../../const.js";
 
 const NAME_SPACE = NameSpace.DATA;
 
@@ -9,7 +9,9 @@ export const getOffers = (state) => {
 };
 
 export const getComments = (state) => {
-  return state[NAME_SPACE].comments;
+  const comments = state[NAME_SPACE].comments;
+  const commentsToShow = comments.slice(Math.max(comments.length - MAX_COMMENTS_COUNT, 0)).reverse();
+  return commentsToShow;
 };
 
 export const getNearOffers = (state) => {
@@ -35,10 +37,3 @@ export const getOfferById = (state, id) => {
   const [offer] = offers.filter((item) => item.id === Number(id));
   return offer;
 };
-
-export const getFirstCity = createSelector(
-    getOffers,
-    (offers) => {
-      return offers[0].city;
-    }
-);

@@ -394,7 +394,7 @@ exports[`Property should be rendered correctly 1`] = `
                     className="reviews__time"
                     dateTime="2019-05-08T14:13:56.569Z"
                   >
-                    April 2019
+                    May 2019
                   </time>
                 </div>
               </li>
@@ -453,7 +453,7 @@ exports[`Property should be rendered correctly 1`] = `
                     className="reviews__time"
                     dateTime="2019-05-08T14:13:56.569Z"
                   >
-                    April 2019
+                    May 2019
                   </time>
                 </div>
               </li>

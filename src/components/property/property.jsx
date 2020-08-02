@@ -22,7 +22,7 @@ import {ActionCreator as AppActionCreator} from "../../reducer/app/app.js";
 
 import {Operation as DataOperation} from "../../reducer/data/data.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
-import {AuthorizationStatus} from "../../const.js";
+import {AuthorizationStatus, CurrencyType} from "../../const.js";
 import {offerType} from "../../proptypes/proptypes.jsx";
 
 const WrappedReviewForm = withReviewForm(ReviewForm);
@@ -49,7 +49,6 @@ class Property extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-
     if (prevProps.offer.id !== this.props.offer.id) {
       const {loadComments, loadNearOffers, offer} = this.props;
       this._fetchData(loadComments, loadNearOffers, offer.id);
@@ -133,7 +132,7 @@ class Property extends PureComponent {
                   </li>
                 </ul>
                 <div className="property__price">
-                  <b className="property__price-value">&euro;{offer.price}</b>
+                  <b className="property__price-value">{CurrencyType.EURO}{offer.price}</b>
                   <span className="property__price-text">&nbsp;night</span>
                 </div>
                 <div className="property__inside">
