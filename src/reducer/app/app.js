@@ -1,5 +1,5 @@
 import {extend} from "../../utils.js";
-import {SortType, PageType} from "../../const.js";
+import {SortType} from "../../const.js";
 
 const initialCity = {
   name: `Amsterdam`,
@@ -12,7 +12,6 @@ const initialCity = {
 
 const initialState = {
   city: initialCity,
-  page: PageType.INDEX,
   activeSortType: SortType.POPULAR,
   hoveredOffer: null,
   userName: `oliver.conner@gmail.com`,
@@ -93,14 +92,6 @@ const reducer = (state = initialState, action) => {
 
       return extend(state, {
         activeOffer: action.payload,
-        page: PageType.PROPERTY,
-      });
-
-    case ActionType.GO_TO_INDEX:
-
-      return extend(state, {
-        activeOffer: action.payload,
-        page: PageType.INDEX,
       });
 
     case ActionType.CHANGE_FAVORITE_ACTIVE:

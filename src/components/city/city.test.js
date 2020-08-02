@@ -4,22 +4,11 @@ import City from "./city.jsx";
 
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-
-const mockStore = configureStore([]);
-
-const city = {
-  name: `Amsterdam`,
-  location: {
-    latitude: 52.373057,
-    longitude: 4.892557,
-    zoom: 10,
-  },
-};
+import {mockStore, city} from "../../test-state.js";
 
 it(`City should be rendered correctly when not active`, () => {
-  const store = mockStore({
-    city,
-  });
+  const testStore = configureStore();
+  const store = testStore(mockStore);
 
   const tree = renderer.create(
       <Provider store={store}>
@@ -34,9 +23,8 @@ it(`City should be rendered correctly when not active`, () => {
 });
 
 it(`City should be rendered correctly when active`, () => {
-  const store = mockStore({
-    city,
-  });
+  const testStore = configureStore();
+  const store = testStore(mockStore);
 
   const tree = renderer.create(
       <Provider store={store}>

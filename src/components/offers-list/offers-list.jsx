@@ -12,7 +12,8 @@ const getOffersListClass = (type) => {
 const OffersList = (props) => {
   const {
     offers,
-    offersType
+    offersType,
+    history
   } = props;
 
   const offersListClass = getOffersListClass(offersType);
@@ -23,6 +24,7 @@ const OffersList = (props) => {
         offersType={offersType}
         key={`${i}-${offer.title}`}
         offer={offer}
+        history={history}
       />;
     })}
   </div>;
@@ -30,6 +32,7 @@ const OffersList = (props) => {
 };
 
 OffersList.propTypes = {
+  history: PropTypes.object,
   offers: PropTypes.array.isRequired,
   offersType: PropTypes.oneOf([PropertyType.CITY, PropertyType.NEAR]).isRequired,
 };

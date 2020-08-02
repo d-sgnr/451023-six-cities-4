@@ -2,7 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import {getAuthorizationStatus, getUserEmail} from "../../reducer/user/selectors.js";
 import {connect} from "react-redux";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {AuthorizationStatus} from "../../const.js";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../const.js";
 
 const MainNav = (props) => {
   const {authorizationStatus, userEmail} = props;
@@ -10,13 +12,22 @@ const MainNav = (props) => {
   return <nav className="header__nav">
     <ul className="header__nav-list">
       <li className="header__nav-item user">
-        <a className="header__nav-link header__nav-link--profile" href="#">
-          <div className="header__avatar-wrapper user__avatar-wrapper">
-          </div>
-          <span className="header__user-name user__name">
-            {authorizationStatus === AuthorizationStatus.AUTH ? userEmail : `Sign In`}
-          </span>
-        </a>
+        {authorizationStatus === AuthorizationStatus.AUTH ?
+          <Link to={`${AppRoute.FAVORITES}`} className="header__nav-link header__nav-link--profile">
+            <div className="header__avatar-wrapper user__avatar-wrapper">
+            </div>
+            <span className="header__user-name user__name">
+              {userEmail}
+            </span>
+          </Link> :
+          <Link to={`${AppRoute.LOGIN}`} className="header__nav-link header__nav-link--profile">
+            <div className="header__avatar-wrapper user__avatar-wrapper">
+            </div>
+            <span className="header__user-name user__name">
+              {`Sign In`}
+            </span>
+          </Link>
+        }
       </li>
     </ul>
   </nav>;

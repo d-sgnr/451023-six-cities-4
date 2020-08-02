@@ -4,28 +4,26 @@ import ReviewsList from "../reviews-list/reviews-list.jsx";
 import {capitalizeFirstLetter} from "../../utils.js";
 import Map from "../map/map.jsx";
 import OffersList from "../offers-list/offers-list.jsx";
-import {offerType} from "../../proptypes/proptypes.jsx";
 import withReviewForm from "../../hocs/with-review-form/with-review-form.jsx";
 import ReviewForm from "../review-form/review-form.jsx";
 import {PropertyType} from "../../const.js";
 import {connect} from "react-redux";
-import {getUserName, getActiveOffer} from "../../reducer/app/selectors.js";
+import {getUserName} from "../../reducer/app/selectors.js";
 
-import {getComments, getNearOffers} from "../../reducer/data/selectors.js";
-
+import {getComments, getNearOffers, getOfferById} from "../../reducer/data/selectors.js";
+import {AppRoute} from "../../const.js";
 import {getPlacesCoordinates} from "../../utils.js";
 
 import Header from "../header/header.jsx";
 import MainNav from "../main-nav/main-nav.jsx";
 import HeaderLogoWrap from "../header-logo-wrap/header-logo-wrap.jsx";
 import Logo from "../logo/logo.jsx";
-
-import {ActionCreator as DataActionCreator} from "../../reducer/data/data.js";
 import {ActionCreator as AppActionCreator} from "../../reducer/app/app.js";
 
 import {Operation as DataOperation} from "../../reducer/data/data.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {AuthorizationStatus} from "../../const.js";
+import {offerType} from "../../proptypes/proptypes.jsx";
 
 const WrappedReviewForm = withReviewForm(ReviewForm);
 
@@ -46,19 +44,20 @@ class Property extends PureComponent {
   }
 
   componentDidMount() {
-    const {offer, loadComments, loadNearOffers} = this.props;
+    const {loadComments, loadNearOffers, offer} = this.props;
     this._fetchData(loadComments, loadNearOffers, offer.id);
   }
 
   componentDidUpdate(prevProps) {
+
     if (prevProps.offer.id !== this.props.offer.id) {
-      const {offer, loadComments, loadNearOffers} = this.props;
+      const {loadComments, loadNearOffers, offer} = this.props;
       this._fetchData(loadComments, loadNearOffers, offer.id);
     }
   }
 
   render() {
-    const {offer, nearOffers, nearCoordinates, onBookmarkClick, userName, reviews, authorizationStatus} = this.props;
+    const {offer, nearOffers, nearCoordinates, onBookmarkClick, userName, reviews, authorizationStatus, history} = this.props;
 
     const digitalRating = getDigitalRating(offer.rating * 10);
 
@@ -99,7 +98,13 @@ class Property extends PureComponent {
                   </h1>
                   <button className="property__bookmark-button button"
                     type="button"
-                    onClick={() => onBookmarkClick(offer)}
+                    onClick={() => {
+                      if (authorizationStatus === AuthorizationStatus.AUTH) {
+                        onBookmarkClick(offer);
+                      } else {
+                        history.push(AppRoute.LOGIN);
+                      }
+                    }}
                   >
                     <svg className="property__bookmark-icon" width="31" height="33" style={{stroke: (offer.isFavorite ? `#4481c3` : ``), fill: (offer.isFavorite ? `#4481c3` : ``)}}>
                       <use xlinkHref="#icon-bookmark"></use>
@@ -145,7 +150,7 @@ class Property extends PureComponent {
                   <h2 className="property__host-title">Meet the host</h2>
                   <div className="property__host-user user">
                     <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                      <img className="property__avatar user__avatar" src="img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar"/>
+                      <img className="property__avatar user__avatar" src={`/` + offer.host.avatarUrl} width="74" height="74" alt="Host avatar"/>
                     </div>
                     <span className="property__user-name">
                       Angelina
@@ -187,6 +192,7 @@ class Property extends PureComponent {
                   city={offer.city}
                   offers={nearOffers}
                   offersType={PropertyType.NEAR}
+                  history={history}
                 />
               </section>
             </div> : ``
@@ -198,6 +204,7 @@ class Property extends PureComponent {
 }
 
 Property.propTypes = {
+  history: PropTypes.object,
   offer: offerType,
   nearOffers: PropTypes.array.isRequired,
   nearCoordinates: PropTypes.array.isRequired,
@@ -209,31 +216,23 @@ Property.propTypes = {
   authorizationStatus: PropTypes.oneOf([AuthorizationStatus.AUTH, AuthorizationStatus.NO_AUTH]),
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
 
   const nearOffers = getNearOffers(state).slice(0, MAX_NEAR_OFFERS);
 
-  const comments = getComments(state);
-
-  const activeOffer = getActiveOffer(state);
-
-  const userName = getUserName(state);
-
-  const nearCoordinates = getPlacesCoordinates(nearOffers);
-
   return {
-    offer: activeOffer,
-    nearCoordinates,
+    offer: getOfferById(state, props.match.params.id),
+    nearCoordinates: getPlacesCoordinates(nearOffers),
     nearOffers,
-    userName,
-    reviews: comments,
+    userName: getUserName(state),
+    reviews: getComments(state),
     authorizationStatus: getAuthorizationStatus(state),
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   onBookmarkClick(offer) {
-    dispatch(DataActionCreator.changeFavorite(offer));
+    dispatch(DataOperation.changeFavorite(offer));
     dispatch(AppActionCreator.changeFavoriteActive(offer));
   },
   loadComments(id) {

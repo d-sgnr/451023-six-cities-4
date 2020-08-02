@@ -9,7 +9,7 @@ Array [
     name="rating"
     onChange={[Function]}
     type="radio"
-    value="1"
+    value={1}
   />,
   <label
     className="reviews__rating-label form__rating-label"
@@ -38,7 +38,7 @@ Array [
     name="rating"
     onChange={[Function]}
     type="radio"
-    value="2"
+    value={2}
   />,
   <label
     className="reviews__rating-label form__rating-label"

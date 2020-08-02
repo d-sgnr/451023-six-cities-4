@@ -9,6 +9,7 @@ export const RATING = {
 export const PropertyType = {
   CITY: `cities`,
   NEAR: `near-places`,
+  FAVORITE: `favorites`,
 };
 
 export const PLACE_TYPE = {
@@ -25,35 +26,14 @@ export const SortType = {
   TOP_RATED: `Top rated first`,
 };
 
-
-export const PageType = {
-  INDEX: `INDEX`,
-  PROPERTY: `PROPERTY`,
+export const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
 };
 
-export const Cities = {
-  PARIS: {
-    name: `Paris`,
-    coordinates: [48.856663, 2.351556],
-  },
-  COLOGNE: {
-    name: `Cologne`,
-    coordinates: [50.930779, 6.938399],
-  },
-  BRUSSELS: {
-    name: `Brussels`,
-    coordinates: [50.851309, 4.351718],
-  },
-  AMSTERDAM: {
-    name: `Amsterdam`,
-    coordinates: [52.373057, 4.892557],
-  },
-  HAMBURG: {
-    name: `Hamburg`,
-    coordinates: [53.552645, 9.966287],
-  },
-  DUSSELDORF: {
-    name: `Dusseldorf`,
-    coordinates: [51.230569, 6.787428],
-  },
+export const AppRoute = {
+  LOGIN: `/login`,
+  FAVORITES: `/favorites`,
+  PROPERTY: `/offer`,
+  ROOT: `/`,
 };

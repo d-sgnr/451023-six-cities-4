@@ -4,12 +4,17 @@ import {PropertyType} from "../../const.js";
 import {capitalizeFirstLetter} from "../../utils.js";
 import {connect} from "react-redux";
 import {ActionCreator as AppActionCreator} from "../../reducer/app/app.js";
-import {ActionCreator as DataActionCreator} from "../../reducer/data/data.js";
+
+import {Operation as DataOperation} from "../../reducer/data/data.js";
 import {offerType} from "../../proptypes/proptypes.jsx";
+import {AppRoute} from "../../const.js";
+import {Link} from "react-router-dom";
+import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
+import {AuthorizationStatus} from "../../const.js";
 
 const PlaceCard = (props) => {
 
-  const {offer, offersType, onCardTitleClick, onBookmarkClick, onCardHover, onCardMouseLeave} = props;
+  const {offer, offersType, onBookmarkClick, onCardHover, onCardMouseLeave, authorizationStatus, history} = props;
 
   return (<article
     className={`${offersType === PropertyType.CITY ? `${offersType}__place-` : `${offersType}__`}card place-card`}
@@ -35,7 +40,11 @@ const PlaceCard = (props) => {
         <button className={`place-card__bookmark-button button` + (offer.isFavorite ? ` place-card__bookmark-button--active` : ``)}
           type="button"
           onClick={() => {
-            onBookmarkClick(offer);
+            if (authorizationStatus === AuthorizationStatus.AUTH) {
+              onBookmarkClick(offer);
+            } else {
+              history.push(AppRoute.LOGIN);
+            }
           }}
         >
           <svg className="place-card__bookmark-icon" width="18" height="19">
@@ -51,9 +60,9 @@ const PlaceCard = (props) => {
         </div>
       </div>
       <h2 className="place-card__name">
-        <a href="#"
-          onClick={() => onCardTitleClick(offer)}
-        >{offer.title}</a>
+        <Link to={`${AppRoute.PROPERTY}/${offer.id}`}>
+          {offer.title}
+        </Link>
       </h2>
       <p className="place-card__type">{capitalizeFirstLetter(offer.type)}</p>
     </div>
@@ -62,21 +71,22 @@ const PlaceCard = (props) => {
 };
 
 PlaceCard.propTypes = {
+  history: PropTypes.object,
+  authorizationStatus: PropTypes.string.isRequired,
   offer: offerType.isRequired,
-  offersType: PropTypes.oneOf([PropertyType.CITY, PropertyType.NEAR]).isRequired,
-  onCardTitleClick: PropTypes.func.isRequired,
+  offersType: PropTypes.oneOf([PropertyType.CITY, PropertyType.NEAR, PropertyType.FAVORITE]).isRequired,
   onBookmarkClick: PropTypes.func.isRequired,
   onCardHover: PropTypes.func.isRequired,
   onCardMouseLeave: PropTypes.func.isRequired,
 };
 
+const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state),
+});
+
 const mapDispatchToProps = (dispatch) => ({
   onBookmarkClick(offer) {
-    dispatch(DataActionCreator.changeFavorite(offer));
-  },
-
-  onCardTitleClick(offer) {
-    dispatch(AppActionCreator.setActiveOffer(offer));
+    dispatch(DataOperation.changeFavorite(offer));
   },
 
   onCardHover(offer) {
@@ -89,4 +99,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {PlaceCard};
-export default connect(null, mapDispatchToProps)(React.memo(PlaceCard));
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(PlaceCard));
