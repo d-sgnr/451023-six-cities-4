@@ -1,22 +1,7 @@
-export const RATING = {
-  1: 20,
-  2: 40,
-  3: 60,
-  4: 80,
-  5: 100,
-};
-
 export const PropertyType = {
   CITY: `cities`,
   NEAR: `near-places`,
   FAVORITE: `favorites`,
-};
-
-export const PLACE_TYPE = {
-  apartment: `Apartment`,
-  room: `Private Room`,
-  house: `House`,
-  hotel: `Hotel`,
 };
 
 export const SortType = {
@@ -24,6 +9,10 @@ export const SortType = {
   TO_HIGH: `Price: low to high`,
   TO_LOW: `Price: high to low`,
   TOP_RATED: `Top rated first`,
+};
+
+export const CurrencyType = {
+  EURO: `\u20ac`,
 };
 
 export const AuthorizationStatus = {
@@ -37,3 +26,20 @@ export const AppRoute = {
   PROPERTY: `/offer`,
   ROOT: `/`,
 };
+
+export const MAX_COMMENTS_COUNT = 10;
+
+export const MONTHS = [
+  `January`,
+  `February`,
+  `March`,
+  `April`,
+  `May`,
+  `June`,
+  `July`,
+  `August`,
+  `September`,
+  `October`,
+  `November`,
+  `December`,
+];

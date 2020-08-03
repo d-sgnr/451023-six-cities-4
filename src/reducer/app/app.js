@@ -14,7 +14,7 @@ const initialState = {
   city: initialCity,
   activeSortType: SortType.POPULAR,
   hoveredOffer: null,
-  userName: `oliver.conner@gmail.com`,
+  userName: ``,
   activeOffer: null,
 };
 

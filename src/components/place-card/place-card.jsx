@@ -10,7 +10,7 @@ import {offerType} from "../../proptypes/proptypes.jsx";
 import {AppRoute} from "../../const.js";
 import {Link} from "react-router-dom";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
-import {AuthorizationStatus} from "../../const.js";
+import {AuthorizationStatus, CurrencyType} from "../../const.js";
 
 const PlaceCard = (props) => {
 
@@ -34,7 +34,7 @@ const PlaceCard = (props) => {
     <div className="place-card__info">
       <div className="place-card__price-wrapper">
         <div className="place-card__price">
-          <b className="place-card__price-value">&euro;{offer.price}</b>
+          <b className="place-card__price-value">{CurrencyType.EURO}{offer.price}</b>
           <span className="place-card__price-text">&#47;&nbsp;night</span>
         </div>
         <button className={`place-card__bookmark-button button` + (offer.isFavorite ? ` place-card__bookmark-button--active` : ``)}

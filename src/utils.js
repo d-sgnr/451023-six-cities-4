@@ -1,4 +1,4 @@
-import {SortType} from "./const.js";
+import {SortType, MONTHS} from "./const.js";
 
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
@@ -6,6 +6,11 @@ export const extend = (a, b) => {
 
 export const getUniqueObjectsArray = (array, key) => {
   return Object.values(array.reduce((acc, it) => Object.assign(acc, {[it[key]]: it}), {}));
+};
+
+export const formatCommentDate = (dateString) => {
+  const date = new Date(Date.parse(dateString));
+  return `${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
 };
 
 export const replaceItemInArray = (array, newItem, key) => {
