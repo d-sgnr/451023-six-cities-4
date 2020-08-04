@@ -8,7 +8,7 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-it(`Place card should call hover and unhover handlers`, () => {
+it(`Place card should call hover and unhover handlers on mouse enter and mouse leave`, () => {
 
   const onCardHover = jest.fn();
   const onCardMouseLeave = jest.fn();
