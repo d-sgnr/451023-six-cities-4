@@ -15,7 +15,7 @@ describe(`SortingItem`, () => {
         <SortingItem
           title="Popular"
           activeSortType="Popular"
-          onSortingChange = {onSortingChange}
+          onSortingChange={onSortingChange}
         />
     );
 
